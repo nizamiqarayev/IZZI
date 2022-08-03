@@ -29,9 +29,13 @@
             </div>
         </div>
         <div>
-            <div>
-                
+            <div class="flex">
+                <img src="../assets/Facebook_logo.svg" alt="">
+                <img src="../assets/Twitter_logo.svg" alt="">
+                <img src="../assets/Instagram_logo.svg" alt="">
+                <img src="../assets/Youtube_logo.svg" alt="">
             </div>
+            <div></div>
         </div>
     </footer>
 </template>
