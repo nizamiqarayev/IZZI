@@ -1,20 +1,20 @@
 <template>
-    <header class="w-full flex justify-center items-center">
-        <div class="w-full px-56 flex justify-between">
+    <header class="w-full flex justify-center items-center font-quicksand">
+        <div class="w-full px-56 py-4 flex justify-between">
             <div class="flex ">
-                <img src="../assets/logo .svg" alt="">
-                <nav class="flex">
-                    <p>My Orders</p>
-                    <p>Services</p>
-                    <p>Help</p>
+                <img src="../assets/logo .svg" class="mr-12" alt="">
+                <nav class="flex items-center gap-8 ">
+                    <p class=" whitespace-nowrap">My Orders</p>
+                    <p class=" whitespace-nowrap">Services</p>
+                    <p class=" whitespace-nowrap">Help</p>
                 </nav>
             </div>
             <div v-if="signedIn == true"></div>
-            <div v-if="signedIn == false" class="flex">
-            <nuxt-link to="/signin" class="mr-8">Sign In</nuxt-link>
-                        <nuxt-link to="/signin" class="bg-[#5920BC]">
+            <div v-if="signedIn == false" class="flex items-center">
+            <nuxt-link to="/signin" class="mr-8 text-[#5920BC]">Sign In</nuxt-link>
+                        <nuxt-link to="/signin" class="bg-[#5920BC] flex gap-4 px-6 py-3 rounded-[3px] text-white">
                             <img src="../assets/User.svg" alt="">
-                            <p>Sign In</p></nuxt-link>
+                            <p class="">Sign up</p></nuxt-link>
 
             </div>
 

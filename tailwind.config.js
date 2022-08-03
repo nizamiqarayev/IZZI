@@ -9,7 +9,11 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        quicksand:'Quicksand',
+      }
+    },
   },
   variants: {
     extend: {},
