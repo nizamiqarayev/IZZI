@@ -2,7 +2,7 @@
     <footer>
         <div class="flex justify-between px-28 py-12 w-full ">
             <div class="px-8 pb-6 w-[300px] space-y-3">
-                <img src="../assets/Logo_footer.svg" alt="">
+                <img src="../assets/logo/Logo_footer.svg" alt="">
                 <span class="text-[#222222] text-base opacity-75 cursor-pointer">Central street, White City, Khatai, Baku, Azerbaijan</span>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">+994 (50) XX XXXX</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">info@izzi.com</p>
@@ -30,10 +30,10 @@
         </div>
         <div>
             <div class="flex">
-                <img src="../assets/Facebook_logo.svg" alt="">
-                <img src="../assets/Twitter_logo.svg" alt="">
-                <img src="../assets/Instagram_logo.svg" alt="">
-                <img src="../assets/Youtube_logo.svg" alt="">
+                <img src="../assets/logo/Facebook_logo.svg" alt="">
+                <img src="../assets/logo/Twitter_logo.svg" alt="">
+                <img src="../assets/logo/Instagram_logo.svg" alt="">
+                <img src="../assets/logo/Youtube_logo.svg" alt="">
             </div>
             <div></div>
         </div>
