@@ -1,9 +1,9 @@
 <template>
     <footer>
-        <div class="flex justify-around items-center px-28 py-12 w-full ">
-            <div class="">
-                <img src="../assets/logo .svg" alt="">
-                <p class="text-[#222222] text-base opacity-75 cursor-pointer">Central street, White City, Khatai, Baku, Azerbaijan</p>
+        <div class="flex justify-between items-center px-28 py-12 w-full ">
+            <div class="w-auto">
+                <img src="../assets/Logo_footer.svg" alt="">
+                <h3 class="text-[#222222] text-base opacity-75 cursor-pointer">Central street, White City, Khatai, Baku, Azerbaijan</h3>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">+994 (50) XX XXXX</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">info@izzi.com</p>
             </div>
