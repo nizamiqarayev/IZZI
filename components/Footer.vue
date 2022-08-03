@@ -2,7 +2,7 @@
     <footer>
         <div class="flex justify-between px-28 py-12 w-full ">
             <div class="px-8 pb-6 w-[300px] space-y-3">
-                <img src="../assets/imagesimages//logo/Logo_footer.svg" alt="">
+                <img src="../assets/images/logo/Logo_footer.svg" alt="">
                 <span class="text-[#222222] text-base opacity-75 cursor-pointer">Central street, White City, Khatai, Baku, Azerbaijan</span>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">+994 (50) XX XXXX</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">info@izzi.com</p>
