@@ -10,6 +10,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      backgroundImage: {
+        'signInAndUpBg': "url('assets/images/signInAndUpImages/signInAndUpbg.png')",
+      },
       fontFamily: {
         quicksand:'Quicksand',
       }

@@ -1,8 +1,8 @@
 <template>
-    <header class="w-full flex justify-center items-center font-quicksand shadow-inner sticky z-40">
+    <header class="w-full flex justify-center items-center font-quicksand shadow-inner fixed bg-white z-40 h-20 ">
         <div class="w-full px-56 py-4 flex justify-between">
             <div class="flex ">
-                <img src="../assets/images/logo/logo .svg" class="mr-12 hover:cursor-pointer" alt="">
+                <img src="../assets/images/logo/logo .svg" class="mr-12 hover:cursor-pointer " alt="">
                 <nav class="flex items-center gap-8 text-sm">
                     <p class="hover:text-[#5920BC] hover: hover:cursor-pointer whitespace-nowrap">My Orders</p>
                     <p class="hover:text-[#5920BC] hover:cursor-pointer whitespace-nowrap">Services</p>
