@@ -1,8 +1,8 @@
 <template>
-    <header class="w-full flex justify-center items-center font-quicksand">
+    <header class="w-full flex justify-center items-center font-quicksand shadow-inner">
         <div class="w-full px-56 py-4 flex justify-between">
             <div class="flex ">
-                <img src="../assets/images/logo/logo.svg" class="mr-12" alt="">
+                <img src="../assets/images/logo/logo .svg" class="mr-12" alt="">
                 <nav class="flex items-center gap-8 ">
                     <p class=" whitespace-nowrap">My Orders</p>
                     <p class=" whitespace-nowrap">Services</p>
