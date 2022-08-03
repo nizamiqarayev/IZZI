@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <div class="flex justify-around items-center  w-full ">
+        <div class="flex  justify-around items-center h-[200rem] w-full ">
             <div class="">
                 <img src="../assets/logo .svg" alt="">
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">Central street, White City, Khatai, Baku, Azerbaijan</p>
