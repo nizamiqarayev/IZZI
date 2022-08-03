@@ -1,26 +1,26 @@
 <template>
     <footer>
         <div class="flex justify-between items-center px-28 py-12 w-full ">
-            <div class="w-auto">
+            <div class="w-auto space-y-6">
                 <img src="../assets/Logo_footer.svg" alt="">
                 <h3 class="text-[#222222] text-base opacity-75 cursor-pointer">Central street, White City, Khatai, Baku, Azerbaijan</h3>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">+994 (50) XX XXXX</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">info@izzi.com</p>
             </div>
-            <div class="">
+            <div class=" space-y-6">
                 <p>izzi Ltd.</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">Location adres</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">info@izzi.com</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">+994 (50) XX XXXX</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">NR21465161</p>
             </div>
-            <div class="">
+            <div class=" space-y-6">
                 <p>Book a service</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">Browse Services</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">Find Taskers</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">How does it work?</p>
             </div>
-            <div class="">
+            <div class=" space-y-6">
                 <p>Extra links</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">About us</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">FAQ</p>
