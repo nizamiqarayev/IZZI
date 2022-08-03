@@ -1,13 +1,13 @@
 <template>
     <footer>
-        <div class="flex justify-between px-28 py-12 w-full ">
+        <div class="flex justify-between px-36 py-12 w-full ">
             <div class="px-8 pb-6 w-[300px] space-y-3">
                 <img src="../assets/images/logo/Logo_footer.svg" alt="">
                 <span class="text-[#222222] text-base opacity-75 cursor-pointer">Central street, White City, Khatai, Baku, Azerbaijan</span>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">+994 (50) XX XXXX</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">info@izzi.com</p>
             </div>
-            <div class=" space-y-6">
+            <div class="space-y-6">
                 <p class="font-bold">izzi Ltd.</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">Location adres</p>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">info@izzi.com</p>
@@ -28,14 +28,24 @@
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">Become a Task</p>
             </div>
         </div>
-        <div>
-            <div class="flex">
+        <hr>
+        <div class="flex justify-between items-center h-20 px-36">
+            <div class="flex gap-12">
                 <img src="../assets/images/logo/Facebook_logo.svg" alt="">
                 <img src="../assets/images/logo/Twitter_logo.svg" alt="">
                 <img src="../assets/images/logo/Instagram_logo.svg" alt="">
                 <img src="../assets/images/logo/Youtube_logo.svg" alt="">
             </div>
-            <div></div>
+
+            <div class="flex justify-around gap-14">
+                <p>izzi Ltd. 2021</p>
+                <p>Privacy Policy</p>
+                <p>Terms and conditions</p>
+                <div class="flex gap-4">
+                    <img src="../assets/images/logo/GDPR.jpg" alt="">
+                    <img src="../assets/images/logo/Trustpilot.jpg" alt="">
+                </div>
+            </div>
         </div>
     </footer>
 </template>
