@@ -1,6 +1,10 @@
 <template>
     <footer>
+<<<<<<< HEAD
         <div class="flex justify-between px-36 py-12 w-full ">
+=======
+        <div class="flex justify-between px-28 py-12 w-full">
+>>>>>>> 4b19b04371b99dcff0de52cf79d91a94bfefcc02
             <div class="px-8 pb-6 w-[300px] space-y-3">
                 <img src="../assets/images/logo/Logo_footer.svg" alt="">
                 <span class="text-[#222222] text-base opacity-75 cursor-pointer">Central street, White City, Khatai, Baku, Azerbaijan</span>
