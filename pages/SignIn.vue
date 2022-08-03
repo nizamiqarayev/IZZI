@@ -1,20 +1,20 @@
 <template>
-    <main class=" bg-signInAndUpBg w-full  bg-no-repeat flex items-center justify-center">
-        <div class="mx-[29.1875rem] mt-28 mb-48 p-8 h-96 bg-white">
-            <h2 class="mr-80">Sign In</h2>
+    <main class="rounded-[5px] bg-signInAndUpBg w-full  bg-no-repeat flex items-center justify-center">
+        <div class="font-quicksand mx-[29.1875rem] mt-36 mb-48 p-8 h-fit bg-white border border-solid border-[#E4E4E4]">
+            <h2 class="mr-80 whitespace-nowrap mb-7 font-quicksand font-bold text-[1.875rem] text-[#5920BC]">Sign In</h2>
             <form>
-                <label for="loginEmail">Email address</label>
+                <label for="loginEmail" class="">Email address</label>
                 <input id="loginEmail" type="email" placeholder="elonmusk@gmail.com"
-                    class="w-full pl-6 h-12 border border-[#C7C9CB]" v-model="inputEmail" />
-                <label for="loginPW" class="flex justify-between">
+                    class="mt-3 w-full pl-6 h-12 border border-[#C7C9CB]" v-model="inputEmail" />
+                <label for="loginPW" class="flex justify-between mt-4">
                     <p>Password</p>
-                    <p>Forgot password?</p>
+                    <p class="text-[#5920BC]">Forgot password?</p>
                 </label>
 
                 <div>
                     <input id="loginPW" ref="loginPW" @focus="pwplaceholderhidden = !pwplaceholderhidden" @blur="pwplaceholderhidden = !pwplaceholderhidden"
-                        :type="pwhidden ? 'password' : 'text'" class="w-full z-10 pl-6 h-12 flex items-center border border-[#C7C9CB]"
-                         v-model="inputPW" :placeholder="inputPW"  :class="pwhidden ? '' : ''" />
+                        :type="pwhidden ? 'password' : 'text'" class="mt-3 w-full z-10 pl-6 h-12 flex items-center border border-[#C7C9CB]"
+                         v-model="inputPW" :placeholder="pwplaceholdertext"  :class="pwhidden ? 'tracking-widest text-3xl' : ''" />
                     <div class="flex w-full justify-end relative bottom-[33px] items-center">
                         <!-- <div @click="pwfocusfixer()">
 
@@ -45,10 +45,14 @@
                         </div>
 
                     </div>
+                    
 
 
                 </div>
+                <div class="flex justify-center items-center">
+                <button class="shadow-sm rounded-[4px] flex items-center justify-center bg-[#5920BC] text-white py-3 px-28">Sign in <img src="../assets/images/signInAndUpImages/arrowright.svg" alt=""></button>
 
+                </div>
             </form>
         </div>
     </main>
@@ -59,9 +63,10 @@ export default {
     data() {
         return {
             pwhidden: true,
+            pwplaceholdertext: "",
             pwplaceholderhidden:false,
             inputEmail: "",
-            inputPW: "",
+            inputPW: ""
         }
     },
     computed: {
