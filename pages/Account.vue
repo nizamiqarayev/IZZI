@@ -39,7 +39,7 @@
         </ul>
       </div>
 
-      <div class="">
+      <div class="w-full">
         <Profile v-if="selectedMenu == 1" />
         <Password v-if="selectedMenu == 2" />
         <Notifications v-if="selectedMenu == 3" />
@@ -63,7 +63,7 @@ export default {
   components: { Profile, Password, Notifications, BonusBalance, SavedCards, InviteFriend },
   data() {
     return {
-      selectedMenu: 1
+      selectedMenu: 2
     }
   },
 }

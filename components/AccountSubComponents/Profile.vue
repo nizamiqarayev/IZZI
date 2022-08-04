@@ -1,6 +1,6 @@
 <template>
     <section class="flex flex-col justify-center items-center w-full bg-white px-8">
-        <div class="flex items-center border-b border-b-gray ">
+        <div class="flex items-center border-b-2 border-b-gray ">
             <h2 class="mr-44 font-bold text-2xl pt-6 pb-4 ">Profile</h2>
             <div class="flex items-center gap-8">
                 <div class="flex items-center gap-3 ">
