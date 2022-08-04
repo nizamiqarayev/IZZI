@@ -1,7 +1,6 @@
 <template>
-    <main class="bg-signInAndUpBg">
+    <main class="rounded-[5px] bg-signInAndUpBg w-full  bg-no-repeat flex items-center justify-center">
         <div class="h-[100vh] w-full" >
-            <img src="../assets/images/logo/Trustpilot.jpg" alt="">
         </div>
     </main>
 </template>

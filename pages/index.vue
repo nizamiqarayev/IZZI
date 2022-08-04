@@ -1,5 +1,5 @@
 <template>
-  <SignUp />
+  <SignIn />
   <!-- <NuxtLogo></NuxtLogo> -->
 </template>
 

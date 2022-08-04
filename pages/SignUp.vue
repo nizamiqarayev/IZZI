@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Signupping from '../components/Signup.vue'
+import Signupping from '../components/Signupping.vue'
 export default {
 
 components:{
