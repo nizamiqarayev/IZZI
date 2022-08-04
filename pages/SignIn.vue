@@ -11,32 +11,12 @@
                     <p class="text-[#5920BC]">Forgot password?</p>
                 </label>
 
-                <div>
-                    <input id="loginPW" ref="loginPW" @focus="pwplaceholderhidden = !pwplaceholderhidden" @blur="pwplaceholderhidden = !pwplaceholderhidden"
-                        :type="pwhidden ? 'password' : 'text'" class="mt-3 w-full z-10 pl-6 h-12 flex items-center border border-[#C7C9CB]"
-                         v-model="inputPW" :placeholder="pwplaceholdertext"  :class="pwhidden ? 'tracking-widest text-3xl' : ''" />
-                    <div class="flex w-full justify-end relative bottom-[33px] items-center">
-                        <!-- <div @click="pwfocusfixer()">
-
-                            <div class="flex gap-2 pl-6" :class="pwplaceholderhidden ? 'invisible' : 'visible'">
-                                <img class="hover:cursor-text" src="../assets/images/signInAndUpImages/hiddenpw.svg"
-                                    alt="">
-                                <img class="hover:cursor-text" src="../assets/images/signInAndUpImages/hiddenpw.svg"
-                                    alt="">
-                                <img class="hover:cursor-text" src="../assets/images/signInAndUpImages/hiddenpw.svg"
-                                    alt="">
-                                <img class="hover:cursor-text" src="../assets/images/signInAndUpImages/hiddenpw.svg"
-                                    alt="">
-                                <img class="hover:cursor-text" src="../assets/images/signInAndUpImages/hiddenpw.svg"
-                                    alt="">
-                                <img class="hover:cursor-text" src="../assets/images/signInAndUpImages/hiddenpw.svg"
-                                    alt="">
-                                <img class="hover:cursor-text" src="../assets/images/signInAndUpImages/hiddenpw.svg"
-                                    alt="">
-                                <img class="hover:cursor-text" src="../assets/images/signInAndUpImages/hiddenpw.svg"
-                                    alt="">
-                            </div>
-                        </div> -->
+                <div class="flex flex-col items-end relative">
+                    <input id="loginPW" ref="loginPW" :type="pwhidden ? 'text' : 'password'" 
+                        class="mt-3 w-full pl-6 h-12 flex items-center border border-[#C7C9CB]
+                         placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
+                         v-model="inputPW" />
+                    <div class="flex justify-end relative bottom-[33px] items-center">
                         <div class="mr-4">
                             <div class="" @click="pwhidden = !pwhidden" v-if="pwhidden == true"><img
                                     src="../assets/images/signInAndUpImages/eyeclosed.svg" alt=""></div>
@@ -62,7 +42,7 @@
 export default {
     data() {
         return {
-            pwhidden: true,
+            pwhidden: false,
             pwplaceholdertext: "",
             pwplaceholderhidden:false,
             inputEmail: "",
