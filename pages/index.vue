@@ -1,12 +1,13 @@
 <template>
-  <SignIn />
+  <SignUp />
   <!-- <NuxtLogo></NuxtLogo> -->
 </template>
 
 <script>
 import SignIn from './SignIn.vue';
+import SignUp from './SignUp.vue';
 export default {
   name: "IndexPage",
-  components: { SignIn }
+  components: { SignIn, SignUp }
 }
 </script>

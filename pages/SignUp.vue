@@ -1,10 +1,14 @@
 <template>
-    <Signup></Signup>
+    <Signupping></Signupping>
 </template>
 
 <script>
+import Signupping from '../components/Signup.vue'
 export default {
 
+components:{
+    Signupping,
+}
 }
 </script>
 
