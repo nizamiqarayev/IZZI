@@ -60,9 +60,6 @@ export default {
 
     computed: {
         headerstate() {
-            console.log('====================================');
-            console.log(this.signedIn);
-            console.log('====================================');
             return this.$store.getters["headerstore/getState"]
         }
     },
