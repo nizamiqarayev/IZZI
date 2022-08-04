@@ -12,9 +12,11 @@ module.exports = {
     extend: {
       backgroundImage: {
         'signInAndUpBg': "url('assets/images/signInAndUpImages/signInAndUpbg.png')",
+        
       },
       fontFamily: {
         quicksand:'Quicksand',
+        password:'Password Dots',
       }
     },
   },
