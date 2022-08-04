@@ -11,12 +11,12 @@
                     <p class="text-[#5920BC]">Forgot password?</p>
                 </label>
 
-                <div>
-                    <input id="loginPW" ref="loginPW" @focus="pwplaceholderhidden = !pwplaceholderhidden" @blur="pwplaceholderhidden = !pwplaceholderhidden"
-                        :type="pwhidden ? 'password' : 'text'" class=" w-full mt-3 h-12 pl-6 flex  border border-[#C7C9CB] placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
-                         v-model="inputPW"  placeholder="12345678"  :class="pwhidden ? 'text-lg font-password' : ''" />
-                    <div class="flex w-full justify-end relative bottom-[33px] items-center">
-                        
+                <div class="flex flex-col items-end relative">
+                    <input id="loginPW" ref="loginPW" :type="pwhidden ? 'text' : 'password'" 
+                        class="mt-3 w-full pl-6 h-12 flex items-center border border-[#C7C9CB]
+                         placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
+                         v-model="inputPW" />
+                    <div class="flex justify-end relative bottom-[33px] items-center">
                         <div class="mr-4">
                             <div class="" @click="pwhidden = !pwhidden" v-if="pwhidden == true"><img
                                     src="../assets/images/signInAndUpImages/eyeclosed.svg" alt=""></div>
@@ -42,7 +42,7 @@
 export default {
     data() {
         return {
-            pwhidden: true,
+            pwhidden: false,
             pwplaceholdertext: "",
             pwplaceholderhidden:false,
             inputEmail: "",
