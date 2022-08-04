@@ -27,9 +27,9 @@
                         <input class="mt-3 border-[#C7C9CB] w-full border-[1px] py-3 px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]" placeholder="12345678" type="password">
                         <div class="flex w-full justify-end relative bottom-[33px] items-center">
                             <div class="mr-4">
-                                <div class="" @click="cpwhidden = !cpwhidden" v-if="pwhidden == true"><img
+                                <div class="" @click="cpwhidden = !cpwhidden" v-if="cpwhidden == true"><img
                                         src="../assets/images/signInAndUpImages/eyeclosed.svg" alt=""></div>
-                                <div class="" @click="cpwhidden = !cpwhidden" v-if="pwhidden == false"><img
+                                <div class="" @click="cpwhidden = !cpwhidden" v-if="cpwhidden == false"><img
                                         src="../assets/images/signInAndUpImages/eyeopen.svg" alt=""></div>
                             </div>
                         </div>
