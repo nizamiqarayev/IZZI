@@ -14,10 +14,6 @@ module.exports = {
         'signInAndUpBg': "url('assets/images/signInAndUpImages/signInAndUpbg.png')",
         
       },
-      colors:{
-        'passiveColor':'#DADADA',
-        'activeColor':'#DADADA',
-      },
       fontFamily: {
         quicksand:'Quicksand',
         password:'Password Dots',

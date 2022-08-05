@@ -14,7 +14,7 @@
       <path d="M16.0059 13.9976L12.0059 9.99756L8.00586 13.9976" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <div class="w-full flex flex-col p-2">
+    <div class="w-full  flex-col p-2">
       
     </div>
 
