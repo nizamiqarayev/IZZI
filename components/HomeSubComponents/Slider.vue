@@ -1,10 +1,13 @@
 <template>
-  <div></div>
+  <div class="max-h-screen">
+    <SliderItemVue  />
+    </div>
 </template>
 
 <script>
+import SliderItemVue from './SliderItem.vue'
 export default {
-
+components: {SliderItemVue,}
 }
 </script>
 
