@@ -1,9 +1,9 @@
 <template>
-    <div class="min-h-[100vh] flex flex-col gap-5 items-center justify-center">
+    <div class="min-h-[100vh] font-quicksand flex flex-col gap-5 items-center justify-center">
         <main class="flex items-center justify-center">
             <div class="border-[1px] mx-auto  border-[#E4E4E4] p-[42px] rounded flex-col">
-                <p class="text-3xl font-semibold pr-20">Reset Password</p>
-                <form action="" class="">
+                <p class="text-3xl font-bold pr-20">Reset Password</p>
+                <form action="./SetNewPassword" class="">
                     <div class="flex flex-col gap-2 mt-6 mb-8 w-full">
                         <label for="Email">Email address</label>
                         <input type="email" class="w-full rounded border-[1px] border-[#E4E4E4] px-6 py-[12px]" placeholder="elonmusk@gmail.com">
