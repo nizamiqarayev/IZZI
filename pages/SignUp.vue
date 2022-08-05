@@ -1,13 +1,13 @@
 <template>
-    <Signupping></Signupping>
+    <ModuleSignupping></ModuleSignupping>
 </template>
 
 <script>
-import Signupping from '../components/Signupping.vue'
+import ModuleSignupping from '../components/ModuleSignUpping.vue'
 export default {
 
 components:{
-    Signupping,
+    ModuleSignupping,
 }
 }
 </script>

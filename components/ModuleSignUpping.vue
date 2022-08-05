@@ -1,4 +1,5 @@
 <template>
+<div>
     <main class="rounded-[5px] bg-signInAndUpBg w-full min-h-[70vh] bg-no-repeat flex items-center justify-center">
         <div class="font-quicksand rounded-md mx-auto px-8 py-6 border-[1px] border-[#E4E4E4] bg-white">
             <h2 class="whitespace-nowrap mb-7 font-quicksand font-bold text-[1.875rem] text-[#5920BC]">Sign Up</h2>
@@ -44,13 +45,14 @@
             </form>
         </div>
     </main>
+</div>
 </template>
 
 <script>
 
 export default{
 
-    name:'Signupping',
+    name:'ModuleSignupping',
     data(){
         return{
         pwhidden:false,
