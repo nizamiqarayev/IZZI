@@ -1,5 +1,5 @@
 <template>
-  <main class="shadow-inner flex items-center justify-center min-h-screen w-full bg-slate-50 font-quicksand">
+  <main class="shadow-inner flex mt-16 items-center justify-center min-h-screen w-full bg-slate-50 font-quicksand">
     <div class="flex items-start justify-center w-5/6">
       <div class="bg-white mr-4 shadow-md">
         <h2 class="pt-7 pl-7 pr-48 mb-4 font-bold text-2xl">Account</h2>
