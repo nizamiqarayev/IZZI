@@ -1,5 +1,5 @@
 <template>
-  <NuxtLogo></NuxtLogo>
+    <Home />
 </template>
 
 <script>
