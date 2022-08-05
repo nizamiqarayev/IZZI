@@ -14,10 +14,10 @@ module.exports = {
         'signInAndUpBg': "url('assets/images/signInAndUpImages/signInAndUpbg.png')",
         
       },
-      // color:{
-      //   'passiveColor':'#DADADA',
-      //   'ActiveColor':'#DADADA',
-      // },
+      colors:{
+        'passiveColor':'#DADADA',
+        'activeColor':'#DADADA',
+      },
       fontFamily: {
         quicksand:'Quicksand',
         password:'Password Dots',
