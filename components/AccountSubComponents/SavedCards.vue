@@ -2,6 +2,7 @@
   <section class="w-full bg-white px-8 font-quicksand  shadow-md">
     <div class="py-2 flex  justify-between border-b-2">
       <h2 class="text-2xl font-semibold">Saved Cards</h2>
+      <div class="flex gap-2 items-center cursor-not-allowed">
       <svg class="stroke-[#DADADA]" width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M16.0059 13.9976L12.0059 9.99756L8.00586 13.9976" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M12.0059 9.99756V18.9976" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -13,9 +14,11 @@
         3.00533 14.2975" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M16.0059 13.9976L12.0059 9.99756L8.00586 13.9976" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
+      <p class="text-[#d1d5db]">Download</p>
+        </div>
     </div>
-    <div class="w-full  flex-col p-2">
-      
+    <div class="min-h-[40vh] flex items-center justify-center">
+      <p>You don't have any registered card</p>
     </div>
 
   </section>
