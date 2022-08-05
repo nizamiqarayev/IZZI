@@ -1,6 +1,6 @@
 <template>
-<div>
-    <main class="rounded-[5px] bg-signInAndUpBg w-full min-h-[70vh] bg-no-repeat flex items-center justify-center">
+<div class="bg-signInAndUpBg bg-top bg-no-repeat flex justify-center  items-center relative">
+    <main class="rounded-[5px] min-h-[100vh] w-full mt-[12px] mb-[20vh] relative flex items-center justify-center">
         <div class="font-quicksand rounded-md mx-auto px-8 py-6 border-[1px] border-[#E4E4E4] bg-white">
             <h2 class="whitespace-nowrap mb-7 font-quicksand font-bold text-[1.875rem] text-[#5920BC]">Sign Up</h2>
             <form action="">

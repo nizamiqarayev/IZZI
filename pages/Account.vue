@@ -63,7 +63,7 @@ export default {
   components: { Profile, Password, Notifications, BonusBalance, SavedCards, InviteFriend },
   data() {
     return {
-      selectedMenu: 2
+      selectedMenu: 1,
     }
   },
 }
