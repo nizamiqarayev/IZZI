@@ -5,22 +5,22 @@
         </div>
         <div>
             <form>
-                <div class="flex items-center border-b mt-4 pb-4">
-                    <label class="whitespace-nowrap w-2/5">Enter current password</label>
+                <div class="flex justify-between items-center border-b mt-4 pb-4">
+                    <label class="whitespace-nowrap">Enter current password</label>
                     <input
-                        class="border-[#C7C9CB] w-3/5 border-[1px] focus:border-purple-500 focus:outline-none py-2 rounded-lg px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
+                        class="border-[#C7C9CB] w-2/5 border-[1px] focus:border-purple-500 focus:outline-none py-2 rounded-lg px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
                         type="password">
                 </div>
-                <div class="flex items-center border-b mt-4 pb-4">
-                    <label class="whitespace-nowrap w-2/5">Enter new password</label>
+                <div class="flex justify-between items-center border-b mt-4 pb-4">
+                    <label class="whitespace-nowrap">Enter new password</label>
                     <input
-                        class="border-[#C7C9CB] w-3/5 border-[1px] focus:border-purple-500 focus:outline-none py-2 rounded-lg px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
+                        class="border-[#C7C9CB] w-2/5 border-[1px] focus:border-purple-500 focus:outline-none py-2 rounded-lg px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
                         type="password">
                 </div>
-                <div class="flex items-center border-b mt-4 pb-4">
-                    <label class="whitespace-nowrap w-2/5">Confirm new password</label>
+                <div class="flex justify-between items-center border-b mt-4 pb-4">
+                    <label class="whitespace-nowrap">Confirm new password</label>
                     <input
-                        class="border-[#C7C9CB] w-3/5 border-[1px] focus:border-purple-500 focus:outline-none py-2 rounded-lg px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
+                        class="border-[#C7C9CB] w-2/5 border-[1px] focus:border-purple-500 focus:outline-none py-2 rounded-lg px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
                         type="password">
                 </div>
                 <div class="flex items-center justify-end gap-4 py-4">
