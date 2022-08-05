@@ -14,7 +14,7 @@ export default {
   components: { Profile, Password, Notifications, BonusBalance, SavedCards, InviteFriend, AccountMain },
   data() {
     return {
-      selectedMenu: 1,
+      selectedMenu: 3,
     }
   },
 }
