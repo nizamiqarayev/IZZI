@@ -1,7 +1,7 @@
 <template>
-    <div class="">
-    <Header></Header>
-    <Nuxt class="relative top-20"/>
+    <div class="relative">
+    <Header class="top-0"></Header>
+    <Nuxt/>
     <Footer></Footer>
     </div>
 </template>
