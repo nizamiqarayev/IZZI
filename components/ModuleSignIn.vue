@@ -8,7 +8,7 @@
                     class="mt-3 w-full pl-6 h-12 border border-[#C7C9CB]" v-model="inputEmail" />
                 <label for="loginPW" class="flex justify-between mt-4">
                     <p>Password</p>
-                    <p class="text-[#5920BC]">Forgot password?</p>
+                    <nuxt-link to="/resetpassword" class="text-[#5920BC]">Forgot password?</nuxt-link>
                 </label>
 
                 <div class="flex flex-col items-end relative">
