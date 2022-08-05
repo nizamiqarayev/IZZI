@@ -15,7 +15,7 @@
                     <input id="loginPW" ref="loginPW" :type="pwhidden ? 'text' : 'password'" 
                         class="mt-3 w-full pl-6 h-12 flex items-center border border-[#C7C9CB]
                          placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
-                         v-model="inputPW" />
+                         v-model="inputPW" placeholder="000000" />
                     <div class="flex justify-end relative bottom-[33px] items-center">
                         <div class="mr-4">
                             <div class="" @click="pwhidden = !pwhidden" v-if="pwhidden == true"><img
