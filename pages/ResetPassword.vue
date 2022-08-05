@@ -1,8 +1,8 @@
 <template>
-    <div class="min-h-[100vh] flex flex-col gap-5 items-center justify-center">
+    <div class="min-h-[100vh] font-quicksand flex flex-col gap-5 items-center justify-center">
         <main class="flex items-center justify-center">
             <div class="border-[1px] mx-auto  border-[#E4E4E4] p-[42px] rounded flex-col">
-                <p class="text-3xl font-semibold pr-20">Reset Password</p>
+                <p class="text-3xl font-bold pr-20">Reset Password</p>
                 <form action="" class="">
                     <div class="flex flex-col gap-2 mt-6 mb-8 w-full">
                         <label for="Email">Email address</label>
