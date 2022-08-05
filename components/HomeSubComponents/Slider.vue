@@ -71,7 +71,8 @@ export default {
       items: 9,
       slickOptions: {
         dots: false,
-        arrows: true,
+        prevArrow: false,
+        nextArrow: false,
         infinite: false,
         speed: 300,
         slidesToShow: 4,
