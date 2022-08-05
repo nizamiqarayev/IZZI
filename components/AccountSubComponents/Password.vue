@@ -12,13 +12,13 @@
                         type="password">
                 </div>
                 <div class="flex items-center border-b mt-4 pb-4">
-                    <label class="whitespace-nowrap">Enter current password</label>
+                    <label class="whitespace-nowrap">Enter new password</label>
                     <input
                         class=" ml-32 border-[#C7C9CB] w-2/5 border-[1px] focus:border-purple-500 focus:outline-none py-2 rounded-lg px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
                         type="password">
                 </div>
                 <div class="flex items-center border-b mt-4 pb-4">
-                    <label class="whitespace-nowrap">Enter current password</label>
+                    <label class="whitespace-nowrap">Confirm new password</label>
                     <input
                         class=" ml-32 border-[#C7C9CB] w-2/5 border-[1px] focus:border-purple-500 focus:outline-none py-2 rounded-lg px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
                         type="password">
