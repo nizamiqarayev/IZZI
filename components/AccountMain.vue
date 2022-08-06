@@ -5,32 +5,38 @@
         <h2 class="pt-7 pl-7 pr-48 mb-4 font-bold text-2xl">Account</h2>
         <ul>
           <li @click="selectedMenu = 1"
-            class="hover:cursor-pointer py-4 border-l-4 border-l-transparent hover:border-[#5920BC] hover:bg-[#5920BC] hover:bg-opacity-[0.03]">
+              :class="selectedMenu == 1 ? 'border-l-4 border-[#5920BC] bg-[#5920BC] bg-opacity-[0.03]':'border-l-transparent'"
+            class="hover:cursor-pointer py-4 border-l-4  hover:border-[#5920BC] hover:bg-[#5920BC] hover:bg-opacity-[0.03] ">
             <p class="flex items-center ml-6 gap-[0.9375rem]"><img src="../assets/images/accounticons/user (13).svg"
                 alt=""><span>Profile</span></p>
           </li>
           <li @click="selectedMenu = 2"
-            class="hover:cursor-pointer py-4 border-l-4 border-l-transparent hover:border-[#5920BC] hover:bg-[#5920BC] hover:bg-opacity-[0.03]">
+           :class="selectedMenu == 2 ? 'border-l-4 border-[#5920BC] bg-[#5920BC] bg-opacity-[0.03]':'border-l-transparent'"
+            class="hover:cursor-pointer py-4 border-l-4  hover:border-[#5920BC] hover:bg-[#5920BC] hover:bg-opacity-[0.03] ">
             <p class="flex items-center ml-6 gap-[0.9375rem]"><img src="../assets/images/accounticons/lock (2).svg"
                 alt=""><span>Password</span></p>
           </li>
           <li @click="selectedMenu = 3"
-            class="hover:cursor-pointer py-4 border-l-4 border-l-transparent hover:border-[#5920BC] hover:bg-[#5920BC] hover:bg-opacity-[0.03]">
+            :class="selectedMenu == 3 ? 'border-l-4 border-[#5920BC] bg-[#5920BC] bg-opacity-[0.03]':'border-l-transparent'"
+            class="hover:cursor-pointer py-4 border-l-4  hover:border-[#5920BC] hover:bg-[#5920BC] hover:bg-opacity-[0.03] ">
             <p class="flex items-center ml-6 gap-[0.9375rem]"><img
                 src="../assets/images/accounticons/Notification 3.svg" alt=""><span>Notifications</span></p>
           </li>
           <li @click="selectedMenu = 4"
-            class="hover:cursor-pointer py-4 border-l-4 border-l-transparent hover:border-[#5920BC] hover:bg-[#5920BC] hover:bg-opacity-[0.03]">
+            :class="selectedMenu == 4 ? 'border-l-4 border-[#5920BC] bg-[#5920BC] bg-opacity-[0.03]':'border-l-transparent'"
+            class="hover:cursor-pointer py-4 border-l-4  hover:border-[#5920BC] hover:bg-[#5920BC] hover:bg-opacity-[0.03] ">
             <p class="flex items-center ml-6 gap-[0.9375rem]"><img src="../assets/images/accounticons/Credit Card.svg"
                 alt=""><span>Saved Cards</span></p>
           </li>
           <li @click="selectedMenu = 5"
-            class="hover:cursor-pointer py-4 border-l-4 border-l-transparent hover:border-[#5920BC] hover:bg-[#5920BC] hover:bg-opacity-[0.03]">
+            :class="selectedMenu == 5 ? 'border-l-4 border-[#5920BC] bg-[#5920BC] bg-opacity-[0.03]':'border-l-transparent'"
+            class="hover:cursor-pointer py-4 border-l-4  hover:border-[#5920BC] hover:bg-[#5920BC] hover:bg-opacity-[0.03] ">
             <p class="flex items-center ml-6 gap-[0.9375rem]"><img src="../assets/images/accounticons/Heart.svg"
                 alt=""><span>Bonus Balance</span></p>
           </li>
           <li @click="selectedMenu = 6"
-            class="hover:cursor-pointer py-4 border-l-4 border-l-transparent hover:border-[#5920BC] hover:bg-[#5920BC] hover:bg-opacity-[0.03]">
+            :class="selectedMenu == 6 ? 'border-l-4 border-[#5920BC] bg-[#5920BC] bg-opacity-[0.03]':'border-l-transparent'"
+            class="hover:cursor-pointer py-4 border-l-4  hover:border-[#5920BC] hover:bg-[#5920BC] hover:bg-opacity-[0.03] ">
             <p class="flex items-center ml-6 gap-[0.9375rem]"><img src="../assets/images/accounticons/Sale Coupon.svg"
                 alt=""><span>Invite Friend</span></p>
           </li>

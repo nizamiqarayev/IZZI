@@ -1,7 +1,7 @@
 <template>
-  <section class="w-full bg-white px-8 font-quicksand  shadow-md">
+  <section class="w-full bg-white px-8 font-quicksand min-h-[70vh] shadow-md">
     <div class="py-2 flex  justify-between border-b-2">
-      <h2 class="text-2xl font-semibold">Notifications</h2>
+      <h2 class="text-2xl font-bold">Notifications</h2>
     </div>
     <div class="w-full flex flex-col p-2">
       <table class="border-b-[1px]">
