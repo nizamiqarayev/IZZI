@@ -1,8 +1,8 @@
 <template>
-    <footer class="font-quicksand">
+    <footer class="font-quicksand w-10/12 mx-auto">
         <hr>
-        <div class="flex justify-between px-4 mx-auto py-12 w-10/12">
-            <div class="px-8 pb-6 w-[300px] space-y-3">
+        <div class="flex justify-between w-full py-12">
+            <div class="px-8 pb-6 w-3/12 space-y-3">
                 <img src="../assets/images/logo/Logo_footer.svg" alt="">
                 <span class="text-[#222222] text-base opacity-75 cursor-pointer">Central street, White City, Khatai, Baku, Azerbaijan</span>
                 <p class="text-[#222222] text-base opacity-75 cursor-pointer">+994 (50) XX XXXX</p>
@@ -30,7 +30,7 @@
             </div>
         </div>
         <hr>
-        <div class="flex justify-between items-center h-20 px-36">
+        <div class="flex justify-between items-center h-20">
             <div class="flex gap-12">
                 <img src="../assets/images/logo/Facebook_logo.svg" alt="">
                 <img src="../assets/images/logo/Twitter_logo.svg" alt="">
