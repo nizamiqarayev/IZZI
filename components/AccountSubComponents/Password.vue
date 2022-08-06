@@ -1,7 +1,7 @@
 <template>
     <section class="w-full bg-white px-8 font-quicksand min-h-[70vh] shadow-md">
         <div class="py-2 flex  justify-between border-b-2">
-            <h2 class="text-2xl font-semibold">Change Password</h2>
+            <h2 class="text-2xl font-bold">Change Password</h2>
         </div>
         <div> 
             <form>

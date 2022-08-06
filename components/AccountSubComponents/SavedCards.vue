@@ -1,7 +1,7 @@
 <template>
   <section class="w-full bg-white px-8 font-quicksand min-h-[70vh] shadow-md">
     <div class="py-2 flex  justify-between border-b-2">
-      <h2 class="text-2xl font-semibold">Saved Cards</h2>
+      <h2 class="text-2xl font-bold">Saved Cards</h2>
       <div class="flex gap-2 items-center cursor-not-allowed">
       <svg class="stroke-[#DADADA]" width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M16.0059 13.9976L12.0059 9.99756L8.00586 13.9976" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
