@@ -1,26 +1,44 @@
 <template>
-  <div>
-      <div class="flex flex-col items-center justify-center">
-        <div class="flex flex-col"><h2>{{data.title}}</h2><h3>{{data.name}}</h3></div>
-        <div></div>
-        <div></div>
+  <div class="mr-4 font-quicksand ">
+    <div class="flex flex-col items-start justify-start border rounded-md py-8 px-5 ">
+      <div class="flex items-center justify-center mb-5">
+        <img src="../../assets/images/sliderimg/slidertest.svg" alt="">
+        <div class="flex flex-col items-start justify-center">
+          <h2 class="text-[#222222] font-bold">{{ data.title }}</h2>
+          <h3>{{ data.name }}</h3>
+        </div>
       </div>
+      <div class="flex gap-[60px]">
+        <div>
+          <p class="text-[#222222] font-bold">Start Date</p>
+          <p>data.startdate</p>
+        </div>
+        <div>
+          <p class="text-[#222222] font-bold">Order Price</p>
+          <p>{{data.orderprice}}₼</p>
+        </div>
+
+      </div>
+      <div class="flex justify-center items-center shrink gap-3 mt-8">
+        <button class="py-3 px-14 whitespace-nowrap rounded-sm  bg-[#3C81F6] font-bold text-white">qiymet gözlenilir</button>
+        <button class="flex items-center justify-center px-7 py-3 border rounded-sm text-[#222222] gap-2"><img src="../../assets/images/sliderimg/Show.svg" alt=""> bax</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-data() {
-  return {
-    data: this.$store.state.homestore
-  }
+  data() {
+    return {
+      data: this.$store.state.homestore
+    }
   },
-created() {
-  console.log(this.data);
-},
+  created() {
+    console.log(this.data);
+  },
 }
 </script>
 
 <style>
-
 </style>
