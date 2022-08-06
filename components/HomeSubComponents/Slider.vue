@@ -15,7 +15,7 @@
         </div>
 
 
-        <slick class="max-w-[75rem] flex flex-row justify-center items-center" ref="slick" :options="slickOptions">
+        <slick class="max-w-[65rem] flex flex-row justify-center items-center" ref="slick" :options="slickOptions">
           <div>
             <SliderItemVue />
           </div>
@@ -72,8 +72,6 @@
 
 
     </div>
-
-
   </div>
 </template>
 
@@ -99,7 +97,7 @@ export default {
         prevArrow: false,
         nextArrow: false,
         infinite: true,
-        speed: 300,
+        speed: 700,
         slidesToShow: 3,
         slidesToScroll: 1,
 

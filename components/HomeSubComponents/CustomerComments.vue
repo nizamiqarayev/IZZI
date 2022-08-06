@@ -1,6 +1,6 @@
 <template>
-    <section class="font-quicksand mt-24 mb-24">
-        <div class="flex justify-between items-center ">
+    <section class="font-quicksand mt-24 mb-24 max-w-[65rem] mx-auto">
+        <div class="flex justify-between items-center w-full">
             <h3 class="text-3xl font-bold">What our customers say</h3>
             <nuxt-link to="blogs"
                 class="flex items-center gap-2 justify-center border rounded-full border-[#5920BC] py-3 px-6">

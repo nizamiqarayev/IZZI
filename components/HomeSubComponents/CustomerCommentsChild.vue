@@ -4,7 +4,7 @@
             <div class="">
                 <img src="../../assets/images/homeimages/propfp.svg" alt="">
             </div>
-            <div class="w-full">
+            <div class="w-full p-2">
                 <div class="flex w-full justify-between">
                     <p>Assembling Furnitures</p>
                 </div>

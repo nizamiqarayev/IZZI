@@ -1,6 +1,6 @@
 <template>
-    <section class="font-quicksand mt-24 mb-24">
-        <div class="flex justify-between items-center ">
+    <section class="font-quicksand mt-24 mx-auto max-w-[65rem] mb-24">
+        <div class="flex justify-between items-center w-full">
             <h3 class="text-3xl font-bold">Popular Pros</h3>
             <nuxt-link to="pros"
                 class="flex items-center gap-2 justify-center border rounded-full border-[#5920BC] py-3 px-6">

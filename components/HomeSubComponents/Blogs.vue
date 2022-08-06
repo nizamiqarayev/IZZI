@@ -1,5 +1,5 @@
 <template>
-    <section class="font-quicksand mt-24 mb-24">
+    <section class="font-quicksand max-w-[65rem] mx-auto mt-24 mb-24">
         <div class="flex justify-between items-center ">
             <h3 class="text-3xl font-bold">Blogs</h3>
             <nuxt-link to="blogs"

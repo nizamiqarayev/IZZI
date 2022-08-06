@@ -1,11 +1,11 @@
 <template>
   <main class="">
     <Hero />
-    <Slider class="px-36"/>
-    <Servicesslide class="px-20" />
-    <Popularpros class="px-20" />
-    <Blogs class="px-20"/>
-    <CustomerComments class="px-20" />
+    <Slider/>
+    <Servicesslide/>
+    <Popularpros/>
+    <Blogs/>
+    <CustomerComments />
   </main>
 </template>
 

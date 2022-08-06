@@ -4,7 +4,7 @@
             <div class="">
                 <img src="../../assets/images/homeimages/propfp.svg" alt="">
             </div>
-            <div class="w-full">
+            <div class="w-full pl-2">
                 <div class="flex w-full justify-between">
                     <p>Elon Musk</p>
                     <img src="../../assets/images/homeimages/Verified.svg" alt="">
@@ -22,31 +22,31 @@
             <p class="w-full">Hi! I am Rasim. Professional plumber and furniture worker in Ikea. I can help you with.
             </p>
         </div>
-        <div class="w-3/4 mb-4  self-center flex items-center justify-center gap-4">
+        <div class="w-7/12 mb-4  self-center flex items-center justify-center gap-4">
             <hr class="w-full border-[#5920BC]" />
-            <p class="whitespace-nowrap">Top SKills</p>
+            <p class="whitespace-nowrap">Top Skills</p>
             <hr class="w-full border-[#5920BC]" />
 
         </div>
 
         <div class="grid grid-cols-2 gap-8">
             <button
-                class="p-2 flex items-center justify-center whitespace-nowrap gap-2 border rounded-md bg-[#5920BC] bg-opacity-10 border-[#5920BC]">
+                class="p-2 flex items-center text-sm justify-center whitespace-nowrap gap-1 border rounded-md bg-[#5920BC] bg-opacity-10 border-[#5920BC]">
                 <p>Home Cleaning</p>
                 <p>20 ₼ </p>
             </button>
             <button
-                class="p-2 flex items-center justify-center whitespace-nowrap gap-2 border rounded-md bg-[#5920BC] bg-opacity-10 border-[#5920BC]">
+                class="p-2 flex items-center  text-sm justify-center whitespace-nowrap gap- border rounded-md bg-[#5920BC] bg-opacity-10 border-[#5920BC]">
                 <p>Home Cleaning</p>
                 <p>20 ₼ </p>
             </button>
             <button
-                class="p-2 flex items-center justify-center whitespace-nowrap gap-2 border rounded-md bg-[#5920BC] bg-opacity-10 border-[#5920BC]">
+                class="p-2 flex items-center  text-sm justify-center whitespace-nowrap gap- border rounded-md bg-[#5920BC] bg-opacity-10 border-[#5920BC]">
                 <p>Home Cleaning</p>
                 <p>20 ₼ </p>
             </button>
             <button
-                class="p-2 flex items-center justify-center whitespace-nowrap gap-2 border rounded-md bg-[#5920BC] bg-opacity-10 border-[#5920BC]">
+                class="p-2 flex items-center  text-sm justify-center whitespace-nowrap gap- border rounded-md bg-[#5920BC] bg-opacity-10 border-[#5920BC]">
                 <p>Home Cleaning</p>
                 <p>20 ₼ </p>
             </button>
