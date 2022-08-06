@@ -1,9 +1,9 @@
 <template>
-    <section class="w-full bg-white px-8 font-quicksand  shadow-md">
+    <section class="w-full bg-white px-8 font-quicksand min-h-[70vh] shadow-md">
         <div class="py-2 flex  justify-between border-b-2">
             <h2 class="text-2xl font-semibold">Change Password</h2>
         </div>
-        <div>
+        <div> 
             <form>
                 <div class="flex items-center justify-between border-b mt-4 pb-4">
                     <label class="whitespace-nowrap">Enter current password</label>

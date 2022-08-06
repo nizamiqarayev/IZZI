@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full bg-white px-8 font-quicksand  shadow-md">
+  <section class="w-full bg-white px-8 font-quicksand min-h-[70vh] shadow-md">
     <div class="py-2 flex  justify-between border-b-2">
       <h2 class="text-2xl font-semibold">Saved Cards</h2>
       <div class="flex gap-2 items-center cursor-not-allowed">
@@ -17,7 +17,7 @@
       <p class="text-[#d1d5db]">Download</p>
         </div>
     </div>
-    <div class="min-h-[40vh] flex items-center justify-center">
+    <div class="min-h-[60vh] flex items-center justify-center">
       <p>You don't have any registered card</p>
     </div>
 

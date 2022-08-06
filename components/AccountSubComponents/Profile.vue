@@ -1,5 +1,5 @@
 <template>
-    <section class="flex flex-col justify-center items-center w-full bg-white px-8  shadow-md">
+    <section class="flex flex-col justify-start items-center w-full bg-white px-8 min-h-[70vh] shadow-md">
         <div class="flex w-full justify-between items-center border-b-2 border-b-gray ">
             <h2 class=" font-bold text-2xl pt-6 pb-4 ">Profile</h2>
             <div class="flex items-center gap-8">
@@ -18,7 +18,7 @@
                 <img src="../../assets/images/accounticons/Exit.svg" alt="">
             </div>
         </div>
-        <div class="pt-8 w-full items-center pb-28">
+        <div class="pt-8 w-full items-center pb-28 ">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-4">
                     <img class="h-14 w-14" src="../../assets/images/headerpfp/Oval.svg" alt="">
