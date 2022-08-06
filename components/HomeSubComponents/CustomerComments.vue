@@ -1,7 +1,7 @@
 <template>
     <section class="font-quicksand mt-24 mb-24">
         <div class="flex justify-between items-center ">
-            <h3 class="text-3xl font-bold">Blogs</h3>
+            <h3 class="text-3xl font-bold">What our customers say</h3>
             <nuxt-link to="blogs"
                 class="flex items-center gap-2 justify-center border rounded-full border-[#5920BC] py-3 px-6">
                 <p class="text-[#5920BC]"> Discover All Blogs</p>
@@ -14,17 +14,18 @@
             </nuxt-link>
         </div>
         <div class="w-full justify-center mt-9 flex items-center gap-4">
-            <BlogsChild />
-            <BlogsChild />
-            <BlogsChild />
+            <CustomerCommentsChild />
+            <CustomerCommentsChild />
+            <CustomerCommentsChild />
+
         </div>
     </section>
 </template>
 
 <script>
-import BlogsChild from './BlogsChild.vue';
+import CustomerCommentsChild from './CustomerCommentsChild.vue';
 export default {
-    components: { BlogsChild }
+    components: { CustomerCommentsChild }
 }
 </script>
 

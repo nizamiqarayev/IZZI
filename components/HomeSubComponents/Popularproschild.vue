@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-1 w-full flex flex-col p-3 items-start border rounded-md shadow-md">
+    <div class="flex-1 w-full flex flex-col p-3 items-start border rounded-md">
         <div class="flex w-full">
             <div class="">
                 <img src="../../assets/images/homeimages/propfp.svg" alt="">
@@ -18,11 +18,11 @@
                 </div>
             </div>
         </div>
-        <div class="w-full">
+        <div class="w-full mt-2 mb-4 ">
             <p class="w-full">Hi! I am Rasim. Professional plumber and furniture worker in Ikea. I can help you with.
             </p>
         </div>
-        <div class="w-3/4 self-center flex items-center justify-center gap-4">
+        <div class="w-3/4 mb-4  self-center flex items-center justify-center gap-4">
             <hr class="w-full border-[#5920BC]" />
             <p class="whitespace-nowrap">Top SKills</p>
             <hr class="w-full border-[#5920BC]" />
@@ -51,7 +51,7 @@
                 <p>20 ₼ </p>
             </button>
         </div>
-        <button class="w-full py-4 mt-9 border text-[#5920BC]">Book Now</button>
+        <button class="w-full py-4 mt-9 border text-[#5929BC]">Book Now</button>
     </div>
 </template>
 
