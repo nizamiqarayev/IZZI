@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'signInAndUpBg': "url('assets/images/signInAndUpImages/signInAndUpbg.png')",
-        
+        'main':"url('assets/images/logo/head bg.svg')"
       },
       fontFamily: {
         quicksand:'Quicksand',
