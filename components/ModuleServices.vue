@@ -7,7 +7,7 @@
         <div class="mx-36 grid grid-cols-3 max-w-7xl gap-x-4  gap-y-8">
             <div v-for="service in testdata.data.services" :key="service.id"
                 class="flex-1 h-72 rounded-md relative bottom-10">
-                <nuxt-link :to="{ path: '/subservices', params: { serviceid: service.id } }">
+                <nuxt-link :to="{ path: 'subservices', query: { serviceid: service.id } }">
                     <div class="bg-cover w-full h-full rounded-md flex items-end justify-start"
                         :style="`background-image: url('${service.cover_img.publicUrl}')`">
                         <div class="w-3/4 py-4 ml-4 mb-4 rounded-md bg-white flex flex-col justify-center items-start pl-6 whitespace-nowrap">
@@ -35,8 +35,9 @@ export default {
         }
     },
     mounted() {
+        
         console.log('====================================');
-        console.log(this.testdata.data.services);
+        console.log();
         console.log('====================================');
     },
 }

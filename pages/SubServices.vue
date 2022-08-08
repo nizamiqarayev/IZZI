@@ -5,8 +5,9 @@
 <script>
 export default {
 
-created() {
-    console.log(this.$route.params.serviceid);
+    created() {
+    
+    console.log(this.$route.query.serviceid);
 },
 }
 </script>
