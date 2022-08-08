@@ -15,7 +15,7 @@
             </svg>
             <!-- <div class="w-11/12 absolute flex bottom-1 items-center  justify-around">
         </div> -->
-            <button class="absolute top-1.5 text-white left-[25.5rem] px-8 py-2 rounded-full bg-[#5920BC]">Search</button>
+            <button class="absolute top-1.5 text-white right-[1rem] px-8 py-2 rounded-full bg-[#5920BC]">Search</button>
         </div>
 
     </div>
