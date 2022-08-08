@@ -1,5 +1,5 @@
 <template>
-    <BlogChild></BlogChild>
+    <BlogMain></BlogMain>
 </template>
 
 <script>
