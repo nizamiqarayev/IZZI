@@ -51,7 +51,7 @@
 
 <script>
 export default {
-    name: "Servicesslide "
+    name: "Servicesslide"
 }
 </script>
 
