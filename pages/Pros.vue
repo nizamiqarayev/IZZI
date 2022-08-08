@@ -19,6 +19,17 @@
                         </div>
                     </div>  
                 </div>
+                <div>
+                    <div>
+                        <div>
+                            <div class="flex" @click="show1=!show1">
+                                <img src="../assets/images/Squircle.svg" @click="show1=!show1" v-if="show1" alt="">
+                                <img src="../assets/images/Checked.svg" @click="show1=!show1" v-if="!show1"  alt="">
+                                <p >Cleaning</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </section>
@@ -26,4 +37,12 @@
 
 <script>
 
+export default{
+    data(){
+       return{
+
+           show1:false,
+       } 
+    }
+}
 </script>
