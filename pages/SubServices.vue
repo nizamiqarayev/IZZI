@@ -5,13 +5,11 @@
 <script>
 export default {
 
-    created() {
-    
+  created() {
     console.log(this.$route.query.serviceid);
-},
+  },
 }
 </script>
 
 <style>
-
 </style>
