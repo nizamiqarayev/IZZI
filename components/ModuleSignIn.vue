@@ -61,11 +61,13 @@ export default {
             try {
                 const response = await this.$auth.loginWith('local', { data: data })
                 console.log(response);
-                this.$auth.$store.setUniversal('email', response.data.email)
+                await this.$auth.$storage.setUniversal('email', response.data.email)
                 await this.$auth.setUserToken(response.data.access, response.data.refresh)
+
             }
             catch (e) {
                 console.log(e);
+                console.log(this.$store.state.auth);
             }
         }
     },

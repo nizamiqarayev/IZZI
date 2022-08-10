@@ -77,19 +77,20 @@ export default {
           prefix: "refresh",
           property: "refresh",
           data: "refresh",
-          maxAge: 60*60*24*15
+          maxAge: 60 * 60 * 24 * 15
         },
         user: {
-          property: "",
+          property: "/auth/user",
           autoFetch: true,
+          propertyName: false,
         },
         endpoints: {
           login: { url: "auth/login/", method: "post" },
-          refresh: {url:"auth/refreshToken/",method:"post"}
+          refresh: { url: "auth/refreshToken/", method: "post" },
         }
       }
     },
-  
+  },
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
       postcss: {
@@ -100,4 +101,4 @@ export default {
       }
     },
   }
-}
+
