@@ -6,15 +6,15 @@
                 <form action="">
                     <div class="flex flex-col w-full mt-4">
                         <label for="F_name">First Name</label>
-                        <input class="mt-3 border-[#C7C9CB] border-[1px] py-3 px-6" placeholder="Firstname" type="text">
+                        <input v-model="f_name" class="mt-3 border-[#C7C9CB] border-[1px] py-3 px-6" placeholder="Firstname" type="text">
                     </div>
                     <div class="flex flex-col w-full mt-4">
                         <label for="L_name">Last Name</label>
-                        <input class="mt-3 border-[#C7C9CB] border-[1px] py-3 px-6" placeholder="Lastname" type="text">
+                        <input v-model="l_name" class="mt-3 border-[#C7C9CB] border-[1px] py-3 px-6" placeholder="Lastname" type="text">
                     </div>
                     <div class="flex flex-col w-full mt-4">
                         <label for="E-mail">Email address</label>
-                        <input class="mt-3 border-[#C7C9CB] border-[1px] py-3 px-6" placeholder="elonmusk@gmail.com"
+                        <input v-model="email" class="mt-3 border-[#C7C9CB] border-[1px] py-3 px-6" placeholder="elonmusk@gmail.com"
                             type="email">
                     </div>
                     <div class="flex flex-col w-full mt-4 relative">
@@ -66,6 +66,9 @@ export default {
     data() {
         return {
             pwhidden: false,
+            f_name:"",
+            l_name:"",
+            email:"",
             pwfirst: "",
             pwconfirm: "",
             pwvalid: true
