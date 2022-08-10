@@ -80,12 +80,12 @@ export default {
           maxAge: 60*60*24*15
         },
         user: {
-          property: "user",
+          property: "",
           autoFetch: true,
         },
         endpoints: {
-          login: { url: "login/", method: "post" },
-          refresh: {url:"refreshToken/",method:"post"}
+          login: { url: "auth/login/", method: "post" },
+          refresh: {url:"auth/refreshToken/",method:"post"}
         }
       }
     },
