@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div  class="bg-white ">
-                
+                <vc-calendar></vc-calendar>
             </div>
         </main>
     </section>
