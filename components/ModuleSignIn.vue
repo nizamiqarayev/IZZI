@@ -1,5 +1,5 @@
 <template>
-  <main class="rounded-[5px] bg-signInAndUpBg w-full  bg-no-repeat flex items-center justify-center">
+  <main class="rounded-[5px] bg-signInAndUpBg w-full bg-contain bg-no-repeat flex items-center justify-center">
         <div class="font-quicksand mx-[29.1875rem] mt-36 mb-48 p-8 h-fit bg-white border border-solid border-[#E4E4E4]">
             <h2 class="mr-80 whitespace-nowrap mb-7 font-quicksand font-bold text-[1.875rem] text-[#5920BC]">Sign In</h2>
             <form>
