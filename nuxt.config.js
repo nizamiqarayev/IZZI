@@ -48,44 +48,48 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'izzi-api-rest.herokuapp.com/api/v1/',
+    baseURL: 'https://api.allorigins.win/raw?url=izzi-api-rest.herokuapp.com/api/v1/',
   },
   auth: {
-    strategies: {
-      localStorage: {
-        prefix: "auth."
-      },
-      token: {
-        prefix: "access",
-        property: "access",
-        data: "access",
-        maxAge: 86400,
-        type: "Bearer"
-      },
-      refreshToken: {
-        prefix: "refresh",
-        property: "refresh",
-        data: "refresh",
-        maxAge: 60*60*24*15
-      },
-      user: {
-        property: "user",
-        autoFetch: true,
-      },
-      endpoints: {
-        login: { url: "login/", method: "post" },
-        refresh: {url:"refreshToken/",method:"post"}
-      }
-    }
-  },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-    postcss: {
-      plugins: {
-        tailwindcss: {},
-        autoprefixer: {},
-      },
+    strategies: {
+      local: {
+        scheme: 'refresh',
+        localStorage: {
+          prefix: "auth."
+        },
+        token: {
+          prefix: "access",
+          property: "access",
+          data: "access",
+          maxAge: 86400,
+          type: "Bearer"
+        },
+        refreshToken: {
+          prefix: "refresh",
+          property: "refresh",
+          data: "refresh",
+          maxAge: 60*60*24*15
+        },
+        user: {
+          property: "user",
+          autoFetch: true,
+        },
+        endpoints: {
+          login: { url: "login/", method: "post" },
+          refresh: {url:"refreshToken/",method:"post"}
+        }
+      }
+    },
+  
+    // Build Configuration: https://go.nuxtjs.dev/config-build
+    build: {
+      postcss: {
+        plugins: {
+          tailwindcss: {},
+          autoprefixer: {},
+        },
+      }
     },
   }
 }
