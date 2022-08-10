@@ -80,9 +80,8 @@ export default {
           maxAge: 60 * 60 * 24 * 15
         },
         user: {
-          property: "/auth/user",
+          property: "user",
           autoFetch: true,
-          propertyName: false,
         },
         endpoints: {
           login: { url: "auth/login/", method: "post" },

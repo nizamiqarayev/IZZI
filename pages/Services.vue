@@ -5,7 +5,8 @@
 <script>
 import ModuleServices from "../components/ModuleServices.vue"
 export default {
- components: {ModuleServices}
+    components: { ModuleServices },
+
 }
 </script>
 
