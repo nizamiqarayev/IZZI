@@ -86,7 +86,7 @@ export default {
             if (this.pwfirst == this.pwconfirm) {
                 const data = { 'first_name': this.f_name, 'last_name': this.l_name, 'email': this.email, 'password': this.pwfirst }
                 try {
-                    const response =await this.$axios.post('auth/register/', data)
+                    const response =await this.$axios.post('/api/auth/register/', data)
                     console.log(response);
                 }
                 catch (e) {

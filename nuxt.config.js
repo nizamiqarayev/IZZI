@@ -40,7 +40,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-
+    '@nuxtjs/proxy',
     '@nuxtjs/auth-next'
 
   ],
@@ -49,10 +49,16 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     // baseURL: 'https://api.allorigins.win/raw?url='+'https://izzi-api-rest.herokuapp.com/api/v1/',
+    // baseURL: 'https://izzi-api-rest.herokuapp.com/api/v1/',
     proxy: true,
+  
   },
   proxy: {
-    '/api/': { target: 'izzi-api-rest.herokuapp.com/api/v1', pathRewrite: {'^/api/': ''}, changeOrigin: true }
+    '/api/': {
+      target: 'http://izzi-api-rest.herokuapp.com/api/v1',
+      pathRewrite: { "^/api/": "" }
+  },
+
   },
   auth: {
 
