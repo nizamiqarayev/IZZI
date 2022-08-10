@@ -5,6 +5,14 @@
             <h2 class="whitespace-nowrap mb-7 font-quicksand font-bold text-[1.875rem] text-[#5920BC]">Sign Up</h2>
             <form action="">
                 <div class="flex flex-col w-full mt-4">
+                    <label for="F_name">First Name</label>
+                    <input class="mt-3 border-[#C7C9CB] border-[1px] py-3 px-6" placeholder="Firstname" type="text">
+                </div>
+                <div class="flex flex-col w-full mt-4">
+                    <label for="L_name">Last Name</label>
+                    <input class="mt-3 border-[#C7C9CB] border-[1px] py-3 px-6" placeholder="Lastname" type="text">
+                </div>
+                <div class="flex flex-col w-full mt-4">
                     <label for="E-mail">Email address</label>
                     <input class="mt-3 border-[#C7C9CB] border-[1px] py-3 px-6" placeholder="elonmusk@gmail.com" type="email">
                 </div>
