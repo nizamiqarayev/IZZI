@@ -73,8 +73,10 @@ export default {
     },
     methods: {
         passwordChecker() {
-            if (this.pwfirst == this.pwconfirm && this.pwfirst.length>7){
-                    console.log("amogus");
+            if (this.pwfirst == this.pwconfirm && this.pwfirst.length > 7) {
+                const data={''}
+                console.log("amogus");
+                    
 
             } else {
                 this.pwvalid = false
