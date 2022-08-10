@@ -2,7 +2,6 @@
   <main class="rounded-[5px] bg-signInAndUpBg w-full bg-contain bg-no-repeat flex items-center justify-center">
         <div class="font-quicksand mx-[29.1875rem] mt-36 mb-48 p-8 h-fit bg-white border border-solid border-[#E4E4E4]">
             <h2 class="mr-80 whitespace-nowrap mb-7 font-quicksand font-bold text-[1.875rem] text-[#5920BC]">Sign In</h2>
-            <form>
                 <label for="loginEmail" class="">Email address</label>
                 <input id="loginEmail" type="email" placeholder="elonmusk@gmail.com"
                     class="mt-3 w-full pl-6 h-12 border border-[#C7C9CB]" v-model="inputEmail" />
@@ -30,10 +29,9 @@
 
                 </div>
                 <div class="flex justify-center items-center">
-                <button class="shadow-sm rounded-[4px] flex items-center justify-center bg-[#5920BC] text-white py-3 px-28">Sign in <img src="../assets/images/signInAndUpImages/arrowright.svg" alt=""></button>
+                <button @click="signin()" class="shadow-sm rounded-[4px] flex items-center justify-center bg-[#5920BC] text-white py-3 px-28">Sign in <img src="../assets/images/signInAndUpImages/arrowright.svg" alt=""></button>
 
                 </div>
-            </form>
         </div>
     </main>
 </template>
@@ -58,6 +56,18 @@ export default {
             console.log('====================================');
             this.$refs.loginPW.focus()
         },
+        async signin() {
+            const data = { 'email': this.inputEmail, 'password': this.inputPW }
+            try {
+                const response = await this.$auth.loginWith('local', { data: data })
+                console.log(response);
+                this.$auth.$store.setUniversal('email', response.data.email)
+                await this.$auth.setUserToken(response.data.access, response.data.refresh)
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }
     },
 
 }
