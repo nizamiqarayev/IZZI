@@ -48,10 +48,16 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    // baseURL: 'https://api.allorigins.win/raw?url='+'https://izzi-api-rest.herokuapp.com/api/v1/',
     baseURL: 'https://izzi-api-rest.herokuapp.com/api/v1/',
   
   },
+  // proxy: {
+  //   '/api/': {
+  //     target: 'http://izzi-api-rest.herokuapp.com/api/v1',
+  //     pathRewrite: { "^/api/": "" }
+  // },
+
+  // },
   auth: {
 
     strategies: {
