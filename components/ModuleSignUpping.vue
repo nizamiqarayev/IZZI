@@ -90,7 +90,7 @@ export default {
                     console.log(response);
                 }
                 catch (e) {
-                    console.log(e.message);
+                    console.log(e);
                 }
 
 
