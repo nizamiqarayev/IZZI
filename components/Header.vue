@@ -51,7 +51,7 @@ export default {
     },
     data() {
         return {
-            signedIn: this.$store.getters["headerstore/getState"],
+            signedIn: this.$store.state.auth.loggedIn,
         }
     },
     methods: {
@@ -60,11 +60,23 @@ export default {
 
     computed: {
         headerstate() {
-            return this.$store.getters["headerstore/getState"]
+            try {
+                 if (this.$store.state.auth.loggedIn==true) {
+                this.signedIn=true
+            }
+            else {
+                this.signedIn=false
+            }
+            }
+            catch (e) {
+                this.signedIn=false
+            }
+           
+            return this.signedIn
         }
     },
     mounted() {
-        console.log("getter: " + this.getState);
+        console.log( this.signedIn);
     },
 
 

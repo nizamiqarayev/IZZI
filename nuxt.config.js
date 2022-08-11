@@ -86,6 +86,7 @@ export default {
         endpoints: {
           login: { url: "auth/login/", method: "post" },
           refresh: { url: "auth/refreshToken/", method: "post" },
+          user: {url: "auth/user/", method:"get"}
         }
       }
     },
