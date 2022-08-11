@@ -71,7 +71,7 @@ export default {
             catch (e) {
                 this.signedIn=false
             }
-           
+        //    asda
             return this.signedIn
         }
     },
