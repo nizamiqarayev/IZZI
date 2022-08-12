@@ -55,6 +55,7 @@ export default {
         console.log("subservice");
         console.log(this.subServiceData);
         console.log('====================================');
+        window.scrollTo(0,0)
     },
 }
 </script>

@@ -17,6 +17,9 @@ export default {
       selectedMenu: 3,
     }
   },
+  mounted(){
+        window.scrollTo(0,0)
+    }
 }
 </script>
 

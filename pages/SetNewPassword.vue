@@ -24,6 +24,8 @@
 
 export default {
     name:"setpassword",
-
+    mounted(){
+        window.scrollTo(0,0)
+    }
 }
 </script>

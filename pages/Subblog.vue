@@ -8,6 +8,9 @@ export default {
   created() {
     console.log(this.$route.query.blogid);
   },
+  mounted(){
+        window.scrollTo(0,0)
+    }
 }
 </script>
 
