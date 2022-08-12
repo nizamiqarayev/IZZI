@@ -25,7 +25,7 @@
                     <div class=" shadow-md" v-for="(blog,index) in blogs.data" :key="blog.id">
                         <div v-if="index<3 && blog.id != params.id">
                         <nuxt-link :to="`${blog.id}`">
-                            <img class="h-28" :src="blog.coverPhoto" alt="">
+                            <img class="object-cover" :src="blog.coverPhoto" alt="">
                             <div class="p-3">
                                 <p class="mt-4 text-base font-bold text-[#222222]">{{blog.title}}
                                     </p>
@@ -119,5 +119,8 @@ export default {
             return array.id != this.params.id
         }
     },
+    mounted(){
+        window.scrollTo(0,0)
+    }
 }
 </script>

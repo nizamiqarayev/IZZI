@@ -28,6 +28,9 @@ export default {
             this.$refs.loginPW.focus()
         },
     },
+    mounted(){
+        window.scrollTo(0,0)
+    }
 
 }
 </script>

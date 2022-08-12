@@ -22,6 +22,7 @@ export default {
         name: 'home',
         mode: 'out-in'
     },
+    
 }
 </script>
 <style >
