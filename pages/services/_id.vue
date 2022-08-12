@@ -46,7 +46,6 @@ export default {
         return { services: data }
     },
     mounted() {
-        console.log(this.params.id);
         this.subServiceData = this.services.subServices
 
      

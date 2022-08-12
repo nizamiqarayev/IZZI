@@ -39,10 +39,7 @@ export default {
     },
     async mounted() {
         this.services = await this.$axios.get("services/")
-        console.log('====================================');
-        console.log(this.services);
-        console.log(this.services.data.subservices);
-        console.log('====================================');
+       
     },
 }
 </script>
