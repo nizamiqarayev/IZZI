@@ -22,24 +22,25 @@
                     <p>{{ subblogs.subBlogs[0].text }}</p>
                 </div>
                 <div class="flex w-3/12 flex-col gap-8">
-                    <div class=" shadow-md" v-for="(blog,index) in blogs.data" :key="blog.id">
-                        <div v-if="index<3 && blog.id != params.id">
-                        <nuxt-link :to="`${blog.id}`">
-                            <img class="object-cover" :src="blog.coverPhoto" alt="">
-                            <div class="p-3">
-                                <p class="mt-4 text-base font-bold text-[#222222]">{{blog.title}}
+                    <div class=" shadow-md" v-for="(blog, index) in blogs.data" :key="blog.id">
+                        <div v-if="index < 3 && blog.id != params.id">
+                            <nuxt-link :to="`${blog.id}`">
+                                <img class="object-cover" :src="blog.coverPhoto" alt="">
+                                <div class="p-3">
+                                    <p class="mt-4 text-base font-bold text-[#222222]">{{ blog.title }}
                                     </p>
-                                <p class="mt-3 text-[#222222] h-16 truncate whitespace-normal text-xs text-bold">{{blog.description}}</p>
-                                <div class="flex flex-1 items-center text-xs justify-between mt-4">
-                                    <div class="flex items-center gap-4 justify-between">
-                                        <img src="../../assets/images/homeimages/propfp.svg" class="h-6 w-6" alt="">
-                                        <p>{{blog.author.first_name}} {{blog.author.last_name}}</p>
-                                    </div>
-                                    <div>
-                                        <p>{{ date(blog.createdAt) }}</p>
+                                    <p class="mt-3 text-[#222222] h-16 truncate whitespace-normal text-xs text-bold">
+                                        {{ blog.description }}</p>
+                                    <div class="flex flex-1 items-center text-xs justify-between mt-4">
+                                        <div class="flex items-center gap-4 justify-between">
+                                            <img src="../../assets/images/homeimages/propfp.svg" class="h-6 w-6" alt="">
+                                            <p>{{ blog.author.first_name }} {{ blog.author.last_name }}</p>
+                                        </div>
+                                        <div>
+                                            <p>{{ date(blog.createdAt) }}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             </nuxt-link>
                         </div>
                     </div>
@@ -51,8 +52,11 @@
 
 <script>
 import axios from "axios"
-
+import BlogChild from "../../components/BlogChild.vue"
 export default {
+    components: {
+        BlogChild,
+    },
     data() {
         return {
             params: this.$route.params
@@ -62,7 +66,7 @@ export default {
     async asyncData({ params }) {
         let { data } = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/blogs/${params.id}/`)
         let blogs = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/blogs/`)
-        return { subblogs: data, blogs: blogs }
+        return { subblogs: data , blogs:blogs}
     },
 
 
@@ -119,8 +123,8 @@ export default {
             return array.id != this.params.id
         }
     },
-    mounted(){
-        window.scrollTo(0,0)
+    mounted() {
+        window.scrollTo(0, 0)
     }
 }
 </script>
