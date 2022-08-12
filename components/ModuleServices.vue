@@ -6,7 +6,7 @@
         </div>
         <div class="mx-36 grid grid-cols-3 max-w-[65rem] gap-x-4  gap-y-8 relative bottom-10">
             <div v-for="service in services.data" :key="service.id" class="flex-1 h-fit rounded-md ">
-                <nuxt-link :to="{ path: 'subservices', query: { serviceid: service.id } }">
+                <nuxt-link :to="`services/${service.id}`">
                     <div class="bg-cover w-full h-48 rounded-t-md flex items-end justify-start transition-all duration-500 hover:bg-center"
                         :style="`background-image: url('${service.coverPhoto}')`">
                         <div
