@@ -23,7 +23,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    {src: '@/plugins/v-calendar.js', ssr: false}
+    { src: '@/plugins/v-calendar.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -35,7 +35,7 @@ export default {
     '@nuxtjs/tailwindcss',
     '@nuxt/postcss8',
   ],
-
+  loading: { color: "#5920BC" },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
@@ -49,7 +49,7 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: 'https://izzi-api-rest.herokuapp.com/api/v1/',
-  
+
   },
   // proxy: {
   //   '/api/': {
@@ -86,19 +86,19 @@ export default {
         endpoints: {
           login: { url: "auth/login/", method: "post" },
           refresh: { url: "auth/refreshToken/", method: "post" },
-          user: {url: "auth/user/", method:"get"}
+          user: { url: "auth/user/", method: "get" }
         }
       }
     },
   },
-    // Build Configuration: https://go.nuxtjs.dev/config-build
-    build: {
-      postcss: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
-        },
-      }
-    },
-  }
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {
+    postcss: {
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+      },
+    }
+  },
+}
 
