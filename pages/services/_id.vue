@@ -15,7 +15,7 @@
                             <span class="text-[#222222] opacity-50">{{ service.description }} {{ service.description
                             }}</span>
                         </p>
-                        <nuxt-link to="/booking" class="flex items-center justify-center">
+                        <nuxt-link :to="{  name:'booking', params:{id: service.id} }"  class="flex items-center justify-center">
                             <p class="mr-2 text-[#5920BC] text-sm">Book Now</p> <img class="mt-[0.1875rem]"
                                 src="../../assets/images/serviceimages/Right.svg" alt="">
                         </nuxt-link>
@@ -42,19 +42,14 @@ export default {
     },
     async asyncData({ params }) {
         let { data } = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/services/${params.id}/`)
-        console.log('====================================');
-        console.log(data);
-        console.log('====================================');
+      
         return { services: data }
     },
     mounted() {
         console.log(this.params.id);
         this.subServiceData = this.services.subServices
 
-        console.log('====================================');
-        console.log("subservice");
-        console.log(this.subServiceData);
-        console.log('====================================');
+     
         window.scrollTo(0,0)
     },
 }
