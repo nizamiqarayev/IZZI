@@ -1,0 +1,113 @@
+<template>
+    <main class="flex items-center justify-center bg-[#5920BC] bg-opacity-5 font-quicksand">
+        <div class="flex bg-white p-6">
+            <div class="pr-12 border-r">
+                <h2 class="font-bold text-2xl text-[#222222]">{{ services.title }}</h2>
+                <p class="text-[#999999 text-sm]">{{ services.description }}</p>
+            </div>
+            <div class="pl-6">
+                <div v-for="choices in services.serviceChoices" :key="choices.id">
+                    <h3 class="text-base">{{ choices.title }}</h3>
+                    <div class="flex items-center mt-4">
+                        <input class="hidden" :type="choices.type" v-for="(option, index) in choices.options"
+                            :key="index" :id="option.id" :name="choices.title" :value="option.title"
+                            v-model="optionsdata[choices.id - 1].value">
+                        <label   class="flex items-center  mr-4 px-6 py-3 border border-[#5920BC] rounded-md"
+                            v-for="(option, index) in choices.options" :key="index" :for="option.id">
+                            <svg v-show="optionsdata[choices.id - 1].value !== option.title" width="20" height="20"
+                                viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M0.75 10C0.75 12.0416 0.860374 13.6311 1.13659 14.8739C1.41091 16.1083 1.83874 16.9543 2.44221 17.5578C3.04567 18.1613 3.89172 18.5891 5.12607 18.8634C6.36893 19.1396 7.95837 19.25 10 19.25C12.0416 19.25 13.6311 19.1396 14.8739 18.8634C16.1083 18.5891 16.9543 18.1613 17.5578 17.5578C18.1613 16.9543 18.5891 16.1083 18.8634 14.8739C19.1396 13.6311 19.25 12.0416 19.25 10C19.25 7.95837 19.1396 6.36893 18.8634 5.12607C18.5891 3.89173 18.1613 3.04567 17.5578 2.44221C16.9543 1.83874 16.1083 1.41091 14.8739 1.13659C13.6311 0.860374 12.0416 0.75 10 0.75C7.95837 0.75 6.36893 0.860374 5.12607 1.13659C3.89172 1.41091 3.04567 1.83874 2.44221 2.44221C1.83874 3.04567 1.41091 3.89173 1.13659 5.12607C0.860374 6.36893 0.75 7.95837 0.75 10Z"
+                                    stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+                            <svg v-show="optionsdata[choices.id - 1].value === option.title" width="20" height="20"
+                                viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M14.0404 8.20711C14.4309 7.81658 14.4309 7.18342 14.0404 6.79289C13.6498 6.40237 13.0167 6.40237 12.6261 6.79289L9.16659 10.2525L7.79036 8.87623C7.39983 8.4857 6.76667 8.4857 6.37615 8.87623C5.98562 9.26675 5.98562 9.89992 6.37615 10.2904L8.45948 12.3738C8.50829 12.4226 8.5609 12.4653 8.61635 12.5019C9.0045 12.7582 9.53198 12.7155 9.87369 12.3738L14.0404 8.20711Z"
+                                    fill="#5920BC" />
+                                <path
+                                    d="M0.75 10C0.75 12.0416 0.860374 13.6311 1.13659 14.8739C1.41091 16.1083 1.83874 16.9543 2.44221 17.5578C3.04567 18.1613 3.89172 18.5891 5.12607 18.8634C6.36893 19.1396 7.95837 19.25 10 19.25C12.0416 19.25 13.6311 19.1396 14.8739 18.8634C16.1083 18.5891 16.9543 18.1613 17.5578 17.5578C18.1613 16.9543 18.5891 16.1083 18.8634 14.8739C19.1396 13.6311 19.25 12.0416 19.25 10C19.25 7.95837 19.1396 6.36893 18.8634 5.12607C18.5891 3.89173 18.1613 3.04567 17.5578 2.44221C16.9543 1.83874 16.1083 1.41091 14.8739 1.13659C13.6311 0.860374 12.0416 0.75 10 0.75C7.95837 0.75 6.36893 0.860374 5.12607 1.13659C3.89172 1.41091 3.04567 1.83874 2.44221 2.44221C1.83874 3.04567 1.41091 3.89173 1.13659 5.12607C0.860374 6.36893 0.75 7.95837 0.75 10Z"
+                                    stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+
+
+                            <p class="ml-3">{{ option.title }}
+                            </p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</template>
+
+<script>
+import axios from 'axios';
+export default {
+    data() {
+        return {
+            params: this.$route.params,
+            taskers: {},
+            chosenTaskers: [],
+        }
+    },
+    async asyncData({ params }) {
+        let { data } = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/subServices/${params.id}/`)
+        let optionsdata = []
+        for (let index = 0; index < data.serviceChoices.length; index++) {
+
+            const tempobj = {
+                id: index,
+                value: null
+            }
+            optionsdata.push(tempobj)
+        }
+
+        return {
+            services: data,
+            optionsdata: optionsdata
+        }
+    },
+    methods: {
+        test(title, choiceId) {
+            console.log(this.optionsdata[choiceId - 1].value);
+            console.log(title);
+            console.log('====================================');
+            console.log(this.optionsdata[choiceId - 1] == title);
+            console.log('====================================');
+        }
+    },
+    async mounted() {
+
+        console.log(this.services);
+        console.log('=================');
+        this.taskers = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/taskers`)
+        console.log(this.taskers.data);
+
+
+        this.taskers.data.forEach(tasker => {
+            for (let index = 0; index < tasker.skills.length; index++) {
+                if (tasker.skills[index].subService.id == this.params.id) {
+                    this.chosenTaskers.push(tasker)
+                    break;
+                }
+            }
+
+        });
+        console.log(this.chosenTaskers);
+        console.log('====================================');
+        console.log(this.optionsdata);
+        console.log('====================================');
+
+    },
+
+
+}
+</script>
+
+<style>
+</style>

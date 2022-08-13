@@ -15,13 +15,13 @@
                             <span class="text-[#222222] opacity-50">{{ service.description }} {{ service.description
                             }}</span>
                         </p>
-                        <nuxt-link :to="{  name:'booking', params:{id: service.id} }"  class="flex items-center justify-center">
+                        <nuxt-link :to="`/booking/${service.id}`"  class="flex items-center justify-center">
                             <p class="mr-2 text-[#5920BC] text-sm">Book Now</p> <img class="mt-[0.1875rem]"
                                 src="../../assets/images/serviceimages/Right.svg" alt="">
                         </nuxt-link>
                     </div>
                 </div>
-
+<!-- {  name:'booking', params:{id: service.id} } -->
             </div>
 
         </div>
