@@ -4,7 +4,7 @@
             class="flex justify-start items-center w-full bg-[url('assets/images/serviceimages/headbg.png')] bg-no-repeat bg-bottom bg-cover">
             <h1 class="ml-36 font-bold my-[4.5rem] text-3xl text-[#222222]">{{ this.services.title }}</h1>
         </div>
-        <div class="mx-36 grid grid-cols-3 max-w-[65rem] gap-x-4  gap-y-8 relative bottom-10">
+        <div class="mx-36 grid grid-cols-3 max-w-full gap-x-4  gap-y-8 relative bottom-10">
             <div v-for="service in subServiceData" :key="service.id" class="flex-1 h-fit rounded-md ">
                 <div class="bg-cover w-full h-72 rounded-t-md flex items-end justify-start transition-all duration-500 hover:bg-center"
                     :style="`background-image: url('${service.coverPhoto}')`">
