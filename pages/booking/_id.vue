@@ -4,26 +4,28 @@
             <div class="pr-12 border-r">
                 <h2 class="font-bold text-2xl text-[#222222]">{{ services.title }}</h2>
                 <p class="text-[#999999 text-sm]">{{ services.description }}</p>
+
             </div>
             <div class="pl-6">
-                <div v-for="choices in services.serviceChoices" :key="choices.id">
+                <div v-for="(choices, choiceindex) in services.serviceChoices" :key="choiceindex">
                     <h3 class="text-base">{{ choices.title }}</h3>
                     <div class="flex items-center mt-4">
-                        <input class="hidden" :type="choices.type" v-for="(option, index) in choices.options"
-                            :key="index" :id="option.id" :name="choices.title" :value="option.title"
-                            v-model="optionsdata[choices.id - 1].value">
-                        <label   class="flex items-center  mr-4 px-6 py-3 border border-[#5920BC] rounded-md"
-                            v-for="(option, index) in choices.options" :key="index" :for="option.id">
-                            <svg v-show="optionsdata[choices.id - 1].value !== option.title" width="20" height="20"
-                                viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <input @click="chosentaskersdatafilter(option.title, choiceindex)" class="hidden"
+                            :type="choices.type" v-for="(option, index) in choices.options" :key="index + 300"
+                            :id="option.id" :name="choices.title" :value="option.title"
+                            v-model="optionsdata[choiceindex].value">
+                        <label class="flex items-center  mr-4 px-6 py-3 border border-[#5920BC] rounded-md"
+                            v-for="(option, index) in choices.options" :key="index + 100" :for="option.id">
+                            <svg v-show="optionsdata[choiceindex].value != option.title" width="20" height="20"
+                                viewBox="0 0 20 20" fill="none" xmlns="http:www.w3.org/2000/svg">
                                 <path
                                     d="M0.75 10C0.75 12.0416 0.860374 13.6311 1.13659 14.8739C1.41091 16.1083 1.83874 16.9543 2.44221 17.5578C3.04567 18.1613 3.89172 18.5891 5.12607 18.8634C6.36893 19.1396 7.95837 19.25 10 19.25C12.0416 19.25 13.6311 19.1396 14.8739 18.8634C16.1083 18.5891 16.9543 18.1613 17.5578 17.5578C18.1613 16.9543 18.5891 16.1083 18.8634 14.8739C19.1396 13.6311 19.25 12.0416 19.25 10C19.25 7.95837 19.1396 6.36893 18.8634 5.12607C18.5891 3.89173 18.1613 3.04567 17.5578 2.44221C16.9543 1.83874 16.1083 1.41091 14.8739 1.13659C13.6311 0.860374 12.0416 0.75 10 0.75C7.95837 0.75 6.36893 0.860374 5.12607 1.13659C3.89172 1.41091 3.04567 1.83874 2.44221 2.44221C1.83874 3.04567 1.41091 3.89173 1.13659 5.12607C0.860374 6.36893 0.75 7.95837 0.75 10Z"
                                     stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
 
-                            <svg v-show="optionsdata[choices.id - 1].value === option.title" width="20" height="20"
-                                viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg v-show="optionsdata[choiceindex].value == option.title" width="20" height="20"
+                                viewBox="0 0 20 20" fill="none" xmlns="http:www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                     d="M14.0404 8.20711C14.4309 7.81658 14.4309 7.18342 14.0404 6.79289C13.6498 6.40237 13.0167 6.40237 12.6261 6.79289L9.16659 10.2525L7.79036 8.87623C7.39983 8.4857 6.76667 8.4857 6.37615 8.87623C5.98562 9.26675 5.98562 9.89992 6.37615 10.2904L8.45948 12.3738C8.50829 12.4226 8.5609 12.4653 8.61635 12.5019C9.0045 12.7582 9.53198 12.7155 9.87369 12.3738L14.0404 8.20711Z"
                                     fill="#5920BC" />
@@ -39,6 +41,85 @@
                         </label>
                     </div>
                 </div>
+                <div class="mt-10 mb-2">
+                    <div class="flex justify-between ">
+                        <h3>Start Adress</h3>
+                        <div class="flex">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http:www.w3.org/2000/svg">
+                                <path
+                                    d="M0.881735 9.85497C1.31689 12.0629 2.67214 13.9293 4.27595 15.4274C5.8763 16.9223 7.67363 18.0028 8.89211 18.6416C9.59264 19.009 10.4074 19.009 11.1079 18.6416C12.3264 18.0028 14.1237 16.9223 15.7241 15.4274C17.3279 13.9293 18.6831 12.0629 19.1183 9.85498C19.4903 7.96728 19.0938 5.69338 17.6879 3.90027C16.2997 2.1298 13.8642 0.75 10 0.75C6.1358 0.75 3.70031 2.1298 2.31213 3.90027C0.906188 5.69338 0.509686 7.96728 0.881735 9.85497Z"
+                                    stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M7.41659 8.33333C7.41659 9.76007 8.57318 10.9167 9.99992 10.9167C11.4267 10.9167 12.5833 9.76007 12.5833 8.33333C12.5833 6.9066 11.4267 5.75 9.99992 5.75C8.57318 5.75 7.41659 6.9066 7.41659 8.33333Z"
+                                    stroke="#5920BC" stroke-width="1.5" />
+                            </svg>
+                            <p class="ml-2">Map</p>
+                        </div>
+
+                    </div>
+                    <div class="relative">
+                        <input type="text"
+                            class="border border-[#C7C9CB] rounded-md focus:outline-none w-full py-4 pl-14"
+                            placeholder="Start Adress" v-model="startlocation" />
+                        <svg class="absolute top-5 left-6" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                            xmlns="http:www.w3.org/2000/svg">
+                            <path
+                                d="M0.881735 9.85497C1.31689 12.0629 2.67214 13.9293 4.27595 15.4274C5.8763 16.9223 7.67363 18.0028 8.89211 18.6416C9.59264 19.009 10.4074 19.009 11.1079 18.6416C12.3264 18.0028 14.1237 16.9223 15.7241 15.4274C17.3279 13.9293 18.6831 12.0629 19.1183 9.85498C19.4903 7.96728 19.0938 5.69338 17.6879 3.90027C16.2997 2.1298 13.8642 0.75 10 0.75C6.1358 0.75 3.70031 2.1298 2.31213 3.90027C0.906188 5.69338 0.509686 7.96728 0.881735 9.85497Z"
+                                stroke="#5920BC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M7.41659 8.33333C7.41659 9.76007 8.57318 10.9167 9.99992 10.9167C11.4267 10.9167 12.5833 9.76007 12.5833 8.33333C12.5833 6.9066 11.4267 5.75 9.99992 5.75C8.57318 5.75 7.41659 6.9066 7.41659 8.33333Z"
+                                stroke="#5920BC" stroke-width="1.5" />
+                        </svg>
+                    </div>
+
+
+                </div>
+                <div class="flex">
+                    <div>
+                        <h3>Task start date</h3>
+
+                    </div>
+                    <div>
+                        <h3>Task start time</h3>
+
+                    </div>
+
+                </div>
+                <div class="mt-10">
+                    <h3>Explain your issue</h3>
+                    <textarea placeholder="Leave your message for PRO"
+                        class=" mt-2 pt-6 pl-6 border border-[#C7C9CB] w-full focus:outline-none h-24">
+
+                    </textarea>
+                </div>
+                <div class="w-full flex items-center justify-start">
+                    <div class=" flex items-center px-12 py-3 bg-[#F9F9F9] rounded-lg">
+                        <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http:www.w3.org/2000/svg">
+                            <path d="M16.0059 13.9976L12.0059 9.99756L8.00586 13.9976" stroke="#222222"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12.0059 9.99756V18.9976" stroke="#222222" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M20.3953 16.3875C21.3707 15.8558 22.1412 15.0144 22.5852 13.9962C23.0292 12.9779 23.1215 11.8408 22.8475 10.7642C22.5735 9.68769 21.9488 8.73305 21.072 8.05099C20.1952 7.36892 19.1162 6.99828 18.0053 6.99754H16.7453C16.4426 5.82678 15.8785 4.73988 15.0953 3.81854C14.3121 2.89719 13.3302 2.16539 12.2234 1.67815C11.1167 1.19091 9.91388 0.960901 8.70545 1.00542C7.49701 1.04995 6.3144 1.36784 5.24651 1.93521C4.17862 2.50257 3.25324 3.30465 2.53995 4.28112C1.82666 5.2576 1.34402 6.38308 1.12831 7.57294C0.912601 8.76279 0.969437 9.98607 1.29454 11.1508C1.61965 12.3155 2.20457 13.3914 3.00533 14.2975"
+                                stroke="#222222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M16.0059 13.9976L12.0059 9.99756L8.00586 13.9976" stroke="#222222"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <p class="ml-3">Upload Attachment</p>
+                    </div>
+
+                </div>
+                <div class="w-full">
+                    <h3>Choose a Pro</h3>
+                    <div class="grid grid-cols-2 w-full">
+                        <div v-for="tasker in chosenTaskersdisplayer" :key="tasker.id">
+                            <Bookingtaskers :taskerdata="tasker" />
+                            <button class="pt-4 w-full">Select</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -47,62 +128,140 @@
 
 <script>
 import axios from 'axios';
+import Bookingtaskers from '../../components/booking/bookingtaskers.vue';
 export default {
+    components: { Bookingtaskers },
     data() {
         return {
+            justloaded: false,
             params: this.$route.params,
             taskers: {},
             chosenTaskers: [],
+            startlocation: "",
+            taskersdisplaydata: {},
+            optionsdata: [],
+            servicesdata: {},
+            lengthofoptions: 0,
         }
     },
-    async asyncData({ params }) {
-        let { data } = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/subServices/${params.id}/`)
-        let optionsdata = []
-        for (let index = 0; index < data.serviceChoices.length; index++) {
-
-            const tempobj = {
-                id: index,
-                value: null
-            }
-            optionsdata.push(tempobj)
-        }
-
-        return {
-            services: data,
-            optionsdata: optionsdata
+    computed: {
+        services() {
+            return this.servicesdata
+        },
+        chosenTaskersdisplayer() {
+            return this.chosenTaskers
         }
     },
     methods: {
         test(title, choiceId) {
-            console.log(this.optionsdata[choiceId - 1].value);
+            console.log("optionsdata");
+            console.log(this.optionsdata[choiceId]);
             console.log(title);
             console.log('====================================');
             console.log(this.optionsdata[choiceId - 1] == title);
             console.log('====================================');
-        }
-    },
-    async mounted() {
+        },
+        chosentaskersdatafilterstart() {
 
-        console.log(this.services);
-        console.log('=================');
-        this.taskers = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/taskers`)
-        console.log(this.taskers.data);
+            this.chosenTaskers = []
+            for (let l = 0; l < this.taskers.data.length; l++) {
+                for (let index = 0; index < this.taskers.data[l].skills.length; index++) {
+                    if (this.taskers.data[l].skills[index].subService.id == this.params.id) {
 
-
-        this.taskers.data.forEach(tasker => {
-            for (let index = 0; index < tasker.skills.length; index++) {
-                if (tasker.skills[index].subService.id == this.params.id) {
-                    this.chosenTaskers.push(tasker)
-                    break;
+                        this.chosenTaskers.push(this.taskers.data[l])
+                        break;
+                    }
                 }
             }
 
-        });
-        console.log(this.chosenTaskers);
-        console.log('====================================');
-        console.log(this.optionsdata);
-        console.log('====================================');
 
+        },
+        chosentaskersdatafilter(choicedata, dataplaceholderindex) {
+            if (this.justloaded == true) {
+                this.optionsdata[dataplaceholderindex].value = choicedata
+            }
+            this.chosenTaskers = []
+            for (let l = 0; l < this.taskers.data.length; l++) {
+                for (let index = 0; index < this.taskers.data[l].skills.length; index++) {
+                    if (this.taskers.data[l].skills[index].subService.id == this.params.id) {
+
+                        this.chosenTaskers.push(this.taskers.data[l])
+                        break;
+                    }
+                }
+            }
+            console.log(this.chosenTaskers);
+
+            let filterables = [];
+
+            for (let i = 0; i < this.optionsdata.length; i++) {
+                for (let y = 0; y < this.servicesdata.serviceChoices[i].options.length; y++) {
+                    if (this.servicesdata.serviceChoices[i].options[y].taskerFiltering == true) {
+                        filterables.push(true)
+                        break;
+                    }
+                    else {
+                        filterables.push(false)
+                        break;
+                    }
+                }
+            }
+            console.log(filterables);
+            const temparr = []
+
+            for (let z = 0; z < filterables.length; z++) {
+                if (filterables[z] == true && this.optionsdata[z].value != "") {
+                    console.log(this.optionsdata[z].value);
+                    for (let k = 0; k < this.chosenTaskers.length; k++) {
+                        for (let f = 0; f < this.chosenTaskers[k].skills.length; f++) {
+
+
+                            if (String(this.chosenTaskers[k].skills[f].option.title) == String(this.optionsdata[z].value)) {
+                                temparr.push(this.chosenTaskers[k])
+
+                                break;
+                            }
+                        }
+                    }
+                }
+                // console.log('====================================');
+                // console.log('====================================');
+                // console.log('====================================');
+                // console.log(temparr);
+                // console.log('====================================');
+            }
+            this.chosenTaskers = temparr
+            // console.log('====================================');
+            // console.log('afterfilter');
+            // console.log(this.chosenTaskers);
+            // console.log('afterfilter');
+
+            // console.log('====================================');
+
+
+            // console.log(this.chosenTaskers);
+            return this.chosenTaskers
+        }
+    },
+    async created() {
+        this.servicesdata = await axios.get(`https:izzi-api-rest.herokuapp.com/api/v1/subServices/${this.params.id}/`)
+        this.servicesdata = this.servicesdata.data
+        console.log(this.servicesdata);
+        for (let index = 0; index < this.servicesdata.serviceChoices.length; index++) {
+
+            const tempobj = {
+                id: index,
+                value: "",
+            }
+            this.optionsdata.push(tempobj)
+        }
+        this.lengthofoptions = this.optionsdata.length
+        this.taskers = await axios.get(`https:izzi-api-rest.herokuapp.com/api/v1/taskers`)
+        console.log(this.taskers.data);
+
+        this.chosentaskersdatafilterstart()
+        console.log(this.chosenTaskers);
+        this.justloaded = true
     },
 
 

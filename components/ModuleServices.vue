@@ -21,7 +21,7 @@
                 </nuxt-link>
                 <ul class="flex flex-col  ">
                     <li class="py-2 pl-2 border hover:py-4 hover:px-4 hover:bg-slate-300 transition-all" v-for="subservice in service.subServices" :key="subservice.id">
-                        <nuxt-link to="booking">{{ subservice.title }}</nuxt-link>
+                        <nuxt-link :to="`/booking/${subservice.id}`">{{ subservice.title }}</nuxt-link>
                     </li>
                 </ul>
             </div>
