@@ -3,28 +3,35 @@
         <main class="w-10/12 mx-auto py-40">
             <p class="text-[30px] font-bold ">All Pros</p>
             <div class="w-full pt-16">
-                <div class="flex justify-between gap-14">
-                    <div class="flex items-center border-[1px] bg-transparent border-[#E2E2E2] rounded relative w-3/5">
+                <div class="flex items-end justify-between gap-14">
+                    <div class="flex items-center border-[1px] bg-transparent border-[#E2E2E2] h-1/2 rounded relative w-3/5">
                         <label for="search">
                             <img class="absolute bottom-3 left-3 z-20 " src="../assets/images/search (3).svg" alt="">
                         </label>
-                        <input type="text" class="relative bg-transparent px-10 py-2 z-10 w-full" id="search">
+                        <input type="text" v-model="searchkey" class="relative bg-transparent px-10 py-2 z-10 w-full" id="search">
                     </div>
                     <div class="flex gap-8 w-2/5">
-                        <div class="border-[1px] border-[#C7C9CB] w-full rounded">
-                            <select v-model="rating" class="hover:outline-none bg-transparent focus:outline-none px-6  py-2">
-                                <option value="Rating" disabled selected hidden>Rating</option>
-                                <option value="Ascending">Ascending</option>
-                                <option value="Descending">Descending</option>
-                            </select>
+                        <div >
+                            <p class="px-7">Rating</p>
+                            <div class="border-[1px] border-[#C7C9CB] w-full rounded">
+                                <select v-model="rating"
+                                    class="hover:outline-none italic bg-transparent focus:outline-none px-6  py-2">
+                                    <option value="Rating" disabled selected hidden>Rating</option>
+                                    <option value="Ascending">Ascending</option>
+                                    <option value="Descending">Descending</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="border-[1px] border-[#C7C9CB]  w-full rounded">
-                            <select v-model="task_count" class="focus:outline-none bg-transparent hover:outline-none px-6 py-2">
-                                <option value="Task count" disabled selected hidden>Task count</option>
-                                <option value="Ascending">Ascending</option>
-                                <option value="Descending">Descending</option>
-                            </select>
-                            {{message(rating)}}
+                        <div>
+                            <p class="px-7">Task count</p>
+                            <div class="border-[1px] border-[#C7C9CB]  w-full rounded">
+                                <select v-model="task_count"
+                                    class="focus:outline-none italic bg-transparent hover:outline-none px-6 py-2">
+                                    <option value="Task count" disabled selected hidden>Task count</option>
+                                    <option value="Ascending">Ascending</option>
+                                    <option value="Descending">Descending</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -51,16 +58,16 @@
                                     <img src="../assets/images/Squircle.svg" v-if="!filter_cities[index].filter" alt="">
                                     <img src="../assets/images/Checked.svg" v-if="filter_cities[index].filter" alt="">
                                     <p>{{ city.name }}</p>
-                                    {{ getCityid(city, index) }}
+                                    {{ getCityid(index) }}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="w-9/12  flex flex-col justify-center items-center" v-if="filteredEntries.length==0">
+                    <div class="w-9/12  flex flex-col justify-center items-center" v-if="filteredEntries.length == 0">
                         <img src="../assets/images/Job hiring 1.svg" alt="">
                         <p>There is no aviable pro for this service :(</p>
-                        </div>
-                    <div v-if="filteredEntries.length !=0" class="w-9/12 grid grid-cols-2 gap-5">
+                    </div>
+                    <div v-if="filteredEntries.length != 0" class="w-9/12 grid grid-cols-2 gap-5">
                         <div v-for="tasker in filteredEntries" :key="tasker.id"
                             class="border-[1px] border-slate-400 rounded p-3 flex flex-col">
                             <div class="flex gap-1 relative">
@@ -98,11 +105,14 @@
                                 <p class="font-bold">Top Skills</p>
                                 <hr class="w-1/4 border-[#5920BC]">
                             </div>
-                            <div class="grid grid-cols-2 gap-y-2 gap-x-5">
-                                <div v-for="(skill, index) in tasker.skills" :key="skill.id" v-if="index < 4"
-                                    class="bg-[#5920BC0D] flex justify-around py-2 px-2 border-[1px] border-[#5920BC] rounded">
-                                    <p class="text-sm">{{ skill.option.title }}</p>
+                            <div class="flex gap-y-2 gap-x-5">
+                                {{ reset_array() }}
+                                <div v-for="(skill, index) in tasker.skills" :key="skill.id"
+                                    v-if="subService_unique.includes(skill.subService.title) == false"
+                                    class="bg-[#5920BC0D] w-full flex justify-around py-2 px-2 border-[1px] border-[#5920BC] rounded">
+                                    <p class="text-sm">{{ skill.subService.title }}</p>
                                     <p class="text-sm">{{ skill.price }} ₼</p>
+                                    {{ subServiceunique(skill, index) }}
                                 </div>
                             </div>
                             <div class="mt-4 mb-2 py-4 px-12 text-center border-[1px] border-[#5920BC40]">
@@ -207,9 +217,11 @@ export default {
             allserviceIDs: [],
             count_service: 100,
             count_city: 100,
-            rating:'Rating',
-            task_count:'Task count',
-
+            rating: 'Descending',
+            task_count: 'Descending',
+            subService_unique: [],
+            filtered_array: [],
+            searchkey:'',
 
         }
     },
@@ -219,7 +231,6 @@ export default {
 
     },
     async created() {
-        console.log('created isledi');
         this.services = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/services/`)
         this.cities = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/cities/`)
     },
@@ -228,6 +239,9 @@ export default {
         return { taskers: data }
     },
     methods: {
+        reset_array() {
+            this.subService_unique = []
+        },
         message(data) {
             console.log(data);
         },
@@ -236,11 +250,14 @@ export default {
             this.filter_services[index].id = this.services.data[index].id
 
         },
-        getCityid(city, index) {
-            this.filter_cities[index].id = city.id
+        getCityid(index) {
+            this.filter_cities[index].id = this.cities.data[index].id
+        },
+        subServiceunique(skill, index) {
+            this.subService_unique.push(skill.subService.title)
         },
         IDselector_service(index) {
-            console.log("index", index, "count_Service", this.count_service);
+
             if (index != this.count_service) {
                 this.selectedID_services = this.filter_services[index].id
                 for (let i = 0; i < this.filter_services.length; i++) {
@@ -277,8 +294,8 @@ export default {
     computed: {
         filteredEntries() {
             this.filter_taskers = this.taskers
-            if (this.selectedID_services !=100 || this.selectedID_cities !=100) {
-                return this.filter_taskers.filter((el) => {
+            if (this.selectedID_services != 100 || this.selectedID_cities != 100) {
+                let new_array = this.filter_taskers.filter((el) => {
                     let service_check = el.skills.map((element, index, array) => {
                         return this.selectedID_services == element.subService.id
                     })
@@ -287,7 +304,7 @@ export default {
                     })
                     let result_service
                     let result_city
-                    if (this.selectedID_cities==100) {
+                    if (this.selectedID_cities == 100) {
                         result_city = true
                     } else {
                         result_city = city_check.some(element => {
@@ -305,8 +322,6 @@ export default {
                             }
                         });
                     }
-                    console.log("service", result_service,"ServiceId",this.selectedID_services);
-                    console.log("city", result_city,"CityID",this.selectedID_cities);
                     if (result_city && result_service) {
 
                         return true
@@ -314,13 +329,27 @@ export default {
                         return false
                     }
                 })
+
+                this.filtered_array = new_array
             } else {
-                return this.taskers
+                this.filtered_array = this.taskers
             }
+            this.filter_taskers=this.filtered_array
+            this.filtered_array=this.filter_taskers.filter((el)=>{
+                return el.user.first_name.toLowerCase().includes(this.searchkey.toLowerCase())||el.user.last_name.toLowerCase().includes(this.searchkey.toLowerCase())
+            })
+            if (this.rating == 'Descending' && this.task_count == 'Descending') {
+                this.filtered_array.sort((a, b) => b.rating - a.rating || b.completedTaskCount - a.completedTaskCount);
+            } else if (this.rating == 'Ascending' && this.task_count == 'Descending') {
+                this.filtered_array.sort((a, b) => a.rating - b.rating || b.completedTaskCount - a.completedTaskCount)
+            } else if (this.rating == 'Descending' && this.task_count == 'Ascending') {
+                this.filtered_array.sort((a, b) => b.rating - a.rating || a.completedTaskCount - b.completedTaskCount)
+            } else if (this.task_count == 'Ascending' && this.rating == 'Ascending') {
+                this.filtered_array.sort((a, b) => a.rating - b.rating || a.completedTaskCount - b.completedTaskCount)
+            }
+            return this.filtered_array
 
         },
-
-
     }
 }
 </script>
