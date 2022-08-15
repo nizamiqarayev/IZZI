@@ -101,9 +101,9 @@
 
                 </div>
                 <div class="flex">
-                    <div>
-                        <h3>Task start date</h3>
-
+                    <div class="relative">
+                        <h3 @click="calendarshow=!calendarshow">Task start date</h3>
+                        <vc-date-picker class="absolute" mode="dateTime" is34hr v-if="calendarshow" v-model="datepicker"></vc-date-picker>
                     </div>
                     <div>
                         <h3>Task start time</h3>
@@ -157,6 +157,7 @@ export default {
     components: { Bookingtaskers },
     data() {
         return {
+            calendarshow: false,
             justloaded: false,
             params: this.$route.params,
             taskers: {},
