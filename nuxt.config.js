@@ -5,6 +5,7 @@ export default {
     htmlAttrs: {
       lang: 'en'
     },
+    script: [{src: 'https://kit.fontawesome.com/5221f8b839.js', async: true, crossorigin: 'anonymous'},],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -32,6 +33,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
+    '@nuxtjs/fontawesome',
     '@nuxtjs/tailwindcss',
     '@nuxt/postcss8',
   ],
