@@ -4,11 +4,11 @@
             <div class="pr-12 border-r">
                 <h2 class="font-bold text-2xl text-[#222222]">{{ services.title }}</h2>
                 <p class="text-[#999999 text-sm]">{{ services.description }}</p>
-                <Bookingtaskers v-if="selectedtaskerdata.length>0" :selected="selectedtaskerdata[0]" :taskerdata="selectedtaskerdata[1]"
-                    :hoursofwork="selectedtaskerdata[2]" :pricetype="selectedtaskerdata[3]"
-                    :workPrice="selectedtaskerdata[4]" />
+                <Bookingtaskers v-if="selectedtaskerdata.length > 0" :selected="selectedtaskerdata[0]"
+                    :taskerdata="selectedtaskerdata[1]" :hoursofwork="selectedtaskerdata[2]"
+                    :pricetype="selectedtaskerdata[3]" :workPrice="selectedtaskerdata[4]" />
             </div>
-            <div class="pl-6">
+            <div v-if="summary == false" class="pl-6">
                 <div v-for="(choices, choiceindex) in services.serviceChoices" :key="choiceindex">
                     <h3 class="text-base">{{ choices.title }}</h3>
                     <div class="flex items-center mt-4">
@@ -143,12 +143,12 @@
                 </div>
                 <div class="mt-10">
                     <h3>Explain your issue</h3>
-                    <textarea placeholder="Leave your message for PRO"
+                    <textarea v-model="detail" placeholder="Leave your message for PRO"
                         class=" mt-2 pt-6 pl-6 border border-[#C7C9CB] w-full focus:outline-none h-24">
 
                         </textarea>
                 </div>
-                <div class="w-full flex items-center justify-start">
+                <div class="w-full flex items-center justify-start mt-4">
                     <div class=" flex items-center px-12 py-3 bg-[#F9F9F9] rounded-lg">
                         <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http:www.w3.org/2000/svg">
                             <path d="M16.0059 13.9976L12.0059 9.99756L8.00586 13.9976" stroke="#222222"
@@ -165,17 +165,23 @@
                     </div>
 
                 </div>
-                <div class="w-full">
+                <div class="w-full mt-10">
                     <h3>Choose a Pro</h3>
-                    <div class="grid grid-cols-2 w-full">
-                        <div v-for="(tasker, index) in chosenTaskersdisplayer" :key="tasker.id">
+                    <div class="grid grid-cols-2 gap-x-5 gap-y-4 w-full ">
+                        <div class="flex flex-col p-3 items-start justify-center border border-[#C7C9CB1F] rounded-md shadow-inner" v-for="(tasker, index) in chosenTaskersdisplayer" :key="tasker.id">
                             <Bookingtaskers :selected="false" :taskerdata="tasker" :hoursofwork="hoursOfWork"
                                 :pricetype="chosenTaskersPriceType[index]" :workPrice="chosenTaskersPrices[index]" />
-                            <button class="pt-4 w-full"
-                                @click="dataSetterForSelected(true, tasker, hoursOfWork, chosenTaskersPriceType[index], chosenTaskersPrices[index])">Select</button>
+                            <button class=" w-4/5 py-4  border rounded-md border-[#5920BC] #979797 flex items-center self-center justify-center hover:bg-[#5920BC] hover:text-white"
+                                @click="dataSetterForSelected(true, tasker, hoursOfWork, chosenTaskersPriceType[index], chosenTaskersPrices[index])">
+                                <p>Select</p>
+                            </button>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div v-if="summary==true" class="pl-6">
+            <Bookingsummary :serviceChoices="servicesdata.serviceChoices" :serviceChoicesOptionValue="optionsdata" :location="startlocation" :startDate="date" :starttime="starttime" :detail="detail" />
+            
             </div>
 
         </div>
@@ -185,10 +191,13 @@
     <script>
 import axios from 'axios';
 import Bookingtaskers from '../../components/booking/bookingtaskers.vue';
+import Bookingsummary from '../../components/booking/bookingsummary.vue';
 export default {
-    components: { Bookingtaskers },
+    components: { Bookingtaskers, Bookingsummary },
     data() {
         return {
+            summary: false,
+
             date: new Date(),
             dateErrormsg: "",
 
@@ -196,6 +205,8 @@ export default {
             endtime: new Date(),
 
             hoursOfWork: 0,
+
+            detail:'',
 
             calendarshow: false,
             justloaded: false,
@@ -208,6 +219,7 @@ export default {
 
 
             startlocation: "",
+
             taskersdisplaydata: {},
             optionsdata: [],
             optionsdatahelper: [],
@@ -288,7 +300,7 @@ export default {
             this.selectedtaskerdata.push(hoursOfWork)
             this.selectedtaskerdata.push(pricetype)
             this.selectedtaskerdata.push(workprice)
-
+            this.summary = !this.summary
         },
 
         starttimecalculator() {
