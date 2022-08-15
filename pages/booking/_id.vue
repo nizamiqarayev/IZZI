@@ -100,12 +100,21 @@
 
 
                 </div>
-                <div class="flex">
+                <div class="flex justify-around items-center">
                     <div class="relative">
-                        <h3 @click="calendarshow = !calendarshow">Task start date</h3>
-                        <vc-date-picker v-model="date" mode="dateTime" is24hr>
+                        <h3>Task start date</h3>
+                        <vc-date-picker v-model="date" mode="date">
                             <template v-slot="{ inputValue, inputEvents }">
-                                <input class="px-2 py-1 border rounded focus:outline-none focus:border-blue-300"
+                                <input class="px-2 py-1 border text-center rounded focus:outline-none focus:border-blue-300"
+                                    :value="inputValue" v-on="inputEvents" />
+                            </template>
+                        </vc-date-picker>
+                    </div>
+                    <div>
+                        <h3>Task start date</h3>
+                        <vc-date-picker v-model="time" mode="time">
+                            <template v-slot="{ inputValue, inputEvents }">
+                                <input class="px-2 py-1 border text-center rounded focus:outline-none focus:border-blue-300"
                                     :value="inputValue" v-on="inputEvents" />
                             </template>
                         </vc-date-picker>
@@ -158,6 +167,7 @@ export default {
     data() {
         return {
             date:new Date(),
+            time:new Date(),
             calendarshow: false,
             justloaded: false,
             params: this.$route.params,
