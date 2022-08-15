@@ -1,4 +1,4 @@
-<template>
+    <template>
     <main class="flex items-center justify-center bg-[#5920BC] bg-opacity-5 font-quicksand">
         <div class="flex bg-white p-6">
             <div class="pr-12 border-r">
@@ -10,31 +10,55 @@
                 <div v-for="(choices, choiceindex) in services.serviceChoices" :key="choiceindex">
                     <h3 class="text-base">{{ choices.title }}</h3>
                     <div class="flex items-center mt-4">
-                        <input @click="chosentaskersdatafilter(option.title, choiceindex)" class="hidden"
-                            :type="choices.type" v-for="(option, index) in choices.options" :key="index + 300"
-                            :id="option.id" :name="choices.title" :value="option.title"
-                            v-model="optionsdata[choiceindex].value">
+
+                        <input v-model="optionsdata[choiceindex].value"
+                            @click="chosentaskersdatafilter(index, choiceindex)" class="hidden" :type="choices.type"
+                            v-for="(option, index) in choices.options" :key="index + 300" :id="option.id"
+                            :name="choices.title" :value="option">
                         <label class="flex items-center  mr-4 px-6 py-3 border border-[#5920BC] rounded-md"
-                            v-for="(option, index) in choices.options" :key="index + 100" :for="option.id">
-                            <svg v-show="optionsdata[choiceindex].value != option.title && optionsdata[choiceindex].value.includes(option.title) == false"
-                                width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http:www.w3.org/2000/svg">
-                                <path
-                                    d="M0.75 10C0.75 12.0416 0.860374 13.6311 1.13659 14.8739C1.41091 16.1083 1.83874 16.9543 2.44221 17.5578C3.04567 18.1613 3.89172 18.5891 5.12607 18.8634C6.36893 19.1396 7.95837 19.25 10 19.25C12.0416 19.25 13.6311 19.1396 14.8739 18.8634C16.1083 18.5891 16.9543 18.1613 17.5578 17.5578C18.1613 16.9543 18.5891 16.1083 18.8634 14.8739C19.1396 13.6311 19.25 12.0416 19.25 10C19.25 7.95837 19.1396 6.36893 18.8634 5.12607C18.5891 3.89173 18.1613 3.04567 17.5578 2.44221C16.9543 1.83874 16.1083 1.41091 14.8739 1.13659C13.6311 0.860374 12.0416 0.75 10 0.75C7.95837 0.75 6.36893 0.860374 5.12607 1.13659C3.89172 1.41091 3.04567 1.83874 2.44221 2.44221C1.83874 3.04567 1.41091 3.89173 1.13659 5.12607C0.860374 6.36893 0.75 7.95837 0.75 10Z"
-                                    stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
+                            v-for="(option, labelindex) in choices.options" :key="labelindex + 100" :for="option.id">
+                            <div v-if="choices.type == 'radio'">
+                                <svg v-show="optionsdata[choiceindex].value.title != option.title" width="20"
+                                    height="20" viewBox="0 0 20 20" fill="none" xmlns="http:www.w3.org/2000/svg">
+                                    <path
+                                        d="M0.75 10C0.75 12.0416 0.860374 13.6311 1.13659 14.8739C1.41091 16.1083 1.83874 16.9543 2.44221 17.5578C3.04567 18.1613 3.89172 18.5891 5.12607 18.8634C6.36893 19.1396 7.95837 19.25 10 19.25C12.0416 19.25 13.6311 19.1396 14.8739 18.8634C16.1083 18.5891 16.9543 18.1613 17.5578 17.5578C18.1613 16.9543 18.5891 16.1083 18.8634 14.8739C19.1396 13.6311 19.25 12.0416 19.25 10C19.25 7.95837 19.1396 6.36893 18.8634 5.12607C18.5891 3.89173 18.1613 3.04567 17.5578 2.44221C16.9543 1.83874 16.1083 1.41091 14.8739 1.13659C13.6311 0.860374 12.0416 0.75 10 0.75C7.95837 0.75 6.36893 0.860374 5.12607 1.13659C3.89172 1.41091 3.04567 1.83874 2.44221 2.44221C1.83874 3.04567 1.41091 3.89173 1.13659 5.12607C0.860374 6.36893 0.75 7.95837 0.75 10Z"
+                                        stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
 
-                            <svg v-show="optionsdata[choiceindex].value == option.title || optionsdata[choiceindex].value.includes(option.title) == true"
-                                width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http:www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M14.0404 8.20711C14.4309 7.81658 14.4309 7.18342 14.0404 6.79289C13.6498 6.40237 13.0167 6.40237 12.6261 6.79289L9.16659 10.2525L7.79036 8.87623C7.39983 8.4857 6.76667 8.4857 6.37615 8.87623C5.98562 9.26675 5.98562 9.89992 6.37615 10.2904L8.45948 12.3738C8.50829 12.4226 8.5609 12.4653 8.61635 12.5019C9.0045 12.7582 9.53198 12.7155 9.87369 12.3738L14.0404 8.20711Z"
-                                    fill="#5920BC" />
-                                <path
-                                    d="M0.75 10C0.75 12.0416 0.860374 13.6311 1.13659 14.8739C1.41091 16.1083 1.83874 16.9543 2.44221 17.5578C3.04567 18.1613 3.89172 18.5891 5.12607 18.8634C6.36893 19.1396 7.95837 19.25 10 19.25C12.0416 19.25 13.6311 19.1396 14.8739 18.8634C16.1083 18.5891 16.9543 18.1613 17.5578 17.5578C18.1613 16.9543 18.5891 16.1083 18.8634 14.8739C19.1396 13.6311 19.25 12.0416 19.25 10C19.25 7.95837 19.1396 6.36893 18.8634 5.12607C18.5891 3.89173 18.1613 3.04567 17.5578 2.44221C16.9543 1.83874 16.1083 1.41091 14.8739 1.13659C13.6311 0.860374 12.0416 0.75 10 0.75C7.95837 0.75 6.36893 0.860374 5.12607 1.13659C3.89172 1.41091 3.04567 1.83874 2.44221 2.44221C1.83874 3.04567 1.41091 3.89173 1.13659 5.12607C0.860374 6.36893 0.75 7.95837 0.75 10Z"
-                                    stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
+                                <svg v-show="optionsdata[choiceindex].value.title == option.title" width="20"
+                                    height="20" viewBox="0 0 20 20" fill="none" xmlns="http:www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M14.0404 8.20711C14.4309 7.81658 14.4309 7.18342 14.0404 6.79289C13.6498 6.40237 13.0167 6.40237 12.6261 6.79289L9.16659 10.2525L7.79036 8.87623C7.39983 8.4857 6.76667 8.4857 6.37615 8.87623C5.98562 9.26675 5.98562 9.89992 6.37615 10.2904L8.45948 12.3738C8.50829 12.4226 8.5609 12.4653 8.61635 12.5019C9.0045 12.7582 9.53198 12.7155 9.87369 12.3738L14.0404 8.20711Z"
+                                        fill="#5920BC" />
+                                    <path
+                                        d="M0.75 10C0.75 12.0416 0.860374 13.6311 1.13659 14.8739C1.41091 16.1083 1.83874 16.9543 2.44221 17.5578C3.04567 18.1613 3.89172 18.5891 5.12607 18.8634C6.36893 19.1396 7.95837 19.25 10 19.25C12.0416 19.25 13.6311 19.1396 14.8739 18.8634C16.1083 18.5891 16.9543 18.1613 17.5578 17.5578C18.1613 16.9543 18.5891 16.1083 18.8634 14.8739C19.1396 13.6311 19.25 12.0416 19.25 10C19.25 7.95837 19.1396 6.36893 18.8634 5.12607C18.5891 3.89173 18.1613 3.04567 17.5578 2.44221C16.9543 1.83874 16.1083 1.41091 14.8739 1.13659C13.6311 0.860374 12.0416 0.75 10 0.75C7.95837 0.75 6.36893 0.860374 5.12607 1.13659C3.89172 1.41091 3.04567 1.83874 2.44221 2.44221C1.83874 3.04567 1.41091 3.89173 1.13659 5.12607C0.860374 6.36893 0.75 7.95837 0.75 10Z"
+                                        stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
 
+                            </div>
+                            <div v-if="choices.type == 'checkbox'">
+                                <svg v-show="dataForIconSwitch[choiceindex][labelindex] == false" width="20" height="20"
+                                    viewBox="0 0 20 20" fill="none" xmlns="http:www.w3.org/2000/svg">
+                                    <path
+                                        d="M0.75 10C0.75 12.0416 0.860374 13.6311 1.13659 14.8739C1.41091 16.1083 1.83874 16.9543 2.44221 17.5578C3.04567 18.1613 3.89172 18.5891 5.12607 18.8634C6.36893 19.1396 7.95837 19.25 10 19.25C12.0416 19.25 13.6311 19.1396 14.8739 18.8634C16.1083 18.5891 16.9543 18.1613 17.5578 17.5578C18.1613 16.9543 18.5891 16.1083 18.8634 14.8739C19.1396 13.6311 19.25 12.0416 19.25 10C19.25 7.95837 19.1396 6.36893 18.8634 5.12607C18.5891 3.89173 18.1613 3.04567 17.5578 2.44221C16.9543 1.83874 16.1083 1.41091 14.8739 1.13659C13.6311 0.860374 12.0416 0.75 10 0.75C7.95837 0.75 6.36893 0.860374 5.12607 1.13659C3.89172 1.41091 3.04567 1.83874 2.44221 2.44221C1.83874 3.04567 1.41091 3.89173 1.13659 5.12607C0.860374 6.36893 0.75 7.95837 0.75 10Z"
+                                        stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+
+                                <svg v-show="dataForIconSwitch[choiceindex][labelindex] == true" width="20" height="20"
+                                    viewBox="0 0 20 20" fill="none" xmlns="http:www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M14.0404 8.20711C14.4309 7.81658 14.4309 7.18342 14.0404 6.79289C13.6498 6.40237 13.0167 6.40237 12.6261 6.79289L9.16659 10.2525L7.79036 8.87623C7.39983 8.4857 6.76667 8.4857 6.37615 8.87623C5.98562 9.26675 5.98562 9.89992 6.37615 10.2904L8.45948 12.3738C8.50829 12.4226 8.5609 12.4653 8.61635 12.5019C9.0045 12.7582 9.53198 12.7155 9.87369 12.3738L14.0404 8.20711Z"
+                                        fill="#5920BC" />
+                                    <path
+                                        d="M0.75 10C0.75 12.0416 0.860374 13.6311 1.13659 14.8739C1.41091 16.1083 1.83874 16.9543 2.44221 17.5578C3.04567 18.1613 3.89172 18.5891 5.12607 18.8634C6.36893 19.1396 7.95837 19.25 10 19.25C12.0416 19.25 13.6311 19.1396 14.8739 18.8634C16.1083 18.5891 16.9543 18.1613 17.5578 17.5578C18.1613 16.9543 18.5891 16.1083 18.8634 14.8739C19.1396 13.6311 19.25 12.0416 19.25 10C19.25 7.95837 19.1396 6.36893 18.8634 5.12607C18.5891 3.89173 18.1613 3.04567 17.5578 2.44221C16.9543 1.83874 16.1083 1.41091 14.8739 1.13659C13.6311 0.860374 12.0416 0.75 10 0.75C7.95837 0.75 6.36893 0.860374 5.12607 1.13659C3.89172 1.41091 3.04567 1.83874 2.44221 2.44221C1.83874 3.04567 1.41091 3.89173 1.13659 5.12607C0.860374 6.36893 0.75 7.95837 0.75 10Z"
+                                        stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+
+                            </div>
 
                             <p class="ml-3">{{ option.title }}
                             </p>
@@ -92,7 +116,7 @@
                     <textarea placeholder="Leave your message for PRO"
                         class=" mt-2 pt-6 pl-6 border border-[#C7C9CB] w-full focus:outline-none h-24">
 
-                    </textarea>
+                        </textarea>
                 </div>
                 <div class="w-full flex items-center justify-start">
                     <div class=" flex items-center px-12 py-3 bg-[#F9F9F9] rounded-lg">
@@ -111,12 +135,11 @@
                     </div>
 
                 </div>
-                {{ optionsdatadisplay }}
                 <div class="w-full">
                     <h3>Choose a Pro</h3>
                     <div class="grid grid-cols-2 w-full">
                         <div v-for="tasker in chosenTaskersdisplayer" :key="tasker.id">
-                            <Bookingtaskers :taskerdata="tasker" :dataforprice="dataForPrice" />
+                            <Bookingtaskers :taskerdata="tasker" />
                             <button class="pt-4 w-full">Select</button>
                         </div>
                     </div>
@@ -127,7 +150,7 @@
     </main>
 </template>
 
-<script>
+    <script>
 import axios from 'axios';
 import Bookingtaskers from '../../components/booking/bookingtaskers.vue';
 export default {
@@ -144,7 +167,8 @@ export default {
             optionsdatahelper: [],
             servicesdata: {},
             lengthofoptions: 0,
-            dataForPrice: [],
+            prices: [],
+            dataForIconSwitch: [],
         }
     },
     computed: {
@@ -156,17 +180,10 @@ export default {
         },
         optionsdatadisplay() {
             return this.optionsdata
-        }
+        },
+
     },
     methods: {
-        test(title, choiceId) {
-            console.log("optionsdata");
-            console.log(this.optionsdata[choiceId]);
-            console.log(title);
-            console.log('====================================');
-            console.log(this.optionsdata[choiceId - 1] == title);
-            console.log('====================================');
-        },
         chosentaskersdatafilterstart() {
             this.chosenTaskers = []
             for (let l = 0; l < this.taskers.data.length; l++) {
@@ -182,10 +199,17 @@ export default {
                 return b.rating - a.rating;
             });
 
-
+            return this.chosenTaskers
 
         },
-        async chosentaskersdatafilter(choicedata, dataplaceholderindex) {
+        iconhandler(choiceindex, dataplaceholderindex) {
+            this.dataForIconSwitch[dataplaceholderindex][choiceindex] = !this.dataForIconSwitch[dataplaceholderindex][choiceindex]
+
+        },
+        async chosentaskersdatafilter(choiceindex, dataplaceholderindex) {
+            this.iconhandler(choiceindex, dataplaceholderindex)
+
+
             this.chosenTaskers = []
             for (let l = 0; l < this.taskers.data.length; l++) {
                 for (let index = 0; index < this.taskers.data[l].skills.length; index++) {
@@ -196,9 +220,7 @@ export default {
                     }
                 }
             }
-           
-            console.log(this.optionsdata);
-            console.log(this.chosenTaskers);
+         
 
             let filterables = [];
 
@@ -214,74 +236,148 @@ export default {
                     }
                 }
             }
-            console.log(filterables);
-            const temparr = []
+            await setTimeout(() => {
+                let temparr = []
+                let tempprices = []
 
-            if (this.servicesdata.serviceChoices[dataplaceholderindex].type == "radio") {
-                for (let z = 0; z < filterables.length; z++) {
-                    if (filterables[z] == true && this.optionsdata[z].value) {
-                        console.log(this.optionsdata[z].value);
-                        for (let k = 0; k < this.chosenTaskers.length; k++) {
-                            for (let f = 0; f < this.chosenTaskers[k].skills.length; f++) {
+                if (this.servicesdata.serviceChoices[dataplaceholderindex].type == "radio") {
+                    for (let z = 0; z < filterables.length; z++) {
+                      
+                        const tempoptions = this.optionsdata[z]
+                     
+                        if (filterables[z] == true && this.optionsdata[z].value.title != '') {
 
+                            for (let k = 0; k < this.chosenTaskers.length; k++) {
+                                for (let f = 0; f < this.chosenTaskers[k].skills.length; f++) {
 
-                                if (String(this.chosenTaskers[k].skills[f].option.title) == String(this.optionsdata[z].value)) {
-                                    temparr.push(this.chosenTaskers[k])
-                                    this.dataForPrice.push(this.chosenTaskers[k].skills[f].option.title)
-                                    break;
+                                    if (String(this.chosenTaskers[k].skills[f].option.title) == String(this.optionsdata[z].value.title)) {
+                                        temparr.push(this.chosenTaskers[k])
+                                       
+                                        break;
+                                    }
                                 }
                             }
                         }
+
                     }
-                    // console.log('====================================');
-                    // console.log('====================================');
-                    // console.log('====================================');
-                    // console.log(temparr);
-                    // console.log('====================================');
+
+
+                    temparr.sort(function (a, b) {
+                        return b.rating - a.rating;
+                    });
+
+                    this.chosenTaskers = temparr
+
                 }
-            }
-            else if (this.servicesdata.serviceChoices[dataplaceholderindex].type == "checkbox") {
-                console.log('amogus');
-            }
+                else if (this.servicesdata.serviceChoices[dataplaceholderindex].type == "checkbox") {
 
-            temparr.sort(function (a, b) {
-                return b.rating - a.rating;
-            });
-            this.chosenTaskers = temparr
-
-            // console.log('====================================');
-            // console.log('afterfilter');
-            // console.log(this.chosenTaskers);
-            // console.log('afterfilter');
-
-            // console.log('====================================');
+                    for (let z = 0; z < filterables.length; z++) {
 
 
-            // console.log(this.chosenTaskers);
-            return this.chosenTaskers
+                        this.chosentaskersdatafilterstart()
+
+
+                        if (filterables[z] == true && this.optionsdata[z].value.length > 0) {
+
+                            for (let k = 0; k < this.chosenTaskers.length; k++) {
+                                const tempoptionsarr = []
+                                const tempoptionstitlearr = []
+                                for (let f = 0; f < this.chosenTaskers[k].skills.length; f++) {
+                                    tempoptionsarr.push(this.chosenTaskers[k].skills[f])
+                                    tempoptionstitlearr.push(this.chosenTaskers[k].skills[f].option.title)
+                                    if (this.hasSubArray(tempoptionstitlearr, this.optionsdata[z].value)) {
+
+
+                                        let price = 0;
+
+                                        for (let pricelooper = 0; pricelooper < tempoptionsarr.length; pricelooper++) {
+                                            price = price + tempoptionsarr[pricelooper].price
+                                        }
+
+                                        const tempobj = {
+                                            tasker: this.chosenTaskers[k],
+                                            price: price
+                                        }
+                                        temparr.push(tempobj)
+
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        else if (filterables[z] == true && this.optiondata[z].value.length == 0) {
+
+                            const temptaskers = this.chosentaskersdatafilterstart()
+                            const tempobj = {
+                                tasker: temptaskers[k],
+                                price: 10
+                            }
+                            temparr.push(tempobj)
+                        }
+
+
+
+                        temparr.sort(function (a, b) {
+                            return b.tasker.rating - a.tasker.rating;
+                        });
+
+                        const secondarytemparr = []
+                        temparr.forEach(element => {
+                            secondarytemparr.push(element.tasker)
+                        });
+
+
+
+                        this.chosenTaskers = secondarytemparr
+                    }
+                    return this.chosenTaskers
+
+                }
+            }, 200)
+
+
+
+
+
+         
+        },
+        hasSubArray(master, sub) {
+         
+            const result = sub.every(val => master.includes(val.title));
+            return result
         }
     },
     async created() {
         this.servicesdata = await axios.get(`https:izzi-api-rest.herokuapp.com/api/v1/subServices/${this.params.id}/`)
         this.servicesdata = this.servicesdata.data
-        console.log(this.servicesdata);
         for (let index = 0; index < this.servicesdata.serviceChoices.length; index++) {
+            let tempobj
+            if (this.servicesdata.serviceChoices[index].type == "checkbox")
+                tempobj = {
+                    id: index,
+                    value: [],
+                }
+            else if (this.servicesdata.serviceChoices[index].type == "radio") {
+                tempobj = {
+                    id: index,
+                    value: '',
+                }
+            }
+            const temparrforicon = []
 
-            const tempobj = {
-                id: index,
-                value: [],
+            for (let i = 0; i < this.servicesdata.serviceChoices[index].options.length; i++) {
+                temparrforicon.push(false)
             }
 
-
+            this.dataForIconSwitch.push(temparrforicon)
             this.optionsdata.push(tempobj)
         }
-        console.log(this.servicesdata);
+      
+
         this.lengthofoptions = this.optionsdata.length
         this.taskers = await axios.get(`https:izzi-api-rest.herokuapp.com/api/v1/taskers`)
-        console.log(this.taskers.data);
 
         this.chosentaskersdatafilterstart()
-        console.log(this.chosenTaskers);
         this.justloaded = true
     },
 
@@ -289,5 +385,5 @@ export default {
 }
 </script>
 
-<style>
-</style>
+    <style>
+    </style>
