@@ -9,8 +9,8 @@
         <div>{{ taskerdata.bio }}</div>
         <div class="py-4 flex justify-between">
             <nuxt-link to="#">view profile</nuxt-link>
-            <p v-show="this.workPrice!=null">{{pricecalculation}}<span v-if="pricetype=='hourlyPrice'">$/hour</span>
-            <span v-if="pricetype=='fixedPrice'">$</span>
+            <p v-show="this.workPrice != null">{{ pricecalculation }}<span v-if="pricetype == 'hourlyPrice'">$/hour</span>
+                <span v-if="pricetype == 'fixedPrice'">$</span>
             </p>
         </div>
     </div>
@@ -54,10 +54,14 @@ export default {
     computed: {
         pricecalculation() {
             if (this.selected) {
-                if (this.pricetype=='hourlyPrice') {
-                    return this.workPrice*this.hoursofwork
+                if (this.pricetype == 'hourlyPrice') {
+                    return this.workPrice * this.hoursofwork
                 }
-                
+                else {
+                    return this.workPrice
+
+                }
+
             }
             else {
                 return this.workPrice
