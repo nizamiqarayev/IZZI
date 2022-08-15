@@ -102,14 +102,14 @@
                 </div>
                 <div class="flex">
                     <div class="relative">
-                        <h3 @click="calendarshow=!calendarshow">Task start date</h3>
-                        <vc-date-picker class="absolute" mode="dateTime" is34hr v-if="calendarshow" v-model="datepicker"></vc-date-picker>
+                        <h3 @click="calendarshow = !calendarshow">Task start date</h3>
+                        <vc-date-picker v-model="date" mode="dateTime" is24hr>
+                            <template v-slot="{ inputValue, inputEvents }">
+                                <input class="px-2 py-1 border rounded focus:outline-none focus:border-blue-300"
+                                    :value="inputValue" v-on="inputEvents" />
+                            </template>
+                        </vc-date-picker>
                     </div>
-                    <div>
-                        <h3>Task start time</h3>
-
-                    </div>
-
                 </div>
                 <div class="mt-10">
                     <h3>Explain your issue</h3>
@@ -157,6 +157,7 @@ export default {
     components: { Bookingtaskers },
     data() {
         return {
+            date:new Date(),
             calendarshow: false,
             justloaded: false,
             params: this.$route.params,
@@ -221,7 +222,7 @@ export default {
                     }
                 }
             }
-         
+
 
             let filterables = [];
 
@@ -243,9 +244,9 @@ export default {
 
                 if (this.servicesdata.serviceChoices[dataplaceholderindex].type == "radio") {
                     for (let z = 0; z < filterables.length; z++) {
-                      
+
                         const tempoptions = this.optionsdata[z]
-                     
+
                         if (filterables[z] == true && this.optionsdata[z].value.title != '') {
 
                             for (let k = 0; k < this.chosenTaskers.length; k++) {
@@ -253,7 +254,7 @@ export default {
 
                                     if (String(this.chosenTaskers[k].skills[f].option.title) == String(this.optionsdata[z].value.title)) {
                                         temparr.push(this.chosenTaskers[k])
-                                       
+
                                         break;
                                     }
                                 }
@@ -340,10 +341,10 @@ export default {
 
 
 
-         
+
         },
         hasSubArray(master, sub) {
-         
+
             const result = sub.every(val => master.includes(val.title));
             return result
         }
@@ -373,7 +374,7 @@ export default {
             this.dataForIconSwitch.push(temparrforicon)
             this.optionsdata.push(tempobj)
         }
-      
+
 
         this.lengthofoptions = this.optionsdata.length
         this.taskers = await axios.get(`https:izzi-api-rest.herokuapp.com/api/v1/taskers`)
