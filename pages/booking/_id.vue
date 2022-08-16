@@ -168,10 +168,12 @@
                 <div class="w-full mt-10">
                     <h3>Choose a Pro</h3>
                     <div class="grid grid-cols-2 gap-x-5 gap-y-4 w-full ">
-                        <div class="flex flex-col p-3 items-start justify-center border border-[#C7C9CB1F] rounded-md shadow-inner" v-for="(tasker, index) in chosenTaskersdisplayer" :key="tasker.id">
+                        <div class="flex flex-col p-3 items-start justify-center border border-[#C7C9CB1F] rounded-md shadow-inner"
+                            v-for="(tasker, index) in chosenTaskersdisplayer" :key="tasker.id">
                             <Bookingtaskers :selected="false" :taskerdata="tasker" :hoursofwork="hoursOfWork"
                                 :pricetype="chosenTaskersPriceType[index]" :workPrice="chosenTaskersPrices[index]" />
-                            <button class=" w-4/5 py-4  border rounded-md border-[#5920BC] #979797 flex items-center self-center justify-center hover:bg-[#5920BC] hover:text-white"
+                            <button
+                                class=" w-4/5 py-4  border rounded-md border-[#5920BC] #979797 flex items-center self-center justify-center hover:bg-[#5920BC] hover:text-white"
                                 @click="dataSetterForSelected(true, tasker, hoursOfWork, chosenTaskersPriceType[index], chosenTaskersPrices[index])">
                                 <p>Select</p>
                             </button>
@@ -179,9 +181,14 @@
                     </div>
                 </div>
             </div>
-            <div v-if="summary==true" class="pl-6">
-            <Bookingsummary :serviceChoices="servicesdata.serviceChoices" :serviceChoicesOptionValue="optionsdata" :location="startlocation" :startDate="date" :starttime="starttime" :detail="detail" />
-            
+            <div v-if="summary == true" class="pl-6">
+                <Bookingsummary @return="summary = !summary" :tasker="selectedtaskerdata[1]" :serviceChoices="servicesdata.serviceChoices"
+                    :serviceChoicesOptionValue="optionsdata" :location="startlocation" :startDate="date"
+                    :starttime="starttime" :subService="this.params.id" :detail="detail" />
+
+            </div>
+            <div v-if="needsSignIn == true">
+                <ModuleSignIn />
             </div>
 
         </div>
@@ -192,11 +199,13 @@
 import axios from 'axios';
 import Bookingtaskers from '../../components/booking/bookingtaskers.vue';
 import Bookingsummary from '../../components/booking/bookingsummary.vue';
+import ModuleSignIn from '../../components/ModuleSignIn.vue';
 export default {
-    components: { Bookingtaskers, Bookingsummary },
+    components: { Bookingtaskers, Bookingsummary, ModuleSignIn },
     data() {
         return {
             summary: false,
+            needsSignIn: false,
 
             date: new Date(),
             dateErrormsg: "",
@@ -206,7 +215,7 @@ export default {
 
             hoursOfWork: 0,
 
-            detail:'',
+            detail: '',
 
             calendarshow: false,
             justloaded: false,
@@ -216,6 +225,7 @@ export default {
             calculatedPrices: [],
             priceTypes: [],
             fullprices: [],
+
 
 
             startlocation: "",
@@ -300,7 +310,30 @@ export default {
             this.selectedtaskerdata.push(hoursOfWork)
             this.selectedtaskerdata.push(pricetype)
             this.selectedtaskerdata.push(workprice)
-            this.summary = !this.summary
+            console.log('====================================');
+            console.log(this.optionsdata);
+            console.log('====================================');
+            for (let optionsloop = 0; optionsloop < this.optionsdata.length; optionsloop++) {
+                if (this.optionsdata[optionsloop].value.length == 0) {
+                    alert("Please select one of the choice in Choice:" + optionsloop)
+                }
+
+            }
+            if (this.startlocation == "") {
+                alert("Please add a location")
+
+            }
+            if (this.detail == "") {
+                alert("Please add aditional information")
+
+            }
+            if (this.$store.state.auth.loggedIn == false) {
+                alert("You must be signed in")
+                 this.$router.push("/signin")
+            }
+            if (this.selectedtaskerdata[1] != null && this.startlocation != "" && this.detail != "" && this.$store.state.auth.loggedIn) {
+                this.summary = !this.summary
+            }
         },
 
         starttimecalculator() {
