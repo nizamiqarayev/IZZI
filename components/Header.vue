@@ -6,7 +6,7 @@
                         alt="">
                 </nuxt-link>
                 <nav class="flex items-center gap-8 text-sm">
-                   <nuxt-link to="/Order">
+                   <nuxt-link to="/orders">
                        <p class="hover:text-[#5920BC] hover: hover:cursor-pointer whitespace-nowrap">My Orders</p>
                    </nuxt-link> 
                     <nuxt-link to="/services"><p class="hover:text-[#5920BC] hover:cursor-pointer whitespace-nowrap">Services</p></nuxt-link>
