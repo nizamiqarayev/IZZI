@@ -4,14 +4,16 @@
             <p class="text-[30px] font-bold ">All Pros</p>
             <div class="w-full pt-16">
                 <div class="flex items-end justify-between gap-14">
-                    <div class="flex items-center border-[1px] bg-transparent border-[#E2E2E2] h-1/2 rounded relative w-3/5">
+                    <div
+                        class="flex items-center border-[1px] bg-transparent border-[#E2E2E2] h-1/2 rounded relative w-3/5">
                         <label for="search">
                             <img class="absolute bottom-3 left-3 z-20 " src="../assets/images/search (3).svg" alt="">
                         </label>
-                        <input type="text" v-model="searchkey" class="relative bg-transparent px-10 py-2 z-10 w-full" id="search">
+                        <input type="text" v-model="searchkey" class="relative bg-transparent px-10 py-2 z-10 w-full"
+                            id="search">
                     </div>
                     <div class="flex gap-8 w-2/5">
-                        <div >
+                        <div>
                             <p class="px-7">Rating</p>
                             <div class="border-[1px] border-[#C7C9CB] w-full rounded">
                                 <select v-model="rating"
@@ -67,7 +69,7 @@
                         <img src="../assets/images/Job hiring 1.svg" alt="">
                         <p>There is no aviable pro for this service :(</p>
                     </div>
-                    <div v-if="filteredEntries.length != 0" class="w-9/12 grid grid-cols-2 gap-5">
+                    <div v-if="filteredEntries.length != 0" class="w-9/12 grid grid-cols-2 gap-3">
                         <div v-for="tasker in filteredEntries" :key="tasker.id"
                             class="border-[1px] border-slate-400 rounded p-3 flex flex-col">
                             <div class="flex gap-1 relative">
@@ -174,6 +176,38 @@ export default {
                     id: null,
                     filter: false
                 },
+                {
+                    id: null,
+                    filter: false
+                },
+                {
+                    id: null,
+                    filter: false
+                },
+                {
+                    id: null,
+                    filter: false
+                },
+                {
+                    id: null,
+                    filter: false
+                },
+                {
+                    id: null,
+                    filter: false
+                },
+                {
+                    id: null,
+                    filter: false
+                },
+                {
+                    id: null,
+                    filter: false
+                },
+                {
+                    id: null,
+                    filter: false
+                },
 
 
             ],
@@ -221,7 +255,7 @@ export default {
             task_count: 'Descending',
             subService_unique: [],
             filtered_array: [],
-            searchkey:'',
+            searchkey: '',
 
         }
     },
@@ -231,7 +265,7 @@ export default {
 
     },
     async created() {
-        this.services = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/services/`)
+        this.services = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/subServices/`)
         this.cities = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/cities/`)
     },
     async asyncData({ }) {
@@ -334,9 +368,9 @@ export default {
             } else {
                 this.filtered_array = this.taskers
             }
-            this.filter_taskers=this.filtered_array
-            this.filtered_array=this.filter_taskers.filter((el)=>{
-                return el.user.first_name.toLowerCase().includes(this.searchkey.toLowerCase())||el.user.last_name.toLowerCase().includes(this.searchkey.toLowerCase())
+            this.filter_taskers = this.filtered_array
+            this.filtered_array = this.filter_taskers.filter((el) => {
+                return el.user.first_name.toLowerCase().includes(this.searchkey.toLowerCase()) || el.user.last_name.toLowerCase().includes(this.searchkey.toLowerCase())
             })
             if (this.rating == 'Descending' && this.task_count == 'Descending') {
                 this.filtered_array.sort((a, b) => b.rating - a.rating || b.completedTaskCount - a.completedTaskCount);

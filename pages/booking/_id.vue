@@ -124,7 +124,6 @@
                     <h3>Explain your issue</h3>
                     <textarea placeholder="Leave your message for PRO"
                         class=" mt-2 pt-6 pl-6 border border-[#C7C9CB] w-full focus:outline-none h-24">
-
                         </textarea>
                 </div>
                 <div class="w-full flex items-center justify-start">
