@@ -4,7 +4,9 @@
             <div class="pr-12 border-r">
                 <h2 class="font-bold text-2xl text-[#222222]">{{ services.title }}</h2>
                 <p class="text-[#999999 text-sm]">{{ services.description }}</p>
-
+                <Bookingtaskers v-if="selectedtaskerdata.length>0" :selected="selectedtaskerdata[0]" :taskerdata="selectedtaskerdata[1]"
+                    :hoursofwork="selectedtaskerdata[2]" :pricetype="selectedtaskerdata[3]"
+                    :workPrice="selectedtaskerdata[4]" />
             </div>
             <div class="pl-6">
                 <div v-for="(choices, choiceindex) in services.serviceChoices" :key="choiceindex">
@@ -100,24 +102,43 @@
 
 
                 </div>
-                <div class="flex justify-around items-center">
-                    <div class="relative">
-                        <h3>Task start date</h3>
-                        <vc-date-picker v-model="date" mode="date">
-                            <template v-slot="{ inputValue, inputEvents }">
-                                <input class="px-2 py-1 border text-center rounded focus:outline-none focus:border-blue-300"
-                                    :value="inputValue" v-on="inputEvents" />
-                            </template>
-                        </vc-date-picker>
-                    </div>
-                    <div>
-                        <h3>Task start date</h3>
-                        <vc-date-picker v-model="time" mode="time">
-                            <template v-slot="{ inputValue, inputEvents }">
-                                <input class="px-2 py-1 border text-center rounded focus:outline-none focus:border-blue-300"
-                                    :value="inputValue" v-on="inputEvents" />
-                            </template>
-                        </vc-date-picker>
+                <div class="flex w-full">
+                    <div class="w-full relative flex justify-between">
+                        <div>
+                            <h3 @click="calendarshow = !calendarshow">Task start date</h3>
+                            <div>
+                                <vc-date-picker v-model="date" :value="startdatecomputed" mode="date">
+                                    <template v-slot="{ inputValue, inputEvents }">
+                                        <input class="px-2 py-1 border rounded focus:outline-none focus:border-blue-300"
+                                            :value="inputValue" v-on="inputEvents" />
+                                    </template>
+                                </vc-date-picker>
+                                <p v-show="dateErrormsg != ''">{{ dateErrormsg }}</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3>Start Time</h3>
+                            <vc-date-picker v-model="starttime" mode="time" is24hr>
+                                <template v-slot="{ inputValue, inputEvents }">
+                                    <input class="px-2 py-1 border rounded focus:outline-none focus:border-blue-300"
+                                        :value="inputValue" v-on="inputEvents" />
+                                </template>
+                            </vc-date-picker>
+                        </div>
+
+                        <div>
+                            <h3>End Time</h3>
+
+                            <vc-date-picker v-model="endtime" mode="time" is24hr>
+                                <template v-slot="{ inputValue, inputEvents }">
+                                    <input class="px-2 py-1 border rounded focus:outline-none focus:border-blue-300"
+                                        :value="inputValue" v-on="inputEvents" />
+                                </template>
+                            </vc-date-picker>
+                        </div>
+
+
                     </div>
                 </div>
                 <div class="mt-10">
@@ -146,9 +167,11 @@
                 <div class="w-full">
                     <h3>Choose a Pro</h3>
                     <div class="grid grid-cols-2 w-full">
-                        <div v-for="tasker in chosenTaskersdisplayer" :key="tasker.id">
-                            <Bookingtaskers :taskerdata="tasker" />
-                            <button class="pt-4 w-full">Select</button>
+                        <div v-for="(tasker, index) in chosenTaskersdisplayer" :key="tasker.id">
+                            <Bookingtaskers :selected="false" :taskerdata="tasker" :hoursofwork="hoursOfWork"
+                                :pricetype="chosenTaskersPriceType[index]" :workPrice="chosenTaskersPrices[index]" />
+                            <button class="pt-4 w-full"
+                                @click="dataSetterForSelected(true, tasker, hoursOfWork, chosenTaskersPriceType[index], chosenTaskersPrices[index])">Select</button>
                         </div>
                     </div>
                 </div>
@@ -165,13 +188,24 @@ export default {
     components: { Bookingtaskers },
     data() {
         return {
-            date:new Date(),
-            time:new Date(),
+            date: new Date(),
+            dateErrormsg: "",
+
+            starttime: new Date(),
+            endtime: new Date(),
+
+            hoursOfWork: 0,
+
             calendarshow: false,
             justloaded: false,
             params: this.$route.params,
             taskers: {},
             chosenTaskers: [],
+            calculatedPrices: [],
+            priceTypes: [],
+            fullprices: [],
+
+
             startlocation: "",
             taskersdisplaydata: {},
             optionsdata: [],
@@ -180,23 +214,91 @@ export default {
             lengthofoptions: 0,
             prices: [],
             dataForIconSwitch: [],
+
+            timezone: '',
+
+            selectedtaskerdata: []
+
+        }
+    },
+    watch: {
+
+
+        date(newDate, oldDate) {
+            this.dateErrormsg = ""
+            if (newDate.getDate() - oldDate.getDate() < 1) {
+                this.dateErrormsg = "Date should be at least 1 day ahead"
+            }
+            this.starttime.setDate(newDate.getDate())
+            this.endtime.setDate(newDate.getDate())
+
+        },
+        starttime(newHour, oldHour) {
+
+
+
+        },
+        endtime(newTime, oldTime) {
+            if (newTime.getHours() <= this.starttime.getHours()) {
+                console.log('====================================');
+                this.hoursOfWork = 24 - Math.abs(newTime.getHours() - this.starttime.getHours())
+                console.log(this.hoursOfWork);
+
+                this.endtime.setDate(this.date.getDate() + 1)
+                for (let index = 0; index < this.calculatedPrices.length; index++) {
+                    this.calculatedPrices[index] = this.calculatedPrices * this.hoursOfWork
+                }
+                console.log('====================================');
+            }
+            else {
+                console.log('====================================');
+                this.hoursOfWork = Math.abs(newTime.getHours() - this.starttime.getHours())
+                console.log(this.hoursOfWork);
+                console.log('====================================');
+            }
         }
     },
     computed: {
+        startdatecomputed() {
+            return this.date
+        },
         services() {
             return this.servicesdata
         },
         chosenTaskersdisplayer() {
             return this.chosenTaskers
         },
+        chosenTaskersPrices() {
+            return this.calculatedPrices
+        },
+        chosenTaskersPriceType() {
+            return this.priceTypes
+        },
+
         optionsdatadisplay() {
             return this.optionsdata
         },
 
     },
     methods: {
+        dataSetterForSelected(selected, taskerdata, hoursOfWork, pricetype, workprice) {
+            this.selectedtaskerdata.push(selected)
+            this.selectedtaskerdata.push(taskerdata)
+            this.selectedtaskerdata.push(hoursOfWork)
+            this.selectedtaskerdata.push(pricetype)
+            this.selectedtaskerdata.push(workprice)
+
+        },
+
+        starttimecalculator() {
+            console.log('====================================');
+            console.log(this.starttime);
+            console.log('====================================');
+        },
+
         chosentaskersdatafilterstart() {
             this.chosenTaskers = []
+
             for (let l = 0; l < this.taskers.data.length; l++) {
                 for (let index = 0; index < this.taskers.data[l].skills.length; index++) {
                     if (this.taskers.data[l].skills[index].subService.id == this.params.id) {
@@ -262,7 +364,16 @@ export default {
                                 for (let f = 0; f < this.chosenTaskers[k].skills.length; f++) {
 
                                     if (String(this.chosenTaskers[k].skills[f].option.title) == String(this.optionsdata[z].value.title)) {
-                                        temparr.push(this.chosenTaskers[k])
+                                        let price = this.chosenTaskers[k].skills[f].price
+
+
+
+                                        const tempobj = {
+                                            tasker: this.chosenTaskers[k],
+                                            price: price,
+                                            type: this.chosenTaskers[k].skills[f].priceType
+                                        }
+                                        temparr.push(tempobj)
 
                                         break;
                                     }
@@ -274,10 +385,27 @@ export default {
 
 
                     temparr.sort(function (a, b) {
-                        return b.rating - a.rating;
+                        return b.tasker.rating - a.tasker.rating;
                     });
 
-                    this.chosenTaskers = temparr
+                    const secondarytemparr = []
+                    temparr.forEach(element => {
+                        secondarytemparr.push(element.tasker)
+                    });
+                    const secondarytemparrforprices = []
+                    temparr.forEach(element => {
+                        secondarytemparrforprices.push(element.price)
+                    });
+                    const secondarytemparrpricetypes = []
+                    temparr.forEach(element => {
+                        secondarytemparrpricetypes.push(element.type)
+                    });
+
+
+                    this.calculatedPrices = secondarytemparrforprices
+                    this.priceTypes = secondarytemparrpricetypes
+
+                    this.chosenTaskers = secondarytemparr
 
                 }
                 else if (this.servicesdata.serviceChoices[dataplaceholderindex].type == "checkbox") {
@@ -298,16 +426,25 @@ export default {
                                     tempoptionstitlearr.push(this.chosenTaskers[k].skills[f].option.title)
                                     if (this.hasSubArray(tempoptionstitlearr, this.optionsdata[z].value)) {
 
+                                        console.log('====================================');
+                                        console.log(this.chosenTaskers[k].skills[f].priceType);
+                                        console.log('====================================');
 
                                         let price = 0;
 
                                         for (let pricelooper = 0; pricelooper < tempoptionsarr.length; pricelooper++) {
                                             price = price + tempoptionsarr[pricelooper].price
+
+                                        }
+                                        let fullprice
+                                        if (this.chosenTaskers[k].skills[f].priceType == "hourlyPrice") {
+                                            fullprice = price * this.hoursOfWork
                                         }
 
                                         const tempobj = {
                                             tasker: this.chosenTaskers[k],
-                                            price: price
+                                            price: price,
+                                            type: this.chosenTaskers[k].skills[f].priceType,
                                         }
                                         temparr.push(tempobj)
 
@@ -319,11 +456,14 @@ export default {
                         else if (filterables[z] == true && this.optiondata[z].value.length == 0) {
 
                             const temptaskers = this.chosentaskersdatafilterstart()
-                            const tempobj = {
-                                tasker: temptaskers[k],
-                                price: 10
+                            for (let f = 0; f < this.chosenTaskers[k].skills.length; f++) {
+                                const tempobj = {
+                                    tasker: temptaskers[k],
+                                    price: temptaskers[k].skills[f].option.price
+                                }
+                                temparr.push(tempobj)
                             }
-                            temparr.push(tempobj)
+
                         }
 
 
@@ -331,14 +471,27 @@ export default {
                         temparr.sort(function (a, b) {
                             return b.tasker.rating - a.tasker.rating;
                         });
+                        console.log('====================================');
+                        console.log(temparr);
+                        console.log('====================================');
 
                         const secondarytemparr = []
                         temparr.forEach(element => {
                             secondarytemparr.push(element.tasker)
                         });
+                        const secondarytemparrforprices = []
+                        temparr.forEach(element => {
+                            secondarytemparrforprices.push(element.price)
+                        });
+
+                        const secondarytemparrpricetypes = []
+                        temparr.forEach(element => {
+                            secondarytemparrpricetypes.push(element.type)
+                        });
+                        this.priceTypes = secondarytemparrpricetypes
 
 
-
+                        this.calculatedPrices = secondarytemparrforprices
                         this.chosenTaskers = secondarytemparr
                     }
                     return this.chosenTaskers
@@ -359,8 +512,18 @@ export default {
         }
     },
     async created() {
+
+        this.date.setDate(this.date.getDate() + 1)
+        this.starttime.setDate(this.date.getDate())
+        this.endtime.setDate(this.date.getDate())
+        this.endtime.setHours(this.starttime.getHours() + 1)
+        this.hoursOfWork = 1
+
         this.servicesdata = await axios.get(`https:izzi-api-rest.herokuapp.com/api/v1/subServices/${this.params.id}/`)
         this.servicesdata = this.servicesdata.data
+        console.log('====================================');
+        console.log(this.servicesdata);
+        console.log('====================================');
         for (let index = 0; index < this.servicesdata.serviceChoices.length; index++) {
             let tempobj
             if (this.servicesdata.serviceChoices[index].type == "checkbox")
@@ -387,7 +550,9 @@ export default {
 
         this.lengthofoptions = this.optionsdata.length
         this.taskers = await axios.get(`https:izzi-api-rest.herokuapp.com/api/v1/taskers`)
-
+        console.log('====================================');
+        console.log(this.taskers);
+        console.log('====================================');
         this.chosentaskersdatafilterstart()
         this.justloaded = true
     },
