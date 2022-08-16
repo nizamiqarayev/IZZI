@@ -20,7 +20,7 @@
                         <img src="../assets/images/headerpfp/Oval.svg" alt="">
                         <p
                             class="flex items-center hover:text-[#5920BC] h-8 px-3  rounded-md border border-transparent hover:border-gray-200 hover:shadow-inner ">
-                            Elon Musk</p>
+                            {{this.$auth.$state.user.first_name}} {{this.$auth.$state.user.last_name}}</p>
                     </div>
                 </nuxt-link>
             </div>

@@ -62,6 +62,7 @@ export default {
                 const response = await this.$auth.loginWith('local', { data: data })
                 console.log(response);
                 await this.$auth.$storage.setUniversal('email', response.data.email)
+                // await this.$auth.$storage.setUniversal('email', response.data.)
                 await this.$auth.setUserToken(response.data.access, response.data.refresh)
 
             }

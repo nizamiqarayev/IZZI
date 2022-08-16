@@ -76,17 +76,16 @@
                                 <img class="rounded-full h-10 w-10" :src="order.subService.coverPhoto"
                                     alt="">
                                 <p>{{ order.subService.title }}</p>
-                                {{ message(order) }}
                             </div>
                         </div>
                         <div class="w-1/12 text-center">
-                            <p>03.03.2022</p>
+                            <p>{{date(order.startDate)}}</p>
                         </div>
                         <div class="w-1/12 text-center">
-                            <p>{{ order.status }}</p>
+                            <p>{{ status(order.status) }}</p>
                         </div>
                         <div class="w-1/12 text-center">
-                            <p>{{ order.totalAmount }}</p>
+                            <p>{{ order.totalAmount }} ₼</p>
                         </div>
                         <div class="w-1/12 text-center">
                             <nuxt-link :to="`orders/${order.id}`">
@@ -114,6 +113,7 @@ export default {
             orders: [],
             search: '',
             temp_orders: [],
+            
 
         }
     },
@@ -131,7 +131,28 @@ export default {
     methods: {
         message(a) {
             console.log("message", a);
-        }
+        },
+        date(data){
+            let new_date=new Date(data)
+            return new_date.getDate()+"."+(new_date.getMonth()+1)+"."+new_date.getFullYear()
+        },
+        status(data){
+            if(data=='accepted'){
+                return 'Accepted'
+            }
+            else if(data=='closed'){
+                return 'Cancelled'
+            }
+            else if(data=='completed'){
+                return 'Completed'
+            }
+            else if(data=='inProgress'){
+                return 'In progress'
+            }
+            else if(data=='new'){
+                return "New"
+            }
+        },
     },
     computed: {
         filteredOrders() {

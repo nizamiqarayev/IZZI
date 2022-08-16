@@ -13,9 +13,9 @@
                 </div>
                 <div class="flex items-center gap-2 text-[#5920BC]">
                     <img src="../../assets/images/accounticons/edit.svg" alt="">
-                    <p>Edit profile</p>
+                    <p class="cursor-pointer">Edit profile</p>
                 </div>
-                <img src="../../assets/images/accounticons/Exit.svg" alt="">
+                <img class="cursor-pointer" src="../../assets/images/accounticons/Exit.svg" alt="">
             </div>
         </div>
         <div class="pt-8 w-full items-center pb-28 ">
@@ -23,8 +23,8 @@
                 <div class="flex items-center gap-4">
                     <img class="h-14 w-14" src="../../assets/images/headerpfp/Oval.svg" alt="">
                     <div>
-                        <h3 class="font-bold text-xl">Elon Musk</h3>
-                        <p class="text-sm">johndoe@gmail.com</p>
+                        <h3 class="font-bold text-xl">{{this.$auth.$state.user.first_name}} {{this.$auth.$state.user.last_name}}</h3>
+                        <p class="text-sm">{{this.$auth.$state.user.email}}</p>
                     </div>
                 </div>
                 <div class="space-y-4">

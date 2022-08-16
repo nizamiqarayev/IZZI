@@ -4,14 +4,14 @@
             <div class="w-full py-20">
                 <p class="font-bold text-3xl mb-8">All Blogs</p>
                 <div class="grid grid-cols-3 gap-4">
-                    <div class="flex flex-col shadow-md" v-for="blog in blogs.data" :key="blog.id">
+                    <div class="flex flex-col h-full shadow-md" v-for="blog in blogs.data" :key="blog.id">
                         <nuxt-link :to="`blogs/${blog.id}`">
                             <img class="h-36 object-cover" :src="blog.coverPhoto" alt="">
                             <div class="p-3 flex flex-col flex-1 justify-between">
                                 <div>
                                     <p class="mt-4 text-xl font-bold text-[#222222]">{{ blog.title }}</p>
                                 </div>
-                                <div>
+                                <div class="flex flex-col justify-between">
                                     <p class="mt-3 text-[#222222] h-16 truncate whitespace-normal text-sm text-bold">{{
                                             blog.description
                                     }}</p>
@@ -47,7 +47,7 @@ export default {
     },
     async mounted() {
         this.blogs = await this.$axios.get("blogs/")
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
     },
     methods: {
 
