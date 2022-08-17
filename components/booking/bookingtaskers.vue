@@ -1,6 +1,6 @@
 <template>
-    <div class=" ">
-        <div class="flex items-center"><img src="../../assets/images/headerpfp/Oval.svg" alt="">
+    <div class=" flex flex-col justify-between" :class="selected ? 'max-w-[80%]' : 'h-full'">
+        <div class="flex items-center"><img class="h-14 w-14" src="../../assets/images/headerpfp/Oval.svg" alt="">
             <div class="ml-3">
                 <h3>{{ taskerdata.user.first_name }} {{ taskerdata.user.last_name }}</h3>
                 <div class="flex items-center gap-2">
@@ -13,19 +13,22 @@
                         </svg>
 
                     </div>
-                    <p class="text-[#FFC107]">{{this.taskerdata.rating}}</p>
-                    <p class="text-[#979797]">({{this.taskerdata.completedTaskCount}})</p>
+                    <p class="text-[#FFC107]">{{ this.taskerdata.rating }}</p>
+                    <p class="text-[#979797]">({{ this.taskerdata.completedTaskCount }})</p>
                 </div>
 
 
                 <!-- <div v-html="ratingdisplay" class="flex"></div> -->
             </div>
         </div>
-        <div class="my-4">{{ taskerdata.bio }}</div>
-        <div class="py-4 flex justify-between items-center">
-            <nuxt-link to="#" class="text-[#5920BC] mr-24">view profile</nuxt-link>
-            <p v-show="this.workPrice != null">{{ pricecalculation }}<span
-                    v-if="pricetype == 'hourlyPrice'">$ / per hour</span>
+        <div class="my-4 w-auto break-normal h-auto">
+            <p class="">{{ taskerdata.bio }}</p>
+        </div>
+        <div class="max-w-full py-4 flex justify-between items-center">
+            <nuxt-link to="#" class="whitespace-nowrap text-[#5920BC]">view profile</nuxt-link>
+            <p v-show="this.workPrice != null">{{ pricecalculation }}<span class="whitespace-nowrap"
+                    v-if="pricetype == 'hourlyPrice'">$ / per
+                    hour</span>
                 <span v-if="pricetype == 'fixedPrice'">$</span>
             </p>
         </div>
