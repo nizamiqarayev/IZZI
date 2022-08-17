@@ -79,7 +79,7 @@
                         fill="#5920BC" />
                 </svg>
             </div>
-            <div class="py-4 px-20 bg-[#5920BC] flex items-center hover:cursor-pointer" @click="submitorder()">
+            <div class="py-4 px-20 rounded-md bg-[#5920BC] flex items-center hover:cursor-pointer" @click="submitorder()">
                 <p class="text-white mr-2">Complete Task </p>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
