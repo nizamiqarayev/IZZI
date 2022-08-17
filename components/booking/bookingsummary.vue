@@ -1,7 +1,7 @@
 <template>
     <div class="max-w-3xl  pr-8">
         <div class="flex gap-20 pb-7 border-b ">
-            <div class="flex flex-col gap-y-6" >
+            <div class="flex flex-col gap-y-6">
                 <div class="flex justify-between">
                     <div class="flex gap-x-4">
                         <div>
@@ -107,6 +107,7 @@ export default {
         startDate: Date,
         starttime: Date,
         detail: String,
+        totalAmount: Number,
         subService: Number,
         tasker: Object,
     },
@@ -122,7 +123,8 @@ export default {
                 subService: [],
                 startDate: [],
                 address: "",
-                detail: []
+                detail: [],
+                totalAmount: 0,
             }
         }
     },
@@ -139,12 +141,16 @@ export default {
             console.log(this.$store.state.auth.accesslocal);
             console.log('====================================');
             this.$axios.setHeader('Authorization', this.$store.state.auth.accesslocal)
-            const posting = this.$axios.post("orders/", this.dataforsubmit)
             console.log(this.dataforsubmit);
+            this.$axios.post("orders/", this.dataforsubmit).then(response => {
+                console.log(response.data.success)
+                if (response.data.success == "true") {
+                    this.$router.push("/orders/")
+                }
+            }
+            )
 
-            console.log('====================================');
-            console.log(posting);
-            console.log('====================================');
+
         }
     },
     mounted() {
@@ -184,6 +190,7 @@ export default {
         this.dataforsubmit.detail = this.detail
         this.dataforsubmit.address = this.location
         this.dataforsubmit.tasker = this.tasker.id
+        this.dataforsubmit.totalAmount = this.totalAmount
 
 
         let temparr = []

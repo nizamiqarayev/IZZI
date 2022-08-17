@@ -196,6 +196,7 @@
                     proselected= !proselected    
                 
                 }" :tasker="selectedtaskerdata[1]" :serviceChoices="servicesdata.serviceChoices"
+                    :totalAmount="updaterselectedtaskerdata[4]*this.hoursOfWork"
                     :serviceChoicesOptionValue="optionsdata" :location="startlocation" :startDate="date"
                     :starttime="starttime" :subService="this.params.id" :detail="detail" />
 
@@ -629,6 +630,9 @@ export default {
         this.chosentaskersdatafilterstart()
         this.justloaded = true
     },
+    // mounted() {
+    //     if()
+    // }
 
 
 }
