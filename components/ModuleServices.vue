@@ -11,7 +11,7 @@
                         :style="`background-image: url('${service.coverPhoto}')`">
                         <div
                             class="w-3/4 py-4 ml-4 mb-4 rounded-md bg-white flex flex-col justify-center items-start pl-6 whitespace-nowrap">
-                            <h2 class="text-xl font-semibold">{{ service.title }}</h2>
+                            <h2 class="text-xl font-bold">{{ service.title }}</h2>
                             <p class="flex items-center">
                                 <img src="../assets/images/serviceimages/dollar.png" alt="">
                                 <span>Starts from {{ service.averagePrice }}$/h</span>
@@ -20,7 +20,7 @@
                     </div>
                 </nuxt-link>
                 <ul class="flex flex-col  ">
-                    <li class="py-2 pl-2 border hover:py-4 hover:px-4 hover:bg-slate-300 transition-all" v-for="subservice in service.subServices" :key="subservice.id">
+                    <li class="py-2 pl-3 border font-semibold hover:text-[#5920BC]  transition-all" v-for="subservice in service.subServices" :key="subservice.id">
                         <nuxt-link :to="`/booking/${subservice.id}`">{{ subservice.title }}</nuxt-link>
                     </li>
                 </ul>
