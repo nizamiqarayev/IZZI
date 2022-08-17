@@ -1,5 +1,5 @@
 <template>
-    <div class=" flex flex-col justify-between" :class="selected ? 'max-w-[80%]' : 'h-full'">
+    <div class=" flex flex-col justify-between" :class="selected ? 'max-w-[80%]' : 'w-full h-full'">
         <div class="flex items-center"><img class="h-14 w-14" src="../../assets/images/headerpfp/Oval.svg" alt="">
             <div class="ml-3">
                 <h3>{{ taskerdata.user.first_name }} {{ taskerdata.user.last_name }}</h3>
@@ -26,10 +26,10 @@
         </div>
         <div class="max-w-full py-4 flex justify-between items-center">
             <nuxt-link to="#" class="whitespace-nowrap text-[#5920BC]">view profile</nuxt-link>
-            <p v-show="this.workPrice != null">{{ pricecalculation }}<span class="whitespace-nowrap"
+            <p v-show="this.workPrice != null">{{ pricecalculation }}<span  class="whitespace-nowrap"
                     v-if="pricetype == 'hourlyPrice'">$ / per
                     hour</span>
-                <span v-if="pricetype == 'fixedPrice'">$</span>
+                <span class="w-full" v-if="pricetype == 'fixedPrice'">$</span>
             </p>
         </div>
     </div>

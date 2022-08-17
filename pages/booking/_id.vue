@@ -112,9 +112,9 @@
 
                 </div>
                 <div class="flex w-full">
-                    <div class="w-full relative flex justify-between">
+                    <div class="w-full mt-10 relative flex justify-between">
                         <div>
-                            <h3 @click="calendarshow = !calendarshow">Task start date</h3>
+                            <h3 class="mb-2" @click="calendarshow = !calendarshow">Task start date</h3>
                             <div>
                                 <vc-date-picker v-model="date" :value="startdatecomputed" mode="date">
                                     <template v-slot="{ inputValue, inputEvents }">
@@ -127,7 +127,7 @@
                         </div>
 
                         <div>
-                            <h3>Start Time</h3>
+                            <h3 class="mb-2">Start Time</h3>
                             <vc-date-picker v-model="starttime" mode="time" is24hr>
                                 <template v-slot="{ inputValue, inputEvents }">
                                     <input class="px-2 py-1 border rounded focus:outline-none focus:border-blue-300"
@@ -137,7 +137,7 @@
                         </div>
 
                         <div>
-                            <h3>End Time</h3>
+                            <h3 class="mb-2">End Time</h3>
 
                             <vc-date-picker v-model="endtime" mode="time" is24hr>
                                 <template v-slot="{ inputValue, inputEvents }">
