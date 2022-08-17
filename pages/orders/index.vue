@@ -1,8 +1,8 @@
 <template>
-    <section class="w-full font-quicksand bg-main flex gap-10">
+    <section class="w-full font-quicksand bg-main bg-no-repeat flex gap-10">
         <main class="w-9/12 mx-auto mt-[24px] mb-10  text-sm flex gap-3">
             <div class=" w-3/12 flex-1 flex flex-col h-[330px] p-6 bg-white border-[1px] rounded-md border-[#C7C9CB1F]">
-                <p class="font-bold pl-3">Orders</p>
+                <p class="font-bold text-lg pl-3">Orders</p>
                 <div @click="selectedMenu = 1"
                     :class="selectedMenu == 1 ? 'border-l-4 border-[#5920BC] bg-[#5920BC] bg-opacity-[0.03]' : 'border-l-transparent'"
                     class="hover:cursor-pointer hover:border-[#5920BC] pl-3 py-4 ">
