@@ -1,9 +1,9 @@
 <template>
-    <div class="w-full pr-8">
-        <div class="flex gap-20 pb-7 border-b">
-            <div>
+    <div class="max-w-3xl  pr-8">
+        <div class="flex gap-20 pb-7 border-b ">
+            <div class="flex flex-col gap-y-6" >
                 <div class="flex justify-between">
-                    <div class="flex">
+                    <div class="flex gap-x-4">
                         <div>
                             <svg width="16" height="21" viewBox="0 0 16 21" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -18,8 +18,8 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div class="flex items-center">
+                <div class="space-y-6">
+                    <div class="flex items-center  gap-x-4">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M0.881735 9.85497C1.31689 12.0629 2.67214 13.9293 4.27595 15.4274C5.8763 16.9223 7.67363 18.0028 8.89211 18.6416C9.59264 19.009 10.4074 19.009 11.1079 18.6416C12.3264 18.0028 14.1237 16.9223 15.7241 15.4274C17.3279 13.9293 18.6831 12.0629 19.1183 9.85498C19.4903 7.96728 19.0938 5.69338 17.6879 3.90027C16.2997 2.1298 13.8642 0.75 10 0.75C6.1358 0.75 3.70031 2.1298 2.31213 3.90027C0.906188 5.69338 0.509686 7.96728 0.881735 9.85497Z"
@@ -30,7 +30,7 @@
                         </svg>
                         <p>Start Adress</p>
                     </div>
-                    <div class="flex items-center">
+                    <div class="flex items-center gap-x-4">
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="11" cy="11" r="10" stroke="#5920BC" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" />
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <div class=" pb-7">
+            <div class=" w-[40%] pb-7">
                 <div class="">
                     <div class="flex flex-col gap-3" v-for="(choicevalue, index) in dataforvalue" :key="choicevalue.id">
                         <div class="flex flex-col gap-y-3" v-if="isArr[index] == false">
@@ -54,8 +54,8 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <p class="whitespace-nowrap">{{ location }}</p>
+                <div class="mt-6 mb-6 break-all">
+                    <p class="">{{ location }}</p>
                 </div>
                 <div>
                     <p>{{ startDate.getDate() }}/{{ startDate.getMonth() }}/{{ startDate.getFullYear() }}
