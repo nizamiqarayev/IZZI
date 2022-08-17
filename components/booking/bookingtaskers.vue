@@ -23,7 +23,7 @@
         </div>
         <div class="my-4">{{ taskerdata.bio }}</div>
         <div class="py-4 flex justify-between items-center">
-            <nuxt-link to="#" class="text-[#5920BC]">view profile</nuxt-link>
+            <nuxt-link to="#" class="text-[#5920BC] mr-24">view profile</nuxt-link>
             <p v-show="this.workPrice != null">{{ pricecalculation }}<span
                     v-if="pricetype == 'hourlyPrice'">$ / per hour</span>
                 <span v-if="pricetype == 'fixedPrice'">$</span>
