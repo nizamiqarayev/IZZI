@@ -8,22 +8,25 @@
                 </div>
                 <div class="flex flex-col gap-4">
                     <div class="flex gap-3 flex-col">
-                        <div>
-                            {{ message(serviceChoices) }}
-                            <div v-for="(option, index) in serviceChoices" :key="option.id" class="flex justify-between">
-                                <div class="flex gap-1">
-                                    <img class="h-5 w-5" src="../../assets/images/Path.svg" alt="">
-                                    <p class="text-black text-opacity-50">{{ option.title }}</p>
-                                </div>
-                                <div class="flex" v-if="option.type == 'checkbox'">
-                                    <div class="flex" v-for="(item, index) in options" :key="item">
-                                        <p class="text-right">{{ item.title }}</p>
-                                        <p v-if="index < options.length - 1">,</p>
+                        <div class="flex">
+                            <div class=""><img class="h-5 w-5" src="../../assets/images/Path.svg" alt=""></div>
+                            <div class="flex-1">
+                                <div v-for="(option, index) in serviceChoices" :key="option.id"
+                                    class="flex flex-1 justify-between">
+                                    <div class="flex gap-1">
+
+                                        <p class="text-black text-opacity-50">{{ option.title }}</p>
                                     </div>
-                                </div>
-                                <div v-if="option.type == 'radio'">
-                                    <div>
-                                        <p class="text-right">{{ options[index].title }}</p>
+                                    <div class="flex" v-if="option.type == 'checkbox'">
+                                        <div class="flex" v-for="(item, index) in options" :key="item">
+                                            <p class="text-right">{{ item.title }}</p>
+                                            <p v-if="index < options.length - 1">,</p>
+                                        </div>
+                                    </div>
+                                    <div v-if="option.type == 'radio'">
+                                        <div>
+                                            <p class="text-right">{{ options[index].title }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +56,7 @@
                         <!-- <div v-if="order.photos == 0 ">
                             <p class="">There is no photos to show...</p>
                         </div> -->
-                        <div v-if="order.photos==0">
+                        <div v-if="order.photos == 0">
                             <img :src="subService.coverPhoto" alt="">
                         </div>
                     </div>
@@ -81,14 +84,14 @@
                     </div>
                 </div>
                 <div class="w-full">
-                    <p>{{tasker.bio}}</p>
+                    <p>{{ tasker.bio }}</p>
                 </div>
                 <div class="flex">
                     <p class="text-[#5920BC]">view profile</p>
                 </div>
                 <div class="w-full">
                     <div class="border-[1px] rounded py-2">
-                        <p class="text-center">{{status(order.status)}}</p>
+                        <p class="text-center">{{ status(order.status) }}</p>
                     </div>
                 </div>
             </div>
@@ -103,7 +106,7 @@ export default {
         return {
             order: {},
             tasker: {},
-            tasker_user:{},
+            tasker_user: {},
             subService: {},
             serviceChoices: [],
             options: [],
@@ -118,7 +121,7 @@ export default {
         this.order = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/orders/${this.$route.params.id}`, config)
         this.order = this.order.data
         this.tasker = this.order.tasker
-        this.tasker_user =this.tasker.user
+        this.tasker_user = this.tasker.user
         this.subService = this.order.subService
         this.options = this.order.options
         this.serviceChoices = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/subServices/${this.subService.id}`, config)
@@ -130,20 +133,20 @@ export default {
         message(data) {
             console.log(data);
         },
-        status(data){
-            if(data=='accepted'){
+        status(data) {
+            if (data == 'accepted') {
                 return 'Accepted'
             }
-            else if(data=='closed'){
+            else if (data == 'closed') {
                 return 'Cancelled'
             }
-            else if(data=='completed'){
+            else if (data == 'completed') {
                 return 'Completed'
             }
-            else if(data=='inProgress'){
+            else if (data == 'inProgress') {
                 return 'In progress'
             }
-            else if(data=='new'){
+            else if (data == 'new') {
                 return "New"
             }
         },
