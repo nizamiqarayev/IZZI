@@ -20,7 +20,7 @@
                     </div>
                 </nuxt-link>
                 <ul class="flex flex-col  ">
-                    <li class="py-2 pl-2 border hover:py-4 hover:px-4 hover:bg-slate-300 transition-all" v-for="subservice in service.subServices" :key="subservice.id">
+                    <li class="py-2 pl-3 font-semibold border hover:text-[#5920BC] transition-all" v-for="subservice in service.subServices" :key="subservice.id">
                         <nuxt-link :to="$auth.$state.loggedIn ? `/booking/${subservice.id}` : '/signin' ">{{ subservice.title }}</nuxt-link>
                     </li>
                 </ul>

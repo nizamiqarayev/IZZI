@@ -88,7 +88,7 @@
                             <p>{{ order.totalAmount }} ₼</p>
                         </div>
                         <div class="w-1/12 text-center">
-                            <nuxt-link :to="`orders/${order.id}`">
+                            <nuxt-link :to="`/orders/${order.id}`">
                                 <p>details</p>
                             </nuxt-link>
                         </div>

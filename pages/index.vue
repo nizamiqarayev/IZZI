@@ -10,6 +10,10 @@ export default {
   components: { SignIn, SignUp },
   mounted(){
         window.scrollTo(0,0)
+        
+    },
+    created(){
+        
     }
 }
 </script>

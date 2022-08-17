@@ -6,8 +6,10 @@
                 <div class="flex items-center gap-3 ">
                     <p :class="onlineStatus ? 'text-gray-300' : 'text-[#5920BC]'">offline</p>
                     <div class="h-5 rounded-full relative w-8 px-1 hover:cursor-pointer border border-[#5920BC] flex items-center transition-all duration-100 "
-                     @click="onlineStatus = !onlineStatus">
-                        <img class="transition-all mx-auto relative " :class="onlineStatus ? 'translate-x-2' : '-translate-x-2'" src="../../assets/images/accounticons/Vector.svg" alt="">
+                        @click="onlineStatus = !onlineStatus">
+                        <img class="transition-all mx-auto relative "
+                            :class="onlineStatus ? 'translate-x-2' : '-translate-x-2'"
+                            src="../../assets/images/accounticons/Vector.svg" alt="">
                     </div>
                     <p :class="onlineStatus ? 'text-[#5920BC]' : 'text-gray-300'">online</p>
                 </div>
@@ -15,7 +17,7 @@
                     <img src="../../assets/images/accounticons/edit.svg" alt="">
                     <p class="cursor-pointer">Edit profile</p>
                 </div>
-                <img class="cursor-pointer" src="../../assets/images/accounticons/Exit.svg" alt="">
+                <img @click="logout()" class="cursor-pointer" src="../../assets/images/accounticons/Exit.svg" alt="">
             </div>
         </div>
         <div class="pt-8 w-full items-center pb-28 ">
@@ -23,8 +25,9 @@
                 <div class="flex items-center gap-4">
                     <img class="h-14 w-14" src="../../assets/images/headerpfp/Oval.svg" alt="">
                     <div>
-                        <h3 class="font-bold text-xl">{{this.$auth.$state.user.first_name}} {{this.$auth.$state.user.last_name}}</h3>
-                        <p class="text-sm">{{this.$auth.$state.user.email}}</p>
+                        <h3 class="font-bold text-xl">{{ this.$auth.$state.user.first_name }}
+                            {{ this.$auth.$state.user.last_name }}</h3>
+                        <p class="text-sm">{{ this.$auth.$state.user.email }}</p>
                     </div>
                 </div>
                 <div class="space-y-4">
@@ -43,7 +46,31 @@ export default {
             onlineStatus: true,
         }
     },
-}
+    methods: {
+        logout() {
+            localStorage.clear()
+            localStorage.vuex = ''
+            var cookies = document.cookie.split("; ");
+            for (var c = 0; c < cookies.length; c++) {
+                var d = window.location.hostname.split(".");
+                while (d.length > 0) {
+                    var cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
+                    var p = location.pathname.split('/');
+                    document.cookie = cookieBase + '/';
+                    while (p.length > 0) {
+                        document.cookie = cookieBase + p.join('/');
+                        p.pop();
+                    };
+                    d.shift();
+                }
+                
+                this.$router.push('/')
+                
+                
+            }
+            }
+        },
+    }
 </script>
 
 <style>

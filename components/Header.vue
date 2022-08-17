@@ -15,7 +15,7 @@
                 </nav>
             </div>
             <div v-if="headerstate == true">
-                <nuxt-link to="Account">
+                <nuxt-link to="/Account">
                     <div class="flex items-center gap-3">
                         <img src="../assets/images/headerpfp/Oval.svg" alt="">
                         <p

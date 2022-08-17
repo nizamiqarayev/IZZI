@@ -2,7 +2,7 @@
     <main class="font-quicksand w-full relative  ">
         <div
             class="flex justify-start items-center w-full bg-[url('assets/images/serviceimages/headbg.png')] bg-no-repeat bg-bottom bg-cover">
-            <h1 class="ml-36 font-bold my-[4.5rem] text-3xl text-[#222222]">{{ this.services.title }}</h1>
+            <h1 class="ml-36 font-bold my-[4.5rem] text-3xl text-[#222222]">{{ services.title }}</h1>
         </div>
         <div class="mx-36 grid grid-cols-3 max-w-full gap-x-4  gap-y-8 relative bottom-10">
             <div v-for="service in subServiceData" :key="service.id" class="flex-1 h-fit rounded-md ">
@@ -15,7 +15,7 @@
                             <span class="text-[#222222] opacity-50">{{ service.description }} {{ service.description
                             }}</span>
                         </p>
-                        <nuxt-link :to="$auth.$state.loggedIn == false ? '/signin':`/booking/${subservice.id}`" class="flex items-center justify-center">
+                        <nuxt-link :to="$auth.$state.loggedIn == false ? '/signin':`/booking/${service.id}`" class="flex items-center justify-center">
                             <p class="mr-2 text-[#5920BC] text-sm">Book Now</p> <img class="mt-[0.1875rem]"
                                 src="../../assets/images/serviceimages/Right.svg" alt="">
                         </nuxt-link>
