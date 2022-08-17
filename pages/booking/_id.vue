@@ -13,7 +13,7 @@
                     <p>Summary</p>
                 </button>
             </div>
-            <div v-if="summary == false" class="pl-6">
+            <div v-if="summary == false" class="pl-6 max-w-[45rem]">
                 <div v-for="(choices, choiceindex) in services.serviceChoices" :key="choiceindex">
                     <h3 class="text-base">{{ choices.title }}</h3>
                     <div class="flex flex-wrap gap-y-4  items-center mt-4">
@@ -175,7 +175,7 @@
                 </div>
                 <div class="w-full mt-10">
                     <h3>Choose a Pro</h3>
-                    <div class="grid grid-cols-2 gap-x-5 gap-y-4 max-w-fit ">
+                    <div class="grid grid-cols-2 gap-x-5 gap-y-4 w-full ">
                         <div class="flex flex-col p-3 items-start justify-center border border-[#C7C9CB1F] rounded-md shadow-inner"
                             v-for="(tasker, index) in chosenTaskersdisplayer" :key="tasker.id">
                             <Bookingtaskers :selected="false" :taskerdata="tasker" :hoursofwork="hoursOfWork"
