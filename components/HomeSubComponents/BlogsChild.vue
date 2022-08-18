@@ -1,17 +1,21 @@
 <template>
-    <div class="font-quicksand  shadow-md">
-        <img src="../../assets/images/homeimages/Rectangle 936.svg" alt="">
-        <div class="p-3">
-            <p class="mt-4 text-xl font-bold text-[#222222]">My Most-Worn Handbags At Every Budget</p>
-            <p class="mt-3 text-[#222222] text-bold">I love splurging on some amazing designer bags but also finding
-                cute I love splurging on…</p>
+    <div class="font-quicksand  shadow-md max-w-md h-[31.25rem]">
+        <img :src="data.coverPhoto" class="object-cover h-52" alt="">
+        <div class="p-3 flex flex-col justify-between h-72">
+            <div class="h-32">
+                <p class="mt-4 text-xl font-bold text-[#222222]">{{ data.title }}</p>
+                <p
+                    class="mt-3 text-[#222222] text-bold text h-full overflow-y-ellipsis overflow-x-hidden text-ellipsis ">
+                    {{ data.description }}</p>
+
+            </div>
             <div class="flex items-center justify-between mt-4">
                 <div class="flex items-center justify-between">
                     <img src="../../assets/images/homeimages/propfp.svg" class="h-6 w-6" alt="">
-                    <p>Elon Musk</p>
+                    <p>{{ data.author.first_name }} {{ data.author.last_name }}</p>
                 </div>
                 <div>
-                    <p>06 SEP 2021</p>
+                    <p>{{getMonth()}}</p>
                 </div>
             </div>
         </div>
@@ -20,6 +24,72 @@
 
 <script>
 export default {
+    props: {
+        data: Object
+
+    },
+    data() {
+        return {
+            date: new Date(this.data.createdAt)
+        }
+    },
+    created() {
+    },
+    methods: {
+        getMonth() {
+          
+
+            let month
+            
+            switch (this.date.getMonth()) {
+                case (0):
+                    month = "JAN";
+                    break;
+                case (1):
+                    month = "FEB";
+                    break;
+                case (2):
+                    month = "MAR";
+                    break;
+                case (3):
+                    month = "APR";
+                    break;
+                case (4):
+                    month = "MAY";
+                    break;
+                case (5):
+                    month = "JUN";
+                    break;
+                case (6):
+                    month = "JUL";
+                    break;
+                case (7):
+                    month = "AUG";
+                    break;
+                case (8):
+                    month = "SEP";
+                    break;
+                case (9):
+                    month = "OCT";
+                    break;
+                case (10):
+                    month = "NOV";
+                    break;
+                case (11):
+                    month = "DEC";
+                    break;
+            }
+            return this.date.getDate() + " " + month + " " + this.date.getFullYear()
+
+
+        },
+        getDay() {
+            var month = this.date.getDate();
+            return month < 10 ? '0' + month : '' + month;
+            
+        },
+
+    },
 
 }
 </script>

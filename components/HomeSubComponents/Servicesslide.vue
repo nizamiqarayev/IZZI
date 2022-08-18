@@ -12,12 +12,13 @@
             </nuxt-link>
         </div>
         <div class="flex w-full gap-4 mt-5">
-             <div v-for="service in data" :key="service.id"
+            <div v-for="(service, index) in data" :key="service.id"
                 class="flex flex-col items-center justify-center border max-h-28 max-w-[9.375rem]  py-5 px-10 rounded-md shadow-md">
-                <img :src="service.icon" class="object-scale-down h-14 w-14" alt="">
-                <h4 class="mt-3 font-bold whitespace-nowrap">{{service.title}}</h4>
+                <div v-if="index<8"><img :src="service.icon" class="object-scale-down h-14 w-14" alt="">
+                    <h4 class="mt-3 font-bold whitespace-nowrap">{{ service.title }}</h4>
+                </div>
             </div>
-            
+
         </div>
     </section>
 </template>
@@ -29,15 +30,12 @@ export default {
     name: "Servicesslide",
     data() {
         return {
-            data:[]
+            data: []
         }
     },
     async created() {
         const tempdata = await this.$axios.get("services/")
-        console.log('====================================');
-        console.log(tempdata.data);
-        console.log('====================================');
-        this.data=tempdata.data
+        this.data = tempdata.data
     },
 }
 </script>

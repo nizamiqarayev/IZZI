@@ -31,26 +31,12 @@
         </div>
 
         <div class="grid grid-cols-2 gap-8">
-            <button
+            <button v-for="skills in tasker.skills" :key="skills.id"
                 class="p-2 flex items-center text-sm justify-center whitespace-nowrap gap-1 border rounded-md bg-[#5920BC] bg-opacity-10 border-[#5920BC]">
-                <p>Home Cleaning</p>
-                <p>20 ₼ </p>
+                <p>{{skills.subService.title}}</p>
+                <p>{{skills.price}}₼ </p>
             </button>
-            <button
-                class="p-2 flex items-center  text-sm justify-center whitespace-nowrap gap- border rounded-md bg-[#5920BC] bg-opacity-10 border-[#5920BC]">
-                <p>Home Cleaning</p>
-                <p>20 ₼ </p>
-            </button>
-            <button
-                class="p-2 flex items-center  text-sm justify-center whitespace-nowrap gap- border rounded-md bg-[#5920BC] bg-opacity-10 border-[#5920BC]">
-                <p>Home Cleaning</p>
-                <p>20 ₼ </p>
-            </button>
-            <button
-                class="p-2 flex items-center  text-sm justify-center whitespace-nowrap gap- border rounded-md bg-[#5920BC] bg-opacity-10 border-[#5920BC]">
-                <p>Home Cleaning</p>
-                <p>20 ₼ </p>
-            </button>
+            
         </div>
         <button class="w-full py-4 mt-9 border text-[#5929BC]">Book Now</button>
     </div>
@@ -62,7 +48,6 @@ export default {
         tasker: Object
     },
     created() {
-        console.log(this.tasker);
     },
 }
 </script>

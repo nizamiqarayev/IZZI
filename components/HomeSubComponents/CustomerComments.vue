@@ -3,19 +3,32 @@
         <div class="flex justify-between items-center w-full">
             <h3 class="text-3xl font-bold">What our customers say</h3>
         </div>
-        <div class="w-full justify-center mt-9 flex items-center gap-4">
-            <CustomerCommentsChild />
-            <CustomerCommentsChild />
-            <CustomerCommentsChild />
+        <div class=" justify-center mt-9 flex items-center gap-4">
+           
+
+            <div class="max-w-sm" v-for="(comment, index) in comments" :key="comment.id">
+                <CustomerCommentsChild v-if="index < 3" :data="comment" />
+            </div>
 
         </div>
     </section>
 </template>
 
 <script>
+import axios from 'axios';
 import CustomerCommentsChild from './CustomerCommentsChild.vue';
 export default {
-    components: { CustomerCommentsChild }
+    components: { CustomerCommentsChild },
+    data() {
+        return {
+            comments: []
+        }
+    },
+    async created() {
+        const tempblog = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/blogs/`)
+        this.comments = tempblog.data
+        console.log(this.comments);
+    }
 }
 </script>
 

@@ -87,10 +87,7 @@ export default {
     }
     const tempdata = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/orders/`, config)
     this.ordersdata=tempdata.data
-    console.log('====================================');
-    console.log("orders");
-    console.log(this.ordersdata.orders.length);
-    console.log('====================================');
+  
     this.orderslength=this.ordersdata.orders.length
   }
 }

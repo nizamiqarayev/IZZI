@@ -13,18 +13,30 @@
 
             </nuxt-link>
         </div>
-        <div class="w-full justify-center mt-9 flex items-center gap-4">
-            <BlogsChild />
-            <BlogsChild />
-            <BlogsChild />
+        <div class="w-full justify-center mt-9 flex items-start gap-4">
+            <div v-for="(blog, index) in blogs" :key="blog.id">
+                <BlogsChild v-if="index<3"   :data="blog" />
+            </div>
+
         </div>
     </section>
 </template>
 
 <script>
+import axios from 'axios';
 import BlogsChild from './BlogsChild.vue';
 export default {
-    components: { BlogsChild }
+    components: { BlogsChild },
+    data() {
+        return {
+            blogs: []
+        }
+    },
+    async created() {
+        const tempblog = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/blogs/`)
+        this.blogs = tempblog.data
+      
+    }
 }
 </script>
 
