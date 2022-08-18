@@ -14,18 +14,42 @@
             </nuxt-link>
         </div>
         <div class="w-full justify-center mt-9 flex items-center gap-4">
-            <Popularproschild />
-            <Popularproschild />
-            <Popularproschild />
-
+            <Popularproschild v-for="tasker in taskers" :key="tasker.id" :tasker="tasker" />
         </div>
     </section>
 </template>
 
 <script>
+import axios from 'axios'
+
 import Popularproschild from './Popularproschild.vue';
 export default {
-    components: { Popularproschild }
+    components: { Popularproschild },
+    data() {
+        return {
+            taskers: {}
+        }
+    },
+    methods: {
+        chosentaskersfilter() {
+
+            this.taskers.sort(function (a, b) {
+                return b.rating - a.rating;
+            });
+            const temparr = []
+
+            for (let i = 0; i < 3; i++) {
+                temparr.push(this.taskers[i])
+            }
+            this.taskers = temparr
+        }
+    },
+    async created() {
+        this.taskers = await axios.get(`https:izzi-api-rest.herokuapp.com/api/v1/taskers`)
+        this.taskers=this.taskers.data
+        this.chosentaskersfilter()
+    }
+
 }
 </script>
 

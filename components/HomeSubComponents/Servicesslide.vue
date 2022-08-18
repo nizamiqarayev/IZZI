@@ -12,46 +12,33 @@
             </nuxt-link>
         </div>
         <div class="flex w-full gap-4 mt-5">
-            <div class="flex flex-col items-center justify-center border  py-5 flex-1 rounded-md shadow-md"> <img
-                    src="../../assets/images/homeimages/mop.svg" alt="">
-                <h4>Cleaning</h4>
+             <div v-for="service in data" :key="service.id"
+                class="flex flex-col items-center justify-center border max-h-28 max-w-[9.375rem]  py-5 px-10 rounded-md shadow-md">
+                <img :src="service.icon" class="object-scale-down h-14 w-14" alt="">
+                <h4 class="mt-3 font-bold whitespace-nowrap">{{service.title}}</h4>
             </div>
-            <div class="flex flex-col items-center justify-center border  py-5 flex-1 rounded-md shadow-md"> <img
-                    src="../../assets/images/homeimages/labor-day.svg" alt="">
-                <h4>Home Repair</h4>
-            </div>
-            <div class="flex flex-col items-center justify-center border  py-5 flex-1 rounded-md shadow-md"> <img
-                    src="../../assets/images/homeimages/makeover.svg" alt="">
-                <h4>Beauty</h4>
-            </div>
-            <div class="flex flex-col items-center justify-center border  py-5 flex-1 rounded-md shadow-md"> <img
-                    src="../../assets/images/homeimages/mop.svg" alt="">
-                <h4>Cleaning</h4>
-            </div>
-            <div class="flex flex-col items-center justify-center border  py-5 flex-1 rounded-md shadow-md"> <img
-                    src="../../assets/images/homeimages/labor-day.svg" alt="">
-                <h4>Home Repair</h4>
-            </div>
-            <div class="flex flex-col items-center justify-center border  py-5 flex-1 rounded-md shadow-md"> <img
-                    src="../../assets/images/homeimages/makeover.svg" alt="">
-                <h4>Beauty</h4>
-            </div>
-            <div class="flex flex-col items-center justify-center border  py-5 flex-1 rounded-md shadow-md"> <img
-                    src="../../assets/images/homeimages/labor-day.svg" alt="">
-                <h4>Home Repair</h4>
-            </div>
-            <div class="flex flex-col items-center justify-center border  py-5 flex-1 rounded-md shadow-md"> <img
-                    src="../../assets/images/homeimages/makeover.svg" alt="">
-                <h4>Beauty</h4>
-            </div>
-
+            
         </div>
     </section>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-    name: "Servicesslide"
+    name: "Servicesslide",
+    data() {
+        return {
+            data:[]
+        }
+    },
+    async created() {
+        const tempdata = await this.$axios.get("services/")
+        console.log('====================================');
+        console.log(tempdata.data);
+        console.log('====================================');
+        this.data=tempdata.data
+    },
 }
 </script>
 

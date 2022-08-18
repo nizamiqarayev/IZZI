@@ -1,5 +1,5 @@
 <template>
-  <div class="flex  items-start mt-20 justify-center h-fit ">
+  <div v-if="orderslength>0" class="flex  items-start mt-20 justify-center h-fit ">
     <div class="flex flex-col items-start justify-center">
       <h2 class="font-bold text-3xl ml-5 mb-6 text-[#222222]">Aktiv xidmətlər</h2>
       <div class="flex items-center ">
@@ -16,45 +16,7 @@
 
 
         <slick class="max-w-[65rem] flex flex-row justify-center items-center" ref="slick" :options="slickOptions">
-          <div>
-            <SliderItemVue />
-          </div>
-          <div>
-            <SliderItemVue />
-          </div>
-          <div>
-            <SliderItemVue />
-          </div>
-          <div>
-            <SliderItemVue />
-          </div>
-          <div>
-            <SliderItemVue />
-          </div>
-          <div>
-            <SliderItemVue />
-          </div>
-          <div>
-            <SliderItemVue />
-          </div>
-          <div>
-            <SliderItemVue />
-          </div>
-          <div>
-            <SliderItemVue />
-          </div>
-          <div>
-            <SliderItemVue />
-          </div>
-          <div>
-            <SliderItemVue />
-          </div>
-          <div>
-            <SliderItemVue />
-          </div>
-          <div>
-            <SliderItemVue />
-          </div>
+        <SliderItemVue v-for="order in this.ordersdata.orders" :key="order.id" :order="order" />
 
         </slick>
 
@@ -78,6 +40,8 @@
 <script>
 import SliderItemVue from './SliderItem.vue'
 import 'slick-carousel/slick/slick.css';
+import axios from 'axios'
+
 
 import Slick from 'vue-slick'
 // import { VueSlickCarousel } from 'vue-slick-carousel'
@@ -92,6 +56,9 @@ export default {
   data() {
     return {
       items: 9,
+
+      ordersdata: [],
+      orderslength:0,
       slickOptions: {
         dots: false,
         prevArrow: false,
@@ -105,6 +72,7 @@ export default {
       }
     }
   },
+
   methods: {
     sliderleft() {
       this.$refs.slick.prev()
@@ -113,6 +81,18 @@ export default {
       this.$refs.slick.next()
     }
   },
+  async created() {
+    const config = {
+      headers: { Authorization: `${this.$auth.$state.accesslocal}` }
+    }
+    const tempdata = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/orders/`, config)
+    this.ordersdata=tempdata.data
+    console.log('====================================');
+    console.log("orders");
+    console.log(this.ordersdata.orders.length);
+    console.log('====================================');
+    this.orderslength=this.ordersdata.orders.length
+  }
 }
 </script>
 
