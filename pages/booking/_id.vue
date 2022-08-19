@@ -1,9 +1,9 @@
     <template>
     <main class="flex  w-full lg:items-center lg:justify-center  bg-[#5920BC] bg-opacity-5 font-quicksand">
-        <div class="flex flex-col lg:flex-row px-4 lg:px-0 max-w-full mt-10 lg:max-w-[65rem] bg-white lg:p-6">
-            <div class="pr-12 border-r w-full mb-4 lg:mb-0 lg:w-[20rem] lg:max-w-[20rem]">
+        <div class="flex flex-col lg:flex-row px-4 max-w-full lg:mt-10 lg:max-w-[65rem] bg-white lg:p-6 ">
+            <div class="pr-12 border-r w-full mb-4 lg:mb-0 lg:w-[20rem] lg:max-w-[20rem] lg:pl-6">
                 <h2 class="font-bold text-center lg:text-left text-2xl text-[#222222]">{{ services.title }}</h2>
-                <p class="mt-3 mb-7 ml-6 text-[#999999] text-sm">{{ services.description }}</p>
+                <p class="mt-3 mb-7 text-[#999999] text-sm">{{ services.description }}</p>
                 <Bookingtaskers v-if="proselected" :selected="updaterselectedtaskerdata[0]"
                     :taskerdata="updaterselectedtaskerdata[1]" :hoursofwork="updaterselectedtaskerdata[2]"
                     :pricetype="updaterselectedtaskerdata[3]" :workPrice="updaterselectedtaskerdata[4]" />
@@ -16,14 +16,14 @@
             <div v-if="summary == false" class="lg:pl-6 w-full lg:max-w-[45rem]">
                 <div class="mb-8" v-for="(choices, choiceindex) in services.serviceChoices" :key="choiceindex">
                     <h3 class="text-base">{{ choices.title }}</h3>
-                    <div class="flex flex-wrap gap-y-4 gap-x-2 lg:w-full lg:items-center lg:mt-4">
-                        <div v-for="(option, index) in choices.options" :key="index + 300">
+                    <div class="flex flex-wrap gap-y-4 gap-x-4 lg:gap-x-2 lg:w-full lg:items-center lg:mt-4">
+                        <div v-for="(option, index) in choices.options" :key="index + 300" class="w-[45%] lg:w-auto ">
                             <input v-model="optionsdata[choiceindex].value"
                                 @click="chosentaskersdatafilter(index, choiceindex)" class="hidden" :type="choices.type"
-                                :key="index + 300"  :id="option.id" :name="choices.title" :value="option">
+                                :key="index + 300" :id="option.id" :name="choices.title" :value="option">
 
                             <label
-                                class="flex items-center flex-1 text-sm justify-center w-full  lg:text-base  mr-4 lg:px-6 py-3 border border-[#5920BC] whitespace-nowrap rounded-md"
+                                class="flex items-center w-full flex-1 text-sm lg:justify-center   lg:text-base px-7  mr-4 lg:px-6 py-3 border border-[#5920BC] whitespace-nowrap rounded-md"
                                 :for="option.id">
                                 <div v-if="choices.type == 'radio'">
                                     <svg v-show="optionsdata[choiceindex].value.title != option.title" width="20"
@@ -76,9 +76,9 @@
 
                     </div>
                 </div>
-                <div class="mt-10 mb-2">
-                    <div class="flex justify-between ">
-                        <h3>Start Adress</h3>
+                <div class="mt-10 mb-2 space-y-3">
+                    <div class="flex justify-between mb-">
+                        <h3>Start Address</h3>
                         <div class="flex">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http:www.w3.org/2000/svg">
@@ -97,7 +97,7 @@
                     <div class="relative">
                         <input type="text"
                             class="border border-[#C7C9CB] rounded-md focus:outline-none w-full py-4 pl-14"
-                            placeholder="Start Adress" v-model="startlocation" />
+                            placeholder="Start Address" v-model="startlocation" />
                         <svg class="absolute top-5 left-6" width="20" height="20" viewBox="0 0 20 20" fill="none"
                             xmlns="http:www.w3.org/2000/svg">
                             <path
@@ -112,8 +112,8 @@
 
                 </div>
                 <div class="flex w-full">
-                    <div class="w-full mt-10 relative flex flex-wrap justify-between">
-                        <div class="w-full flex flex-col justify-center items-center">
+                    <div class="w-full mt-10 relative flex flex-wrap lg:flex-nowrap  gap-y-3 justify-between">
+                        <div class="w-full lg:w-fit flex flex-col justify-center items-center">
                             <h3 class="mb-2" @click="calendarshow = !calendarshow">Task start date</h3>
                             <div>
                                 <vc-date-picker v-model="date" :value="startdatecomputed" mode="date">
@@ -126,22 +126,24 @@
                             </div>
                         </div>
 
-                        <div>
+                        <div class="flex flex-col items-center">
                             <h3 class="mb-2">Start Time</h3>
                             <vc-date-picker v-model="starttime" mode="time" is24hr>
                                 <template v-slot="{ inputValue, inputEvents }">
-                                    <input class="px-2 py-1 border rounded focus:outline-none focus:border-blue-300"
+                                    <input
+                                        class=" py-1 border text-center rounded focus:outline-none focus:border-blue-300"
                                         :value="inputValue" v-on="inputEvents" />
                                 </template>
                             </vc-date-picker>
                         </div>
 
-                        <div>
+                        <div class="flex flex-col items-center">
                             <h3 class="mb-2">End Time</h3>
 
                             <vc-date-picker v-model="endtime" mode="time" is24hr>
                                 <template v-slot="{ inputValue, inputEvents }">
-                                    <input class="px-2 py-1 border rounded focus:outline-none focus:border-blue-300"
+                                    <input
+                                        class=" py-1 border rounded text-center focus:outline-none focus:border-blue-300"
                                         :value="inputValue" v-on="inputEvents" />
                                 </template>
                             </vc-date-picker>
@@ -175,7 +177,7 @@
                 </div>
                 <div class="w-full mt-10">
                     <h3>Choose a Pro</h3>
-                    <div class="grid grid-cols-2 gap-x-5 gap-y-4 w-full ">
+                    <div class="hidden lg:grid grid-cols-2 gap-x-5 gap-y-4 w-full ">
                         <div class="flex flex-col p-3 items-start justify-center border border-[#C7C9CB1F] rounded-md shadow-inner"
                             v-for="(tasker, index) in chosenTaskersdisplayer" :key="tasker.id">
                             <Bookingtaskers :selected="false" :taskerdata="tasker" :hoursofwork="hoursOfWork"
@@ -187,16 +189,28 @@
                             </button>
                         </div>
                     </div>
+                    <slick class="lg:hidden  flex " ref="slick" :options="slickOptions">
+                        <div class="flex mr-2 flex-col p-3 items-start justify-center border border-[#C7C9CB1F] rounded-md shadow-inner"
+                            v-for="(tasker, index) in chosenTaskersdisplayer" :key="tasker.id">
+                            <Bookingtaskers :selected="false" :taskerdata="tasker" :hoursofwork="hoursOfWork"
+                                :pricetype="chosenTaskersPriceType[index]" :workPrice="chosenTaskersPrices[index]" />
+                            <button
+                                class=" w-full hover:transition-all py-4  border rounded-md border-[#5920BC] #979797 flex items-center self-center justify-center hover:bg-[#5920BC] hover:text-white"
+                                @click="dataSetterForSelected(true, tasker, hoursOfWork, chosenTaskersPriceType[index], chosenTaskersPrices[index])">
+                                <p>Select</p>
+                            </button>
+                        </div>
+                    </slick>
                 </div>
             </div>
-            <div v-if="summary == true" class="pl-6">
+            <div v-if="summary == true" class="px-6">
                 <Bookingsummary @return="function () {
                     summary = !summary
                     selectedtaskerdata = []
-                    proselected= !proselected    
+                    proselected = !proselected
                 
                 }" :tasker="selectedtaskerdata[1]" :serviceChoices="servicesdata.serviceChoices"
-                    :totalAmount="updaterselectedtaskerdata[4]*this.hoursOfWork"
+                    :totalAmount="updaterselectedtaskerdata[4] * this.hoursOfWork"
                     :serviceChoicesOptionValue="optionsdata" :location="startlocation" :startDate="date"
                     :starttime="starttime" :subService="this.params.id" :detail="detail" />
 
@@ -210,14 +224,29 @@
 </template>
 
     <script>
+import Slick from 'vue-slick'
+
 import axios from 'axios';
 import Bookingtaskers from '../../components/booking/bookingtaskers.vue';
 import Bookingsummary from '../../components/booking/bookingsummary.vue';
 import ModuleSignIn from '../../components/ModuleSignIn.vue';
 export default {
-    components: { Bookingtaskers, Bookingsummary, ModuleSignIn },
+    components: { Bookingtaskers, Bookingsummary, ModuleSignIn, Slick },
     data() {
         return {
+            slickOptions: {
+                centerMode:true,
+                dots: false,
+                prevArrow: false,
+                nextArrow: false,
+                infinite: true,
+                speed: 700,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+            },
+
+
+
             summary: false,
             needsSignIn: false,
             proselected: false,
@@ -329,11 +358,11 @@ export default {
             console.log('====================================');
             console.log(this.optionsdata);
             console.log('====================================');
-            let optionsfullselected=true
+            let optionsfullselected = true
             for (let optionsloop = 0; optionsloop < this.optionsdata.length; optionsloop++) {
                 if (this.optionsdata[optionsloop].value.length == 0) {
                     alert("Please select one of the choice in Choice:" + optionsloop)
-                    optionsfullselected=false
+                    optionsfullselected = false
                 }
 
             }
@@ -349,7 +378,7 @@ export default {
                 alert("You must be signed in")
                 this.$router.push("/signin")
             }
-            if (taskerdata != null && this.startlocation.length != 0 && this.detail.length != 0 && this.$store.state.auth.loggedIn &&optionsfullselected) {
+            if (taskerdata != null && this.startlocation.length != 0 && this.detail.length != 0 && this.$store.state.auth.loggedIn && optionsfullselected) {
                 this.selectedtaskerdata[0] = selected
                 this.selectedtaskerdata[1] = taskerdata
                 this.selectedtaskerdata[2] = hoursOfWork
