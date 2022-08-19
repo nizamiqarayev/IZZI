@@ -1,7 +1,7 @@
 <template>
   <div v-if="orderslength>0" class="flex  items-start mt-20 justify-center h-fit ">
     <div class="flex flex-col items-start justify-center">
-      <h2 class="font-bold text-3xl ml-5 mb-6 text-[#222222]">Aktiv xidmətlər</h2>
+      <h2 class="font-bold text-3xl ml-5 mb-6 text-[#222222]">Orders</h2>
       <div class="flex items-center ">
         <div class="relative left-2.5 z-10 py-3 bg-white" @click="sliderleft()">
           <svg class="hover:fill-[#5920BC]" width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -15,8 +15,8 @@
         </div>
 
 
-        <slick class="max-w-[65rem] flex flex-row justify-center items-center" ref="slick" :options="slickOptions">
-        <SliderItemVue v-for="order in this.ordersdata.orders" :key="order.id" :order="order" />
+        <slick class="max-w-[65rem]  flex flex-row justify-center items-center" ref="slick" :options="slickOptions">
+        <SliderItemVue  v-for="order in this.ordersdata.orders" :key="order.id" :order="order" />
 
         </slick>
 

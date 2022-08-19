@@ -49,7 +49,7 @@ export default {
     methods: {
         logout() {
             localStorage.clear()
-            localStorage.vuex = ''
+            this.$auth.$state.loggedIn=false
             var cookies = document.cookie.split("; ");
             for (var c = 0; c < cookies.length; c++) {
                 var d = window.location.hostname.split(".");
@@ -64,7 +64,7 @@ export default {
                     d.shift();
                 }
                 
-                this.$router.push('/')
+                // this.$router.push('/')
                 
                 
             }

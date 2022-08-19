@@ -1,7 +1,7 @@
 <template>
     <div class="w-full relative font-quicksand flex flex-col items-center justify-center">
         <div class="bg-[#5920BC] w-full h-60 flex items-center justify-center">
-            <h1 class="text-[2.5rem] font-bold text-center text-white">Hər işin öz ustası var!</h1>
+            <h1 class="text-[2.5rem] font-bold text-center text-white">Every job has own master!</h1>
         </div>
         <div class="absolute border w-2/5 h-14 rounded-full shadow-lg bg-white top-[13.3125rem]  ">
             <input class="w-full h-full rounded-full focus:outline-none pl-14 pr-40 bg-white" />
