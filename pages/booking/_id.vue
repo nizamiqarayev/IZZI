@@ -1,5 +1,5 @@
     <template>
-    <main class="flex w-full items-center justify-center  bg-[#5920BC] bg-opacity-5 font-quicksand">
+    <main class="flex flex-col lg:flex-row w-full lg:items-center lg:justify-center  bg-[#5920BC] bg-opacity-5 font-quicksand">
         <div class="flex mt-10 max-w-[65rem] bg-white p-6">
             <div class="pr-12 border-r w-[20rem] max-w-[20rem]">
                 <h2 class="font-bold text-2xl text-[#222222]">{{ services.title }}</h2>
