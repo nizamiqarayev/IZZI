@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <button @click="passwordChecker"
-                        class="text-base bg-[#5920BC] gap-1 py-3 px-20 my-6 mx-16 rounded-lg  flex items-center gap-2 text-white"
+                        class="text-base bg-[#5920BC] py-3 px-20 my-6 mx-16 rounded-lg  flex items-center gap-2 text-white"
                         type="button">Sign Up<img src="../assets/images/signInAndUpImages/arrowright.svg"
                             alt=""></button>
                 </form>
