@@ -1,11 +1,11 @@
 <template>
-    <section class="bg-main font-quicksand bg-no-repeat bg-left-top bg-contain w-full">
-        <main class="w-10/12 mx-auto py-40">
+    <section class="bg-main font-quicksand bg-no-repeat bg-left-top lg:bg-contain w-full">
+        <main class="w-10/12 mx-auto py-44 lg:py-40">
             <p class="text-[30px] font-bold ">All Pros</p>
             <div class="w-full pt-16">
-                <div class="flex items-end justify-between gap-14">
+                <div class="flex w-full items-end flex-wrap lg:flex-nowrap gap-3 lg:justify-between lg:gap-14">
                     <div
-                        class="flex items-center border-[1px] bg-transparent border-[#E2E2E2] h-1/2 rounded relative w-3/5">
+                        class="flex items-center border-[1px] bg-transparent border-[#E2E2E2] h-1/2 rounded relative w-full lg:w-3/5">
                         <label for="search">
                             <img class="absolute bottom-3 left-3 z-20 " src="../assets/images/search (3).svg" alt="">
                         </label>
@@ -37,41 +37,70 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex gap-4 pt-9 ">
-                    <div class="w-3/12">
-                        <div class="flex flex-col gap-4">
-                            <div class="flex flex-col gap-2">
-                                <p class="text-[#6F6F6F] font-bold">Services</p>
-                                <div v-for="(service, index) in services.data" :key="service.id"
-                                    v-on:click="IDselector_service(index)" class="flex gap-2">
-                                    <img src="../assets/images/Squircle.svg" v-if="!filter_services[index].filter"
-                                        alt="">
-                                    <img src="../assets/images/Checked.svg" v-if="filter_services[index].filter" alt="">
-                                    <p>
-                                        {{ service.title }}</p>
-                                    {{ getServiceid(index) }}
+                <div class="flex flex-col lg:flex-row gap-4 pt-9 ">
+                    <div class="w-full pb-8 lg:pb-0 lg:w-3/12">
+                        <div class="flex w-full lg:flex-col gap-4">
+                            <div class="flex w-1/2 lg:w-full flex-col  gap-2">
+                                <div @click="showservice = !showservice" class="flex gap-2 lg:hidden items-center">
+                                    <p class="text-[#6F6F6F] font-bold">Services</p>
+                                    <img :class="showservice ? 'rotate-180' : ''"
+                                        class="lg:hidden transform transition-all duration-500"
+                                        src="../assets/images/Vector 59.svg" alt="">
+                                </div>
+                                <div class="hidden lg:flex gap-2 items-center">
+                                    <p class="text-[#6F6F6F] font-bold">Services</p>
+                                </div>
+                                <div :class="showservice ? 'h-full overflow-auto' : 'h-0 overflow-hidden'"
+                                    class="transform transition-all duration-500">
+                                    <div v-for="(service, index) in services.data" :key="service.id"
+                                        v-on:click="IDselector_service(index), showservice = !showservice"
+                                        class="flex gap-2">
+                                        <img src="../assets/images/Squircle.svg" v-if="!filter_services[index].filter"
+                                            alt="">
+                                        <img src="../assets/images/Checked.svg" v-if="filter_services[index].filter"
+                                            alt="">
+                                        <p>
+                                            {{ service.title }}</p>
+                                        {{ getServiceid(index) }}
+                                    </div>
                                 </div>
 
                             </div>
-                            <div v-if="cities" class="flex flex-col gap-2">
-                                <p class="text-[#6F6F6F] font-bold">By City</p>
-                                <div v-for="(city, index) in cities.data" :key="city.id"
-                                    v-on:click="IDselector_city(index)" class="flex gap-2">
-                                    <img src="../assets/images/Squircle.svg" v-if="!filter_cities[index].filter" alt="">
-                                    <img src="../assets/images/Checked.svg" v-if="filter_cities[index].filter" alt="">
-                                    <p>{{ city.name }}</p>
-                                    {{ getCityid(index) }}
+                            <div v-if="cities" class="flex w-1/2 lg:w-full items-end lg:items-start flex-col gap-2">
+                                <div @click="showcity = !showcity" class="flex gap-2 lg:hidden items-center">
+                                    <img :class="showcity ? 'rotate-180 ' : ''"
+                                        class="lg:hidden transform transition-all duration-500"
+                                        src="../assets/images/Vector 59.svg" alt="">
+                                    <p class="text-[#6F6F6F] font-bold">By City</p>
+                                </div>
+                                <div class="gap-2 hidden lg:flex items-center">
+                                    <p class="text-[#6F6F6F] font-bold">By City</p>
+                                </div>
+                                <div :class="showcity ? 'h-full overflow-auto' : 'h-0 overflow-hidden'"
+                                    class="transform transition-all duration-500">
+                                    <div v-for="(city, index) in cities.data" :key="city.id"
+                                        v-on:click="IDselector_city(index), showcity = !showcity"
+                                        class="flex justify-end lg:justify-start gap-2">
+                                        <p class="lg:hidden">{{ city.name }}</p>
+                                        <img src="../assets/images/Squircle.svg" v-if="!filter_cities[index].filter"
+                                            alt="">
+                                        <img src="../assets/images/Checked.svg" v-if="filter_cities[index].filter"
+                                            alt="">
+                                        <p class="hidden lg:block">{{ city.name }}</p>
+                                        {{ getCityid(index) }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="w-9/12  flex flex-col justify-center items-center" v-if="filteredEntries.length == 0">
+                    <div class="w-full lg:w-9/12  flex flex-col justify-center items-center"
+                        v-if="filteredEntries.length == 0">
                         <img src="../assets/images/Job hiring 1.svg" alt="">
                         <p>There is no aviable pro for this service :(</p>
                     </div>
-                    <div v-if="filteredEntries.length != 0" class="w-9/12 grid grid-cols-2 gap-3">
+                    <div v-if="filteredEntries.length != 0" class="w-full lg:w-9/12 grid lg:grid-cols-2 gap-6 lg:gap-3">
                         <div v-for="tasker in filteredEntries" :key="tasker.id"
-                            class="border-[1px] border-slate-400 rounded p-3 flex flex-col">
+                            class="border-[1px] shadow-lg border-slate-400 rounded p-3 flex flex-col">
                             <div class="flex gap-1 relative">
                                 <div class="relative">
                                     <img src="../assets/images/homeimages/propfp.svg" alt="">
@@ -256,6 +285,8 @@ export default {
             subService_unique: [],
             filtered_array: [],
             searchkey: '',
+            showservice: true,
+            showcity: true,
 
         }
     },
