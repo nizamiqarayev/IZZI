@@ -1,14 +1,14 @@
     <template>
     <main class="flex  w-full lg:items-center lg:justify-center  bg-[#5920BC] bg-opacity-5 font-quicksand">
-        <div class="flex flex-col lg:flex-row px-4 max-w-full lg:mt-10 lg:max-w-[65rem] bg-white lg:p-6 ">
-            <div class="pr-12 border-r w-full mb-4 lg:mb-0 lg:w-[20rem] lg:max-w-[20rem] lg:pl-6">
+        <div class="flex flex-col lg:flex-row px-4 max-w-full lg:mt-10 lg:max-w-[70rem] bg-white lg:p-6 ">
+            <div class="pr-12 border-r w-full mb-4 lg:mb-0 lg:w-[20rem] lg:max-w-[25rem] lg:pl-6">
                 <h2 class="font-bold text-center lg:text-left text-2xl text-[#222222]">{{ services.title }}</h2>
                 <p class="mt-3 mb-7 text-[#999999] text-sm">{{ services.description }}</p>
-                <Bookingtaskers v-if="proselected" :selected="updaterselectedtaskerdata[0]"
+                <Bookingtaskers class="hidden lg:flex" v-if="proselected" :selected="updaterselectedtaskerdata[0]"
                     :taskerdata="updaterselectedtaskerdata[1]" :hoursofwork="updaterselectedtaskerdata[2]"
                     :pricetype="updaterselectedtaskerdata[3]" :workPrice="updaterselectedtaskerdata[4]" />
                 <button v-if="proselected"
-                    class=" w-full hover:transition-all py-4  border rounded-md border-[#5920BC] #979797 flex items-center self-center justify-center hover:bg-[#5920BC] hover:text-white"
+                    class="hidden w-full hover:transition-all py-4  border rounded-md border-[#5920BC] #979797 lg:flex items-center self-center justify-center hover:bg-[#5920BC] hover:text-white"
                     @click="summary = !summary">
                     <p>Summary</p>
                 </button>
@@ -19,7 +19,7 @@
                     <div class="flex flex-wrap gap-y-4 gap-x-4 lg:gap-x-2 lg:w-full lg:items-center lg:mt-4">
                         <div v-for="(option, index) in choices.options" :key="index + 300" class="w-[45%] lg:w-auto ">
                             <input v-model="optionsdata[choiceindex].value"
-                                @click="chosentaskersdatafilter(index, choiceindex)" class="hidden" :type="choices.type"
+                                @click="chosentaskersdatafilter(index, choiceindex,filterables[choiceindex])" class="hidden" :type="choices.type"
                                 :key="index + 300" :id="option.id" :name="choices.title" :value="option">
 
                             <label
@@ -177,8 +177,9 @@
                 </div>
                 <div class="w-full mt-10">
                     <h3>Choose a Pro</h3>
-                    <div class="hidden lg:grid grid-cols-2 gap-x-5 gap-y-4 w-full ">
-                        <div class="flex flex-col p-3 items-start justify-center border border-[#C7C9CB1F] rounded-md shadow-inner"
+                    <div
+                        class="flex lg:w-auto overflow-x-scroll lg:overflow-auto lg:grid lg:grid-cols-2 gap-x-5 gap-y-4  ">
+                        <div class="flex flex-col shrink-0 w-80  p-3 lg:w-auto  items-start justify-center border border-[#C7C9CB1F] rounded-md shadow-inner"
                             v-for="(tasker, index) in chosenTaskersdisplayer" :key="tasker.id">
                             <Bookingtaskers :selected="false" :taskerdata="tasker" :hoursofwork="hoursOfWork"
                                 :pricetype="chosenTaskersPriceType[index]" :workPrice="chosenTaskersPrices[index]" />
@@ -189,18 +190,7 @@
                             </button>
                         </div>
                     </div>
-                    <slick class="w-11/12 lg:hidden" ref="slick" :options="slickOptions">
-                        <div class="flex mr-2 flex-col p-3 items-start justify-center border border-[#C7C9CB1F] rounded-md shadow-inner"
-                            v-for="(tasker, index) in chosenTaskersdisplayer" :key="tasker.id">
-                            <Bookingtaskers :selected="false" :taskerdata="tasker" :hoursofwork="hoursOfWork"
-                                :pricetype="chosenTaskersPriceType[index]" :workPrice="chosenTaskersPrices[index]" />
-                            <button
-                                class=" w-full hover:transition-all py-4  border rounded-md border-[#5920BC] #979797 flex items-center self-center justify-center hover:bg-[#5920BC] hover:text-white"
-                                @click="dataSetterForSelected(true, tasker, hoursOfWork, chosenTaskersPriceType[index], chosenTaskersPrices[index])">
-                                <p>Select</p>
-                            </button>
-                        </div>
-                    </slick>
+
                 </div>
             </div>
             <div v-if="summary == true" class="px-6">
@@ -236,7 +226,7 @@ export default {
     data() {
         return {
             slickOptions: {
-                centerMode:true,
+                centerMode: true,
                 dots: false,
                 prevArrow: false,
                 nextArrow: false,
@@ -245,7 +235,6 @@ export default {
                 slidesToShow: 2,
                 slidesToScroll: 1,
             },
-
 
 
             summary: false,
@@ -285,6 +274,7 @@ export default {
             dataForIconSwitch: [],
 
             timezone: '',
+            filterables: [],
 
             selectedtaskerdata: [],
 
@@ -399,7 +389,7 @@ export default {
 
         chosentaskersdatafilterstart() {
             this.chosenTaskers = []
-
+            console.log("this is happening 1");
             for (let l = 0; l < this.taskers.data.length; l++) {
                 for (let index = 0; index < this.taskers.data[l].skills.length; index++) {
                     if (this.taskers.data[l].skills[index].subService.id == this.params.id) {
@@ -412,7 +402,6 @@ export default {
             this.chosenTaskers.sort(function (a, b) {
                 return b.rating - a.rating;
             });
-
             return this.chosenTaskers
 
         },
@@ -420,9 +409,12 @@ export default {
             this.dataForIconSwitch[dataplaceholderindex][choiceindex] = !this.dataForIconSwitch[dataplaceholderindex][choiceindex]
 
         },
-        async chosentaskersdatafilter(choiceindex, dataplaceholderindex) {
+        async chosentaskersdatafilter(choiceindex, dataplaceholderindex,filter) {
             this.iconhandler(choiceindex, dataplaceholderindex)
+            console.log("this is happening2");
+            if(filter==true){
 
+                
 
             this.chosenTaskers = []
             for (let l = 0; l < this.taskers.data.length; l++) {
@@ -436,37 +428,26 @@ export default {
             }
 
 
-            let filterables = [];
 
-            for (let i = 0; i < this.optionsdata.length; i++) {
-                for (let y = 0; y < this.servicesdata.serviceChoices[i].options.length; y++) {
-                    if (this.servicesdata.serviceChoices[i].options[y].taskerFiltering == true) {
-                        filterables.push(true)
-                        break;
-                    }
-                    else {
-                        filterables.push(false)
-                        break;
-                    }
-                }
-            }
+
+            console.log(this.filterables);
             await setTimeout(() => {
                 let temparr = []
                 let tempprices = []
 
                 if (this.servicesdata.serviceChoices[dataplaceholderindex].type == "radio") {
-                    for (let z = 0; z < filterables.length; z++) {
+                    for (let z = 0; z < this.filterables.length; z++) {
 
                         const tempoptions = this.optionsdata[z]
-
-                        if (filterables[z] == true && this.optionsdata[z].value.title != '') {
+                        console.log(this.optionsdata[z].value.title !==undefined);
+                        if (this.filterables[z] == true && this.optionsdata[z].value.title !==undefined) {
+                            console.log("this is happening 3");
 
                             for (let k = 0; k < this.chosenTaskers.length; k++) {
                                 for (let f = 0; f < this.chosenTaskers[k].skills.length; f++) {
 
                                     if (String(this.chosenTaskers[k].skills[f].option.title) == String(this.optionsdata[z].value.title)) {
                                         let price = this.chosenTaskers[k].skills[f].price
-
 
 
                                         const tempobj = {
@@ -483,7 +464,7 @@ export default {
                         }
 
                     }
-
+                    
 
                     temparr.sort(function (a, b) {
                         return b.tasker.rating - a.tasker.rating;
@@ -507,17 +488,18 @@ export default {
                     this.priceTypes = secondarytemparrpricetypes
 
                     this.chosenTaskers = secondarytemparr
+                    console.log(this.chosenTaskers);
 
                 }
                 else if (this.servicesdata.serviceChoices[dataplaceholderindex].type == "checkbox") {
 
-                    for (let z = 0; z < filterables.length; z++) {
+                    for (let z = 0; z < this.filterables.length; z++) {
 
 
                         this.chosentaskersdatafilterstart()
 
 
-                        if (filterables[z] == true && this.optionsdata[z].value.length > 0) {
+                        if (this.filterables[z] == true && this.optionsdata[z].value.length > 0) {
 
                             for (let k = 0; k < this.chosenTaskers.length; k++) {
                                 const tempoptionsarr = []
@@ -554,7 +536,7 @@ export default {
                                 }
                             }
                         }
-                        else if (filterables[z] == true && this.optiondata[z].value.length == 0) {
+                        else if (this.filterables[z] == true && this.optiondata[z].value.length == 0) {
 
                             const temptaskers = this.chosentaskersdatafilterstart()
                             for (let f = 0; f < this.chosenTaskers[k].skills.length; f++) {
@@ -605,6 +587,8 @@ export default {
 
 
 
+            }
+
         },
         hasSubArray(master, sub) {
 
@@ -649,6 +633,19 @@ export default {
 
             this.dataForIconSwitch.push(temparrforicon)
             this.optionsdata.push(tempobj)
+        }
+
+        for (let i = 0; i < this.optionsdata.length; i++) {
+            for (let y = 0; y < this.servicesdata.serviceChoices[i].options.length; y++) {
+                if (this.servicesdata.serviceChoices[i].options[y].taskerFiltering == true) {
+                    this.filterables.push(true)
+                    break;
+                }
+                else {
+                    this.filterables.push(false)
+                    break;
+                }
+            }
         }
 
 
