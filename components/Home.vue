@@ -1,7 +1,7 @@
 <template>
   <main class="">
     <Hero />
-    <Slider />
+    <Slider v-if="this.$auth.$state.loggedIn" />
     <Servicesslide />
     <Popularpros />
     <Blogs />
@@ -19,7 +19,6 @@ import CustomerComments from './HomeSubComponents/CustomerComments.vue';
 export default {
   components: { Slider, Hero, Servicesslide, Popularpros, Blogs, CustomerComments },
   mounted() {
-    this.$forceUpdate();
   },
   async created() {
     

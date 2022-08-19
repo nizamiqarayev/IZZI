@@ -1,9 +1,9 @@
 <template>
     <div class="relative">
 
-        <Header class="top-0"></Header>
+        <Header @load="this.$auth.$state.loggedIn ? '' : refresh() " class="top-0"></Header>
         <transition name="slide-fade">
-            <Nuxt />
+            <Nuxt  />
         </transition>
         <Footer class=""></Footer>
     </div>
@@ -22,6 +22,11 @@ export default {
         name: 'home',
         mode: 'out-in'
     },
+    methods:{
+        refresh(){
+            window.location.reload()
+        }
+    }
     
 }
 </script>

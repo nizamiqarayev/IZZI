@@ -13,9 +13,12 @@
 
             </nuxt-link>
         </div>
+
         <div class="w-full justify-center mt-9 flex items-start gap-4">
             <div v-for="(blog, index) in blogs" :key="blog.id">
-                <BlogsChild v-if="index<3"   :data="blog" />
+                <nuxt-link :to="`/blogs/${blog.id}`">
+                    <BlogsChild v-if="index < 3" :data="blog" />
+                </nuxt-link>
             </div>
 
         </div>
@@ -35,7 +38,7 @@ export default {
     async created() {
         const tempblog = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/blogs/`)
         this.blogs = tempblog.data
-      
+
     }
 }
 </script>
