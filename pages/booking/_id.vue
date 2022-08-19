@@ -1,9 +1,9 @@
     <template>
-    <main class="flex flex-col lg:flex-row w-full lg:items-center lg:justify-center  bg-[#5920BC] bg-opacity-5 font-quicksand">
-        <div class="flex mt-10 max-w-[65rem] bg-white p-6">
-            <div class="pr-12 border-r w-[20rem] max-w-[20rem]">
-                <h2 class="font-bold text-2xl text-[#222222]">{{ services.title }}</h2>
-                <p class="mt-3 mb-7 text-[#999999 text-sm]">{{ services.description }}</p>
+    <main class="flex  w-full lg:items-center lg:justify-center  bg-[#5920BC] bg-opacity-5 font-quicksand">
+        <div class="flex flex-col lg:flex-row px-4 lg:px-0 max-w-full mt-10 lg:max-w-[65rem] bg-white lg:p-6">
+            <div class="pr-12 border-r w-full mb-4 lg:mb-0 lg:w-[20rem] lg:max-w-[20rem]">
+                <h2 class="font-bold text-center lg:text-left text-2xl text-[#222222]">{{ services.title }}</h2>
+                <p class="mt-3 mb-7 ml-6 text-[#999999] text-sm">{{ services.description }}</p>
                 <Bookingtaskers v-if="proselected" :selected="updaterselectedtaskerdata[0]"
                     :taskerdata="updaterselectedtaskerdata[1]" :hoursofwork="updaterselectedtaskerdata[2]"
                     :pricetype="updaterselectedtaskerdata[3]" :workPrice="updaterselectedtaskerdata[4]" />
@@ -13,17 +13,17 @@
                     <p>Summary</p>
                 </button>
             </div>
-            <div v-if="summary == false" class="pl-6 max-w-[45rem]">
-                <div v-for="(choices, choiceindex) in services.serviceChoices" :key="choiceindex">
+            <div v-if="summary == false" class="lg:pl-6 w-full lg:max-w-[45rem]">
+                <div class="mb-8" v-for="(choices, choiceindex) in services.serviceChoices" :key="choiceindex">
                     <h3 class="text-base">{{ choices.title }}</h3>
-                    <div class="flex flex-wrap gap-y-4  items-center mt-4">
+                    <div class="flex flex-wrap gap-y-4 gap-x-2 lg:w-full lg:items-center lg:mt-4">
                         <div v-for="(option, index) in choices.options" :key="index + 300">
                             <input v-model="optionsdata[choiceindex].value"
                                 @click="chosentaskersdatafilter(index, choiceindex)" class="hidden" :type="choices.type"
-                                :key="index + 300" :id="option.id" :name="choices.title" :value="option">
+                                :key="index + 300"  :id="option.id" :name="choices.title" :value="option">
 
                             <label
-                                class="flex items-center flex-1  mr-4 px-6 py-3 border border-[#5920BC] whitespace-nowrap rounded-md"
+                                class="flex items-center flex-1 text-sm justify-center w-full  lg:text-base  mr-4 lg:px-6 py-3 border border-[#5920BC] whitespace-nowrap rounded-md"
                                 :for="option.id">
                                 <div v-if="choices.type == 'radio'">
                                     <svg v-show="optionsdata[choiceindex].value.title != option.title" width="20"
@@ -68,7 +68,7 @@
 
                                 </div>
 
-                                <p class="ml-3">{{ option.title }}
+                                <p class="ml-1 lg:ml-3">{{ option.title }}
                                 </p>
                             </label>
                         </div>
@@ -112,8 +112,8 @@
 
                 </div>
                 <div class="flex w-full">
-                    <div class="w-full mt-10 relative flex justify-between">
-                        <div>
+                    <div class="w-full mt-10 relative flex flex-wrap justify-between">
+                        <div class="w-full flex flex-col justify-center items-center">
                             <h3 class="mb-2" @click="calendarshow = !calendarshow">Task start date</h3>
                             <div>
                                 <vc-date-picker v-model="date" :value="startdatecomputed" mode="date">
