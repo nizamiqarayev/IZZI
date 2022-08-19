@@ -189,7 +189,7 @@
                             </button>
                         </div>
                     </div>
-                    <slick class="lg:hidden  flex " ref="slick" :options="slickOptions">
+                    <slick class="w-11/12 lg:hidden" ref="slick" :options="slickOptions">
                         <div class="flex mr-2 flex-col p-3 items-start justify-center border border-[#C7C9CB1F] rounded-md shadow-inner"
                             v-for="(tasker, index) in chosenTaskersdisplayer" :key="tasker.id">
                             <Bookingtaskers :selected="false" :taskerdata="tasker" :hoursofwork="hoursOfWork"
@@ -225,6 +225,7 @@
 
     <script>
 import Slick from 'vue-slick'
+import 'slick-carousel/slick/slick.css';
 
 import axios from 'axios';
 import Bookingtaskers from '../../components/booking/bookingtaskers.vue';
@@ -239,7 +240,7 @@ export default {
                 dots: false,
                 prevArrow: false,
                 nextArrow: false,
-                infinite: true,
+                infinite: false,
                 speed: 700,
                 slidesToShow: 2,
                 slidesToScroll: 1,
