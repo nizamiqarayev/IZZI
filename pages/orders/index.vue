@@ -82,14 +82,16 @@
                         </nuxt-link>
                     </div>
                 </div>
-                <div class="hidden lg:flex gap-24 justify-around px-3 w-full bg-[#5920BC] bg-opacity-[0.03] pl-3 py-4">
-                    <p class="w-1/12 pl-6">Hired Services</p>
-                    <p class="w-1/12 text-center">Start date</p>
-                    <p class="w-1/12 text-center">Status</p>
-                    <p class="w-1/12 text-center">Amount</p>
-                    <p class="w-1/12 text-center">Order</p>
+                <div class="hidden lg:flex justify-between w-full bg-[#5920BC] bg-opacity-[0.03] py-4">
+                    <div class="flex gap-24 justify-around w-[95%]">
+                        <p class="w-1/12 pl-6 whitespace-nowrap">Hired Services</p>
+                        <p class="w-1/12 pl-2 text-center whitespace-nowrap">Start date</p>
+                        <p class="w-1/12 pl-2 text-center">Status</p>
+                        <p class="w-1/12 text-center">Amount</p>
+                        <p class="w-1/12 text-center">Order</p>
+                    </div>
                 </div>
-                <div class="w-full hidden lg:flex h-[400px] overflow-y-auto flex-col gap-8 my-4">
+                <div v-show="filteredOrders.length>0" class=" w-full hidden lg:flex h-[400px] overflow-y-auto scroll-ml-2 flex-col gap-8 my-4">
                     <div v-for="order in filteredOrders" :key="order.id"
                         class="w-full flex gap-20 justify-around px-3 items-center">
                         <div class="flex w-1/12 items-center">
@@ -114,7 +116,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="lg:hidden flex py-3 flex-col gap-5 ">
+                <div v-show="filteredOrders.length>0" class="lg:hidden flex py-3 flex-col gap-5 ">
                     <div v-for="order in filteredOrders" :key="order.id"
                         class="w-full bg-white flex flex-col gap-6 border-[1px] shadow-md rounded py-3 justify-around px-3 items-center">
                         <div class="flex w-full items-center">
@@ -139,11 +141,31 @@
                         </div>
                         <div class="w-full px-4 text-center">
                             <nuxt-link :to="`/orders/${order.id}`">
-                                <p class="w-full py-2 rounded text-white font-medium bg-[#5920BC] hover:bg-white transition-all transform duration-200 ">Details</p>
+                                <p
+                                    class="w-full py-2 rounded text-white font-medium bg-[#5920BC] hover:bg-white transition-all transform duration-200 ">
+                                    Details</p>
                             </nuxt-link>
                         </div>
                     </div>
                 </div>
+                <div v-show="filteredOrders.length==0">
+                    <div v-for="item in 5" :key="item" class="shadow rounded-md p-4 m-4 w-full mx-auto">
+                        <div class="animate-pulse flex space-x-4">
+                            <div class="rounded-full bg-slate-200 h-10 w-10"></div>
+                            <div class="flex-1 space-y-6 py-1">
+                                <div class="h-2 bg-slate-200 rounded"></div>
+                                <div class="space-y-3">
+                                    <div class="grid grid-cols-3 gap-4">
+                                        <div class="h-2 bg-slate-200 rounded col-span-2"></div>
+                                        <div class="h-2 bg-slate-200 rounded col-span-1"></div>
+                                    </div>
+                                    <div class="h-2 bg-slate-200 rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </main>
     </section>
