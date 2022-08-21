@@ -139,7 +139,7 @@
                         </div>
                         <div class="w-full px-4 text-center">
                             <nuxt-link :to="`/orders/${order.id}`">
-                                <p class="w-full py-2 text-white font-medium bg-[#5920BC] hover:bg-white transition-all transform duration-200 ">Details</p>
+                                <p class="w-full py-2 rounded text-white font-medium bg-[#5920BC] hover:bg-white transition-all transform duration-200 ">Details</p>
                             </nuxt-link>
                         </div>
                     </div>
