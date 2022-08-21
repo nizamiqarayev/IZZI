@@ -1,6 +1,6 @@
 <template>
-    <section class="flex flex-col justify-start items-center w-full bg-white px-8 min-h-[70vh] shadow-md">
-        <div class="flex w-full justify-between items-center py-2 border-b-2 border-b-gray ">
+    <section class="flex flex-col justify-start items-center w-full bg-white lg:px-8 px-4 min-h-[70vh] shadow-md">
+        <div class="flex lg:flex-row flex-col gap-4 lg:gap-0 w-full justify-between items-center py-2 border-b-2 border-b-gray ">
             <h2 class=" font-bold text-2xl">Profile</h2>
             <div class="flex items-center gap-8">
                 <div class="flex items-center gap-3 ">

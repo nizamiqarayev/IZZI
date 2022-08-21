@@ -1,6 +1,6 @@
 <template>
-  <section class="w-full bg-white px-8 font-quicksand min-h-[70vh] shadow-md">
-    <div class="py-2 flex  justify-between border-b-2">
+  <section class="w-full bg-white lg:px-8 px-4 font-quicksand min-h-[70vh] shadow-md">
+    <div class="py-2 flex px-2 justify-between border-b-2">
       <h2 class="text-2xl font-bold">Notifications</h2>
     </div>
     <div class="w-full flex flex-col p-2">

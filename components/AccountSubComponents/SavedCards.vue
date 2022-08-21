@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full bg-white px-8 font-quicksand min-h-[70vh] shadow-md">
+  <section class="w-full bg-white lg:px-8 px-4 font-quicksand min-h-[70vh] shadow-md">
     <div class="py-2 flex  justify-between border-b-2">
       <h2 class="text-2xl font-bold">Saved Cards</h2>
       <div class="flex gap-2 items-center cursor-not-allowed">
