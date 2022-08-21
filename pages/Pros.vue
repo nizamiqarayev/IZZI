@@ -53,7 +53,7 @@
                                 <div :class="showservice ? 'h-full overflow-auto' : 'h-0 overflow-hidden'"
                                     class="transform transition-all duration-500">
                                     <div v-for="(service, index) in services.data" :key="service.id"
-                                        v-on:click="IDselector_service(index), showservice = !showservice"
+                                        v-on:click="IDselector_service(index)"
                                         class="flex gap-2">
                                         <img src="../assets/images/Squircle.svg" v-if="!filter_services[index].filter"
                                             alt="">
@@ -79,7 +79,7 @@
                                 <div :class="showcity ? 'h-full overflow-auto' : 'h-0 overflow-hidden'"
                                     class="transform transition-all duration-500">
                                     <div v-for="(city, index) in cities.data" :key="city.id"
-                                        v-on:click="IDselector_city(index), showcity = !showcity"
+                                        v-on:click="IDselector_city(index)"
                                         class="flex justify-end lg:justify-start gap-2">
                                         <p class="lg:hidden">{{ city.name }}</p>
                                         <img src="../assets/images/Squircle.svg" v-if="!filter_cities[index].filter"
