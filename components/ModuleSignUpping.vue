@@ -1,25 +1,25 @@
 <template>
-    <div class="bg-signInAndUpBg bg-top bg-no-repeat bg-contain flex justify-center items-center relative font-quicksand">
+    <div class="bg-signInAndUpBg bg-top bg-no-repeat lg:bg-contain flex justify-center items-center relative font-quicksand">
         <main class="rounded-[5px] min-h-[100vh] w-full mt-[36px] mb-[20vh] relative flex items-center justify-center">
-            <div class="font-quicksand rounded-md mx-auto px-8 py-6 border-[1px] border-[#E4E4E4] bg-white">
+            <div class="rounded-md lg:w-4/12 w-9/12 mx-auto px-8 text-sm lg:text-base py-6 border-[1px] border-[#E4E4E4] bg-white">
                 <h2 class="whitespace-nowrap mb-7 font-quicksand font-bold text-[1.875rem] text-[#5920BC]">Sign Up</h2>
                 <form action="">
-                    <div class="flex flex-col w-full mt-4">
+                    <div class="flex flex-col w-full mt-2 lg:mt-4">
                         <label for="F_name">First Name</label>
                         <input v-model="f_name" class="mt-3 border-[#C7C9CB] border-[1px] py-3 px-6"
                             placeholder="Firstname" type="text">
                     </div>
-                    <div class="flex flex-col w-full mt-4">
+                    <div class="flex flex-col w-full mt-2 lg:mt-4">
                         <label for="L_name">Last Name</label>
                         <input v-model="l_name" class="mt-3 border-[#C7C9CB] border-[1px] py-3 px-6"
                             placeholder="Lastname" type="text">
                     </div>
-                    <div class="flex flex-col w-full mt-4">
+                    <div class="flex flex-col w-full mt-2 lg:mt-4">
                         <label for="E-mail">Email address</label>
                         <input v-model="email" class="mt-3 border-[#C7C9CB] border-[1px] py-3 px-6"
                             placeholder="elonmusk@gmail.com" type="email">
                     </div>
-                    <div class="flex flex-col w-full mt-4 relative">
+                    <div class="flex flex-col w-full mt-2 lg:mt-4 relative">
                         <label for="Password">Password</label>
                         <div class="h-fit flex flex-col items-end">
                             <input v-model="pwfirst" @keypress="pwvalid = true"
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <button @click="passwordChecker"
-                        class="text-base bg-[#5920BC] py-3 px-20 my-6 mx-16 rounded-lg  flex items-center gap-2 text-white"
+                        class="text-base bg-[#5920BC] py-3 px-10 justify-center my-6 lg:mx-auto lg:w-7/12 w-full rounded-lg  flex items-center gap-2 text-white"
                         type="button">Sign Up<img src="../assets/images/signInAndUpImages/arrowright.svg"
                             alt=""></button>
                 </form>
