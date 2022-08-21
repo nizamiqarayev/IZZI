@@ -3,7 +3,7 @@
         <hr>
         <div class="grid grid-cols-2 gap-3 text-xs lg:text-base lg:flex lg:justify-between w-full py-6 lg:py-12">
             <div class="lg:px-8 lg:pb-6 lg:w-3/12 space-y-3">
-                <img class="h-10 lg:h-14 " src="../assets/images/logo/Logo_footer.svg" alt="">
+                <img class="h-10 lg:h-14 " src="../assets/images/logo/logo .svg" alt="">
                 <span class="text-[#222222] opacity-75 cursor-pointer">Central street, White City, Khatai, Baku, Azerbaijan</span>
                 <p class="text-[#222222] opacity-75 cursor-pointer">+994 (50) XX XXXX</p>
                 <p class="text-[#222222] opacity-75 cursor-pointer">info@izzi.com</p>
