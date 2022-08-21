@@ -14,7 +14,7 @@
 
                         </div>
                         <div class="space-y-3">
-                            <p v-for="(choice, index) in serviceChoices" :key="choice.id">{{ choice.title }}</p>
+                            <p v-for="(choice, index) in serviceChoices" :key="choice.id+2500">{{ choice.title }}</p>
                         </div>
                     </div>
                 </div>
@@ -44,13 +44,13 @@
 
             <div class=" w-[40%] pb-7">
                 <div class="">
-                    <div class="flex flex-col gap-3" v-for="(choicevalue, index) in dataforvalue" :key="choicevalue.id">
+                    <div class="flex flex-col gap-3" v-for="(choicevalue, index) in dataforvalue" :key="choicevalue.id_3000">
                         <div class="flex flex-col gap-y-3" v-if="isArr[index] == false">
-                            <p v-for="(value, titleindex) in choicevalue" :key="titleindex">{{ value[0] }}</p>
+                            <p v-for="(value, titleindex) in choicevalue" :key="titleindex+3500">{{ value[0] }}</p>
                         </div>
                         <div class="flex flex-col gap-y-3" v-if="isArr[index] == true">
-                            <p v-for="(value, index) in choicevalue" :key="index"><span
-                                    v-for="(title, titleindex) in value" :key="titleindex">{{ title }}</span></p>
+                            <p v-for="(value, index) in choicevalue" :key="index+4000"><span
+                                    v-for="(title, titleindex) in value" :key="titleindex+4500">{{ title }}</span></p>
                         </div>
                     </div>
                 </div>
@@ -101,14 +101,14 @@ import { isArray } from 'util';
 
 export default {
     props: {
-        serviceChoices: Object,
+        serviceChoices: Array,
         serviceChoicesOptionValue: Array,
         location: String,
         startDate: Date,
         starttime: Date,
         detail: String,
         totalAmount: Number,
-        subService: Number,
+        subService: String,
         tasker: Object,
     },
     data() {

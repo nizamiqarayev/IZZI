@@ -14,13 +14,15 @@
                 </button>
             </div>
             <div v-if="summary == false" class="lg:pl-6 w-full lg:max-w-[45rem]">
-                <div class="mb-8" v-for="(choices, choiceindex) in services.serviceChoices" :key="choiceindex">
+                <div class="mb-8" v-for="(choices, choiceindex) in services.serviceChoices" :key="choiceindex + 1000">
                     <h3 class="text-base">{{ choices.title }}</h3>
                     <div class="flex flex-wrap gap-y-4 gap-x-4 lg:gap-x-2 lg:w-full lg:items-center lg:mt-4">
-                        <div v-for="(option, index) in choices.options" :key="index + 300" class="w-[45%] min-w-fit lg:w-auto ">
+                        <div v-for="(option, index) in choices.options" :key="index + 300"
+                            class="w-[45%] min-w-fit lg:w-auto ">
                             <input v-model="optionsdata[choiceindex].value"
-                                @click="chosentaskersdatafilter(index, choiceindex,filterables[choiceindex])" class="hidden" :type="choices.type"
-                                :key="index + 300" :id="option.id" :name="choices.title" :value="option">
+                                @click="chosentaskersdatafilter(index, choiceindex, filterables[choiceindex])"
+                                class="hidden" :type="choices.type" :key="index + 2000" :id="option.id"
+                                :name="choices.title" :value="option">
 
                             <label
                                 class="flex items-center min-w-full flex-1 text-sm lg:justify-center   lg:text-base px-7  mr-4 lg:px-6 py-3 border border-[#5920BC] whitespace-nowrap rounded-md"
@@ -175,12 +177,12 @@
                     </div>
 
                 </div>
-                <div class="w-full mt-10" v-if="proselected==false">
+                <div class="w-full mt-10" v-if="proselected == false">
                     <h3>Choose a Pro</h3>
                     <div
                         class="flex lg:w-auto overflow-x-scroll lg:overflow-auto lg:grid lg:grid-cols-2 gap-x-5 gap-y-4  ">
                         <div class="flex flex-col shrink-0 w-80  p-3 lg:w-auto  items-start justify-center border border-[#C7C9CB1F] rounded-md shadow-inner"
-                            v-for="(tasker, index) in chosenTaskersdisplayer" :key="tasker.id">
+                            v-for="(tasker, index) in chosenTaskersdisplayer" :key="tasker.id + 1500">
                             <Bookingtaskers :selected="false" :taskerdata="tasker" :hoursofwork="hoursOfWork"
                                 :pricetype="chosenTaskersPriceType[index]" :workPrice="chosenTaskersPrices[index]" />
                             <button
@@ -195,7 +197,7 @@
                 <Bookingtaskers class="flex lg:hidden" v-if="proselected" :selected="updaterselectedtaskerdata[0]"
                     :taskerdata="updaterselectedtaskerdata[1]" :hoursofwork="updaterselectedtaskerdata[2]"
                     :pricetype="updaterselectedtaskerdata[3]" :workPrice="updaterselectedtaskerdata[4]" />
-                <button  v-if="proselected"
+                <button v-if="proselected"
                     class="flex lg:hidden w-full hover:transition-all py-4 mb-10 border rounded-md border-[#5920BC] #979797  items-center self-center justify-center hover:bg-[#5920BC] hover:text-white"
                     @click="summary = !summary">
                     <p>Summary</p>
@@ -418,154 +420,66 @@ export default {
             this.dataForIconSwitch[dataplaceholderindex][choiceindex] = !this.dataForIconSwitch[dataplaceholderindex][choiceindex]
 
         },
-        async chosentaskersdatafilter(choiceindex, dataplaceholderindex,filter) {
+        async chosentaskersdatafilter(choiceindex, dataplaceholderindex, filter) {
             this.iconhandler(choiceindex, dataplaceholderindex)
             console.log("this is happening2");
-            if(filter==true){
+            if (filter == true) {
 
-                
 
-            this.chosenTaskers = []
-            for (let l = 0; l < this.taskers.data.length; l++) {
-                for (let index = 0; index < this.taskers.data[l].skills.length; index++) {
-                    if (this.taskers.data[l].skills[index].subService.id == this.params.id) {
 
-                        this.chosenTaskers.push(this.taskers.data[l])
-                        break;
+                this.chosenTaskers = []
+                for (let l = 0; l < this.taskers.data.length; l++) {
+                    for (let index = 0; index < this.taskers.data[l].skills.length; index++) {
+                        if (this.taskers.data[l].skills[index].subService.id == this.params.id) {
+
+                            this.chosenTaskers.push(this.taskers.data[l])
+                            break;
+                        }
                     }
                 }
-            }
 
 
 
 
-            console.log(this.filterables);
-            await setTimeout(() => {
-                let temparr = []
-                let tempprices = []
+                console.log(this.filterables);
+                 setTimeout(() => {
+                    let temparr = []
+                    let tempprices = []
 
-                if (this.servicesdata.serviceChoices[dataplaceholderindex].type == "radio") {
-                    for (let z = 0; z < this.filterables.length; z++) {
+                    if (this.servicesdata.serviceChoices[dataplaceholderindex].type == "radio") {
+                        for (let z = 0; z < this.filterables.length; z++) {
 
-                        const tempoptions = this.optionsdata[z]
-                        console.log(this.optionsdata[z].value.title !==undefined);
-                        if (this.filterables[z] == true && this.optionsdata[z].value.title !==undefined) {
-                            console.log("this is happening 3");
+                            const tempoptions = this.optionsdata[z]
+                            console.log(this.optionsdata[z].value.title !== undefined);
+                            if (this.filterables[z] == true && this.optionsdata[z].value.title !== undefined) {
+                                console.log("this is happening 3");
 
-                            for (let k = 0; k < this.chosenTaskers.length; k++) {
-                                for (let f = 0; f < this.chosenTaskers[k].skills.length; f++) {
+                                for (let k = 0; k < this.chosenTaskers.length; k++) {
+                                    for (let f = 0; f < this.chosenTaskers[k].skills.length; f++) {
 
-                                    if (String(this.chosenTaskers[k].skills[f].option.title) == String(this.optionsdata[z].value.title)) {
-                                        let price = this.chosenTaskers[k].skills[f].price
+                                        if (String(this.chosenTaskers[k].skills[f].option.title) == String(this.optionsdata[z].value.title)) {
+                                            let price = this.chosenTaskers[k].skills[f].price
 
 
-                                        const tempobj = {
-                                            tasker: this.chosenTaskers[k],
-                                            price: price,
-                                            type: this.chosenTaskers[k].skills[f].priceType
+                                            const tempobj = {
+                                                tasker: this.chosenTaskers[k],
+                                                price: price,
+                                                type: this.chosenTaskers[k].skills[f].priceType
+                                            }
+                                            temparr.push(tempobj)
+
+                                            break;
                                         }
-                                        temparr.push(tempobj)
-
-                                        break;
                                     }
                                 }
                             }
-                        }
-
-                    }
-                    
-
-                    temparr.sort(function (a, b) {
-                        return b.tasker.rating - a.tasker.rating;
-                    });
-
-                    const secondarytemparr = []
-                    temparr.forEach(element => {
-                        secondarytemparr.push(element.tasker)
-                    });
-                    const secondarytemparrforprices = []
-                    temparr.forEach(element => {
-                        secondarytemparrforprices.push(element.price)
-                    });
-                    const secondarytemparrpricetypes = []
-                    temparr.forEach(element => {
-                        secondarytemparrpricetypes.push(element.type)
-                    });
-
-
-                    this.calculatedPrices = secondarytemparrforprices
-                    this.priceTypes = secondarytemparrpricetypes
-
-                    this.chosenTaskers = secondarytemparr
-                    console.log(this.chosenTaskers);
-
-                }
-                else if (this.servicesdata.serviceChoices[dataplaceholderindex].type == "checkbox") {
-
-                    for (let z = 0; z < this.filterables.length; z++) {
-
-
-                        this.chosentaskersdatafilterstart()
-
-
-                        if (this.filterables[z] == true && this.optionsdata[z].value.length > 0) {
-
-                            for (let k = 0; k < this.chosenTaskers.length; k++) {
-                                const tempoptionsarr = []
-                                const tempoptionstitlearr = []
-                                for (let f = 0; f < this.chosenTaskers[k].skills.length; f++) {
-                                    tempoptionsarr.push(this.chosenTaskers[k].skills[f])
-                                    tempoptionstitlearr.push(this.chosenTaskers[k].skills[f].option.title)
-                                    if (this.hasSubArray(tempoptionstitlearr, this.optionsdata[z].value)) {
-
-                                        console.log('====================================');
-                                        console.log(this.chosenTaskers[k].skills[f].priceType);
-                                        console.log('====================================');
-
-                                        let price = 0;
-
-                                        for (let pricelooper = 0; pricelooper < tempoptionsarr.length; pricelooper++) {
-                                            price = price + tempoptionsarr[pricelooper].price
-
-                                        }
-                                        let fullprice
-                                        if (this.chosenTaskers[k].skills[f].priceType == "hourlyPrice") {
-                                            fullprice = price * this.hoursOfWork
-                                        }
-
-                                        const tempobj = {
-                                            tasker: this.chosenTaskers[k],
-                                            price: price,
-                                            type: this.chosenTaskers[k].skills[f].priceType,
-                                        }
-                                        temparr.push(tempobj)
-
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        else if (this.filterables[z] == true && this.optiondata[z].value.length == 0) {
-
-                            const temptaskers = this.chosentaskersdatafilterstart()
-                            for (let f = 0; f < this.chosenTaskers[k].skills.length; f++) {
-                                const tempobj = {
-                                    tasker: temptaskers[k],
-                                    price: temptaskers[k].skills[f].option.price
-                                }
-                                temparr.push(tempobj)
-                            }
 
                         }
-
 
 
                         temparr.sort(function (a, b) {
                             return b.tasker.rating - a.tasker.rating;
                         });
-                        console.log('====================================');
-                        console.log(temparr);
-                        console.log('====================================');
 
                         const secondarytemparr = []
                         temparr.forEach(element => {
@@ -575,21 +489,109 @@ export default {
                         temparr.forEach(element => {
                             secondarytemparrforprices.push(element.price)
                         });
-
                         const secondarytemparrpricetypes = []
                         temparr.forEach(element => {
                             secondarytemparrpricetypes.push(element.type)
                         });
-                        this.priceTypes = secondarytemparrpricetypes
 
 
                         this.calculatedPrices = secondarytemparrforprices
-                        this.chosenTaskers = secondarytemparr
-                    }
-                    return this.chosenTaskers
+                        this.priceTypes = secondarytemparrpricetypes
 
-                }
-            }, 200)
+                        this.chosenTaskers = secondarytemparr
+                        console.log(this.chosenTaskers);
+
+                    }
+                    else if (this.servicesdata.serviceChoices[dataplaceholderindex].type == "checkbox") {
+
+                        for (let z = 0; z < this.filterables.length; z++) {
+
+
+                            this.chosentaskersdatafilterstart()
+
+
+                            if (this.filterables[z] == true && this.optionsdata[z].value.length > 0) {
+
+                                for (let k = 0; k < this.chosenTaskers.length; k++) {
+                                    const tempoptionsarr = []
+                                    const tempoptionstitlearr = []
+                                    for (let f = 0; f < this.chosenTaskers[k].skills.length; f++) {
+                                        tempoptionsarr.push(this.chosenTaskers[k].skills[f])
+                                        tempoptionstitlearr.push(this.chosenTaskers[k].skills[f].option.title)
+                                        if (this.hasSubArray(tempoptionstitlearr, this.optionsdata[z].value)) {
+
+                                            console.log('====================================');
+                                            console.log(this.chosenTaskers[k].skills[f].priceType);
+                                            console.log('====================================');
+
+                                            let price = 0;
+
+                                            for (let pricelooper = 0; pricelooper < tempoptionsarr.length; pricelooper++) {
+                                                price = price + tempoptionsarr[pricelooper].price
+
+                                            }
+                                            let fullprice
+                                            if (this.chosenTaskers[k].skills[f].priceType == "hourlyPrice") {
+                                                fullprice = price * this.hoursOfWork
+                                            }
+
+                                            const tempobj = {
+                                                tasker: this.chosenTaskers[k],
+                                                price: price,
+                                                type: this.chosenTaskers[k].skills[f].priceType,
+                                            }
+                                            temparr.push(tempobj)
+
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            else if (this.filterables[z] == true && this.optiondata[z].value.length == 0) {
+
+                                const temptaskers = this.chosentaskersdatafilterstart()
+                                for (let f = 0; f < this.chosenTaskers[k].skills.length; f++) {
+                                    const tempobj = {
+                                        tasker: temptaskers[k],
+                                        price: temptaskers[k].skills[f].option.price
+                                    }
+                                    temparr.push(tempobj)
+                                }
+
+                            }
+
+
+
+                            temparr.sort(function (a, b) {
+                                return b.tasker.rating - a.tasker.rating;
+                            });
+                            console.log('====================================');
+                            console.log(temparr);
+                            console.log('====================================');
+
+                            const secondarytemparr = []
+                            temparr.forEach(element => {
+                                secondarytemparr.push(element.tasker)
+                            });
+                            const secondarytemparrforprices = []
+                            temparr.forEach(element => {
+                                secondarytemparrforprices.push(element.price)
+                            });
+
+                            const secondarytemparrpricetypes = []
+                            temparr.forEach(element => {
+                                secondarytemparrpricetypes.push(element.type)
+                            });
+                            this.priceTypes = secondarytemparrpricetypes
+
+
+                            this.calculatedPrices = secondarytemparrforprices
+                            this.chosenTaskers = secondarytemparr
+                        }
+                        return this.chosenTaskers
+
+                    }
+                }, 200)
 
 
 
@@ -603,9 +605,17 @@ export default {
 
             const result = sub.every(val => master.includes(val.title));
             return result
+        },
+        async getservices() {
+            this.servicesdata = await axios.get(`https:izzi-api-rest.herokuapp.com/api/v1/subServices/${this.params.id}/`)
+
+        },
+        async gettaskers() {
+            this.taskers = await axios.get(`https:izzi-api-rest.herokuapp.com/api/v1/taskers`)
+
         }
     },
-    async created() {
+    async mounted() {
 
 
         this.date.setDate(this.date.getDate() + 1)
@@ -615,9 +625,8 @@ export default {
         this.endtime.setDate(this.date.getDate())
         this.endtime.setHours(this.starttime.getHours() + 1)
         this.hoursOfWork = 1
-
-        this.servicesdata = await axios.get(`https:izzi-api-rest.herokuapp.com/api/v1/subServices/${this.params.id}/`)
-        this.servicesdata = this.servicesdata.data
+       await this.getservices(),
+            this.servicesdata = this.servicesdata.data
         console.log('====================================');
         console.log(this.servicesdata);
         console.log('====================================');
@@ -659,7 +668,7 @@ export default {
 
 
         this.lengthofoptions = this.optionsdata.length
-        this.taskers = await axios.get(`https:izzi-api-rest.herokuapp.com/api/v1/taskers`)
+        await this.gettaskers()
         console.log('====================================');
         console.log(this.taskers);
         console.log('====================================');

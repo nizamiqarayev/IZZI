@@ -25,9 +25,9 @@
                 <div class="flex items-center gap-4">
                     <img class="h-14 w-14" src="../../assets/images/headerpfp/Oval.svg" alt="">
                     <div>
-                        <h3 class="font-bold text-xl">{{ this.$auth.$state.user.first_name }}
-                            {{ this.$auth.$state.user.last_name }}</h3>
-                        <p class="text-sm">{{ this.$auth.$state.user.email }}</p>
+                        <h3 class="font-bold text-xl">{{ first_name }}
+                            {{ last_name }}</h3>
+                        <p class="text-sm">{{ email }}</p>
                     </div>
                 </div>
                 <div class="space-y-4">
@@ -43,13 +43,17 @@
 export default {
     data() {
         return {
+            first_name: "",
+            last_name: "",
+            email: "",
+
             onlineStatus: true,
         }
     },
     methods: {
         logout() {
             localStorage.clear()
-            this.$auth.$state.loggedIn=false
+            this.$auth.$state.loggedIn = false
             var cookies = document.cookie.split("; ");
             for (var c = 0; c < cookies.length; c++) {
                 var d = window.location.hostname.split(".");
@@ -63,14 +67,28 @@ export default {
                     };
                     d.shift();
                 }
-                
+
                 // this.$router.push('/')
-                
-                
+
+
             }
-            }
-        },
-    }
+        }
+    },
+    created() {
+        if (this.$auth.$state.user.first_name !== undefined) {
+            this.first_name = this.$auth.$state.user.first_name
+
+        }
+        if (this.$auth.$state.user.last_name !== undefined) {
+            this.last_name  = this.$auth.$state.user.last_name
+
+        }
+        if (this.$auth.$state.user.email !== undefined) {
+            this.email = this.$auth.$state.user.email
+
+        }
+    },
+}
 </script>
 
 <style>

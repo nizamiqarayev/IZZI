@@ -33,7 +33,7 @@
         <div class="flex gap-y-2 w-full gap-x-5">
             {{ reset_array() }}
             <div v-for="(skill, index) in tasker.skills" :key="skill.id"
-                v-if="subService_unique.includes(skill.subService.title) == false"
+                v-show="subService_unique.includes(skill.subService.title) == false"
                 class="bg-[#5920BC0D] w-full flex justify-around py-2 px-2 border-[1px] border-[#5920BC] rounded">
                 <p class="text-sm">{{ skill.subService.title }}</p>
                 <p class="text-sm">{{ skill.price }} ₼</p>
