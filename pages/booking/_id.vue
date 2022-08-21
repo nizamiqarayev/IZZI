@@ -607,11 +607,11 @@ export default {
             return result
         },
         async getservices() {
-            this.servicesdata = await axios.get(`https:izzi-api-rest.herokuapp.com/api/v1/subServices/${this.params.id}/`)
+            this.servicesdata = await axios.get(`subServices/${this.params.id}/`)
 
         },
         async gettaskers() {
-            this.taskers = await axios.get(`https:izzi-api-rest.herokuapp.com/api/v1/taskers`)
+            this.taskers = await axios.get(`taskers/`)
 
         }
     },
