@@ -1,6 +1,6 @@
 <template>
-    <div class="max-w-3xl  pr-8">
-        <div class="flex gap-20 pb-7 border-b ">
+    <div class="w-screen max-w-full lg:w-auto lg:max-w-3xl px-[5%]   lg:pr-8">
+        <div class="flex gap-0 justify-between lg:gap-20 pb-7 border-b ">
             <div class="flex flex-col gap-y-6">
                 <div class="flex justify-between">
                     <div class="flex gap-x-4">
@@ -64,11 +64,11 @@
             </div>
 
         </div>
-        <div>
+        <div class="my-[7%]">
             <p>Task detail</p>
             <div>{{ detail }}</div>
         </div>
-        <div class="flex items-center justify-between">
+        <div class="flex items-center w-full justify-between">
             <div class="py-4 px-6 border rounded-md hover:cursor-pointer" @click="$emit('return')">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -79,7 +79,7 @@
                         fill="#5920BC" />
                 </svg>
             </div>
-            <div class="py-4 px-20 rounded-md bg-[#5920BC] flex items-center hover:cursor-pointer" @click="submitorder()">
+            <div class="py-4 px-[5%] rounded-md bg-[#5920BC] flex items-center hover:cursor-pointer" @click="submitorder()">
                 <p class="text-white mr-2">Complete Task </p>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -154,35 +154,9 @@ export default {
         }
     },
     mounted() {
-        console.log('====================================');
-        console.log(this.serviceChoices);
-        console.log('====================================');
-        console.log(this.tasker);
-        console.log('====================================');
-        console.log('====================================');
-        console.log('====================================');
-        console.log(this.serviceChoicesOptionValue);
-        console.log('====================================');
-        console.log('====================================');
-        console.log(this.location);
-        console.log('====================================');
-        console.log('====================================');
-        console.log(this.startDate);
+       
         const newdate = this.startDate
-        console.log('====================================');
-        console.log('====================================');
-        console.log(this.starttime.getHours());
-        console.log(this.starttime.getMinutes());
-        newdate.setHours(this.starttime.getHours())
-        newdate.setMinutes(this.starttime.getMinutes())
-        console.log(newdate);
-        console.log('====================================');
-        console.log('====================================');
-        console.log(this.detail);
-        console.log('====================================');
-        console.log('====================================');
-        console.log();
-        console.log('====================================');
+      
         this.dataforsubmit.customer = this.$store.state.auth.user.id
 
         this.dataforsubmit.subService = this.subService

@@ -1,7 +1,7 @@
     <template>
-    <main class="flex  w-full lg:items-center lg:justify-center  bg-[#5920BC] bg-opacity-5 font-quicksand">
-        <div class="flex flex-col lg:flex-row px-4 max-w-full lg:mt-10 lg:max-w-[70rem] bg-white lg:p-6 ">
-            <div class="pr-12 border-r w-full mb-4 lg:mb-0 lg:w-[20rem] lg:max-w-[25rem] lg:pl-6">
+    <main class="flex items-center w-screen justify-center  bg-[#5920BC] bg-opacity-5 font-quicksand">
+        <div class="flex flex-col lg:flex-row px-[5%] max-w-full lg:mt-10 lg:max-w-[70rem] bg-white lg:p-6 ">
+            <div class="pr-12 border-b lg:border-r w-screen mb-4 lg:mb-0 lg:w-[20rem] lg:max-w-[25rem] lg:pl-6">
                 <h2 class="font-bold text-center lg:text-left text-2xl text-[#222222]">{{ services.title }}</h2>
                 <p class="mt-3 mb-7 text-[#999999] text-sm">{{ services.description }}</p>
                 <Bookingtaskers class="hidden lg:flex" v-if="proselected" :selected="updaterselectedtaskerdata[0]"
@@ -17,13 +17,13 @@
                 <div class="mb-8" v-for="(choices, choiceindex) in services.serviceChoices" :key="choiceindex">
                     <h3 class="text-base">{{ choices.title }}</h3>
                     <div class="flex flex-wrap gap-y-4 gap-x-4 lg:gap-x-2 lg:w-full lg:items-center lg:mt-4">
-                        <div v-for="(option, index) in choices.options" :key="index + 300" class="w-[45%] lg:w-auto ">
+                        <div v-for="(option, index) in choices.options" :key="index + 300" class="w-[45%] min-w-fit lg:w-auto ">
                             <input v-model="optionsdata[choiceindex].value"
                                 @click="chosentaskersdatafilter(index, choiceindex,filterables[choiceindex])" class="hidden" :type="choices.type"
                                 :key="index + 300" :id="option.id" :name="choices.title" :value="option">
 
                             <label
-                                class="flex items-center w-full flex-1 text-sm lg:justify-center   lg:text-base px-7  mr-4 lg:px-6 py-3 border border-[#5920BC] whitespace-nowrap rounded-md"
+                                class="flex items-center min-w-full flex-1 text-sm lg:justify-center   lg:text-base px-7  mr-4 lg:px-6 py-3 border border-[#5920BC] whitespace-nowrap rounded-md"
                                 :for="option.id">
                                 <div v-if="choices.type == 'radio'">
                                     <svg v-show="optionsdata[choiceindex].value.title != option.title" width="20"
@@ -68,7 +68,7 @@
 
                                 </div>
 
-                                <p class="ml-1 lg:ml-3">{{ option.title }}
+                                <p class="ml-1 lg:ml-3 ">{{ option.title }}
                                 </p>
                             </label>
                         </div>
@@ -76,8 +76,8 @@
 
                     </div>
                 </div>
-                <div class="mt-10 mb-2 space-y-3">
-                    <div class="flex justify-between mb-">
+                <div class="mt-10 mb-2 w-full space-y-3">
+                    <div class="flex justify-between ">
                         <h3>Start Address</h3>
                         <div class="flex">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -175,7 +175,7 @@
                     </div>
 
                 </div>
-                <div class="w-full mt-10">
+                <div class="w-full mt-10" v-if="proselected==false">
                     <h3>Choose a Pro</h3>
                     <div
                         class="flex lg:w-auto overflow-x-scroll lg:overflow-auto lg:grid lg:grid-cols-2 gap-x-5 gap-y-4  ">
@@ -192,8 +192,16 @@
                     </div>
 
                 </div>
+                <Bookingtaskers class="flex lg:hidden" v-if="proselected" :selected="updaterselectedtaskerdata[0]"
+                    :taskerdata="updaterselectedtaskerdata[1]" :hoursofwork="updaterselectedtaskerdata[2]"
+                    :pricetype="updaterselectedtaskerdata[3]" :workPrice="updaterselectedtaskerdata[4]" />
+                <button  v-if="proselected"
+                    class="flex lg:hidden w-full hover:transition-all py-4 mb-10 border rounded-md border-[#5920BC] #979797  items-center self-center justify-center hover:bg-[#5920BC] hover:text-white"
+                    @click="summary = !summary">
+                    <p>Summary</p>
+                </button>
             </div>
-            <div v-if="summary == true" class="px-6">
+            <div v-if="summary == true" class="px-6 self-center justify-self-center">
                 <Bookingsummary @return="function () {
                     summary = !summary
                     selectedtaskerdata = []
@@ -345,6 +353,7 @@ export default {
     },
     methods: {
         dataSetterForSelected(selected, taskerdata, hoursOfWork, pricetype, workprice) {
+            // window.scrollTo(0,0)
             this.proselected = false
             console.log('====================================');
             console.log(this.optionsdata);

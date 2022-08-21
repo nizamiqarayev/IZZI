@@ -1,5 +1,5 @@
 <template>
-    <div class=" flex flex-col justify-between" :class="selected ? 'max-w-[80%]' : 'w-full h-full'">
+    <div class=" flex flex-col justify-between" :class="selected ? 'max-w-[80%] my-20' : 'w-full h-full'">
         <div class="flex items-center"><img class="h-14 w-14" src="../../assets/images/headerpfp/Oval.svg" alt="">
             <div class="ml-3">
                 <h3>{{ taskerdata.user.first_name }} {{ taskerdata.user.last_name }}</h3>
