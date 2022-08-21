@@ -1,10 +1,10 @@
 <template>
-    <section class="w-full bg-main font-quicksand bg-no-repeat bg-contain bg-left-top">
-        <div class="max-w-[65rem] mx-auto ">
-            <div class="w-full py-20">
+    <section class="w-full bg-main font-quicksand bg-no-repeat lg:bg-contain bg-auto bg-left-top">
+        <div class="w-10/12 mx-auto ">
+            <div class="w-full lg:py-20 py-16">
                 <p class="font-bold text-3xl mb-8">All Blogs</p>
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="flex flex-col h-full shadow-md" v-for="blog in blogs.data" :key="blog.id">
+                <div class="grid lg:grid-cols-3 grid-cols-1 items-center lg:gap-4 gap-12" >
+                    <div class="flex flex-col lg:w-11/12 w-full h-full shadow-md" v-for="blog in blogs.data" :key="blog.id">
                         <nuxt-link :to="`blogs/${blog.id}`">
                             <img class="h-36 object-cover" :src="blog.coverPhoto" alt="">
                             <div class="p-3 flex flex-col flex-1 justify-between">

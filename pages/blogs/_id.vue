@@ -4,8 +4,8 @@
             <div class="flex-1 w-full">
                 <img class="w-full" :src="subblogs.coverPhoto" alt="">
             </div>
-            <div class="flex gap-8">
-                <div class="w-9/12 space-y-6">
+            <div class="flex lg:flex-row p-6 flex-col gap-8">
+                <div class="lg:w-9/12 w-full space-y-6">
                     <p class="font-bold text-2xl">{{ subblogs.title }} </p>
                     <div class="flex flex-1 items-center w-3/5 text-sm justify-between mt-4">
                         <div class="flex items-center gap-4 justify-between">
@@ -21,9 +21,9 @@
                     </div>
                     <p>{{ subblogs.subBlogs[0].text }}</p>
                 </div>
-                <div class="flex w-3/12 flex-col gap-8">
-                    <div class=" shadow-md" v-for="(blog, index) in blogs.data" :key="blog.id">
-                        <div v-if="index < 3 && blog.id != params.id">
+                <div class="flex w-full justify-around lg:justify-start lg:w-3/12 lg:flex-col gap-8">
+                    <div class="shadow-md w-full" v-for="(blog, index) in blogs.data" :key="blog.id" v-if="index < 3 && blog.id != params.id">
+                        <div >
                             <nuxt-link :to="`${blog.id}`">
                                 <img class="object-cover" :src="blog.coverPhoto" alt="">
                                 <div class="p-3">
