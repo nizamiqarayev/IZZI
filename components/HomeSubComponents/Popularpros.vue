@@ -45,8 +45,11 @@ export default {
         }
     },
     async created() {
-        this.taskers = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/taskers/`)
-        this.taskers=this.taskers.data
+        const config = {
+            headers: { Authorization: `${this.$auth.$state.accesslocal}` }
+        }
+        this.taskers = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/taskers/`, config)
+        this.taskers = this.taskers.data
         this.chosentaskersfilter()
     }
 
