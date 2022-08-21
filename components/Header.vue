@@ -57,8 +57,10 @@
             </div> -->
 
             </div>
-            <div v-if="menuButton==true" class="fixed lg:hidden w-screen h-screen top-20 left-0 bg-white">
-                <div v-if="this.$auth.$state.loggedIn"  class="w-full px-14 py-5 flex flex-col gap-7 border-b-2 border-b-[#e3dfdf]">
+            <div :class="menuButton ? 'w-full' : 'w-0'"
+                class="fixed lg:hidden h-screen overflow-hidden top-20 transform transition-all duration-500 right-0 bg-white">
+                <div v-if="this.$auth.$state.loggedIn"
+                    class="w-full px-14 py-5 flex flex-col gap-7 border-b-2 border-b-[#e3dfdf]">
                     <div class="flex w-full gap-3 items-center ">
                         <div>
                             <img src="../assets/images/headerpfp/Oval.svg" alt="">
@@ -73,37 +75,39 @@
 
                     <div class="flex flex-col gap-3">
                         <nuxt-link to="/account">
-                            <p @click="menuButtonclicker" >Profile</p>
+                            <p @click="menuButtonclicker">Profile</p>
                         </nuxt-link>
                         <nuxt-link to="/">
                             <p @click="logout()">Log out</p>
                         </nuxt-link>
-                        
+
                     </div>
                 </div>
-                <div v-if="this.$auth.$state.loggedIn==false"  class="w-full px-14 py-5 flex flex-col gap-7 border-b-2 border-b-[#e3dfdf]">
-        
+                <div v-if="this.$auth.$state.loggedIn == false"
+                    class="w-full px-14 py-5 flex flex-col gap-7 border-b-2 border-b-[#e3dfdf]">
+
                     <div class="flex flex-col gap-3">
-                        <nuxt-link  to="/signin">
+                        <nuxt-link to="/signin">
                             <p @click="menuButtonclicker">Sign in</p>
                         </nuxt-link>
                         <nuxt-link :to="`/signup`">
                             <p @click="menuButtonclicker">Sign up</p>
                         </nuxt-link>
-                        </div>
+                    </div>
                 </div>
                 <div class="w-full px-14 flex flex-col py-5 gap-3">
-                    <nuxt-link
-                        :to="this.$auth.$state.loggedIn == true ? '/orders' : '/signin'">
-                        <p @click="menuButtonclicker" class="hover:text-[#5920BC] hover: hover:cursor-pointer whitespace-nowrap">My Orders</p>
+                    <nuxt-link :to="this.$auth.$state.loggedIn == true ? '/orders' : '/signin'">
+                        <p @click="menuButtonclicker"
+                            class="hover:text-[#5920BC] hover: hover:cursor-pointer whitespace-nowrap">My Orders</p>
                     </nuxt-link>
 
-                    <nuxt-link  to="/services">
-                        <p @click="menuButtonclicker" class="hover:text-[#5920BC] hover:cursor-pointer whitespace-nowrap">Services</p>
+                    <nuxt-link to="/services">
+                        <p @click="menuButtonclicker"
+                            class="hover:text-[#5920BC] hover:cursor-pointer whitespace-nowrap">Services</p>
                     </nuxt-link>
 
-                    <p @click="menuButtonclicker"
-                        class="hover:text-[#5920BC] hover:cursor-pointer whitespace-nowrap">Help</p>
+                    <p @click="menuButtonclicker" class="hover:text-[#5920BC] hover:cursor-pointer whitespace-nowrap">
+                        Help</p>
                 </div>
             </div>
         </div>
@@ -125,9 +129,9 @@ export default {
     },
     methods: {
         ...mapGetters('headerstore', ['getState']),
-        menuButtonclicker(){
-            this.menuButton=false
-            console.log("menubutton",this.menuButton);
+        menuButtonclicker() {
+            this.menuButton = false
+            console.log("menubutton", this.menuButton);
         },
         logout() {
             this.$auth.$state.loggedIn = false
