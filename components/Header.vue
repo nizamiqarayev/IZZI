@@ -76,7 +76,7 @@
                             <p @click="menuButtonclicker" >Profile</p>
                         </nuxt-link>
                         <nuxt-link to="/">
-                            <p @click="logout(),menuButtonclicker()">Log out</p>
+                            <p @click="logout()">Log out</p>
                         </nuxt-link>
                         
                     </div>
@@ -130,8 +130,8 @@ export default {
             console.log("menubutton",this.menuButton);
         },
         logout() {
-            localStorage.clear()
             this.$auth.$state.loggedIn = false
+            localStorage.clear()
             var cookies = document.cookie.split("; ");
             for (var c = 0; c < cookies.length; c++) {
                 var d = window.location.hostname.split(".");
@@ -146,6 +146,7 @@ export default {
                     d.shift();
                 }
             }
+
         }
     },
 
