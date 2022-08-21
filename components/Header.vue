@@ -57,8 +57,8 @@
             </div> -->
 
             </div>
-            <div :class="menuButton ? 'w-full' : 'w-0'"
-                class="fixed lg:hidden h-screen overflow-hidden top-20 transform transition-all duration-500 right-0 bg-white">
+            <div :class="menuButton ? 'w-full opacity-100' : 'w-0 opacity-0'"
+                class="fixed lg:hidden h-screen overflow-hidden top-20 transform transition-all duration-500 ease-out right-0 bg-white">
                 <div v-if="this.$auth.$state.loggedIn"
                     class="w-full px-14 py-5 flex flex-col gap-7 border-b-2 border-b-[#e3dfdf]">
                     <div class="flex w-full gap-3 items-center ">
