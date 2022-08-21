@@ -1,7 +1,7 @@
     <template>
     <main class="flex items-center w-screen justify-center  bg-[#5920BC] bg-opacity-5 font-quicksand">
         <div class="flex flex-col lg:flex-row px-[5%] max-w-full lg:mt-10 lg:max-w-[70rem] bg-white lg:p-6 ">
-            <div class="pr-12 border-b lg:border-r w-screen mb-4 lg:mb-0 lg:w-[20rem] lg:max-w-[25rem] lg:pl-6">
+            <div class="pr-12 border-b lg:border-r w-full mb-4 lg:mb-0 lg:w-[20rem] lg:max-w-[25rem] lg:pl-6">
                 <h2 class="font-bold text-center lg:text-left text-2xl text-[#222222]">{{ services.title }}</h2>
                 <p class="mt-3 mb-7 text-[#999999] text-sm">{{ services.description }}</p>
                 <Bookingtaskers class="hidden lg:flex" v-if="proselected" :selected="updaterselectedtaskerdata[0]"
