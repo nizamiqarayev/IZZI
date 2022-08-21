@@ -1,7 +1,7 @@
 <template>
     <section class="w-full font-quicksand bg-[#5920BC] bg-opacity-5 flex gap-10">
-        <main class="w-[65rem] mt-[32px] mb-20 rounded bg-white p-4 gap-3 flex mx-auto">
-            <section class="flex flex-col w-8/12 gap-6 ">
+        <main class="w-[65rem] mt-[32px] mb-20 rounded bg-white p-4 gap-3 flex lg:flex-row flex-col mx-auto">
+            <section class="flex flex-col p-4 lg:w-8/12 w-full gap-6 ">
                 <div>
                     <p class="text-xl">{{ subService.title }}</p>
                     <p class="text-[#999999] text-sm ">{{ subService.description }}</p>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
             </section>
-            <div class="border-[1px] border-[#5920BC0F] rounded h-64 w-4/12 p-4 gap-3 flex flex-col">
+            <div class="border-[1px] border-[#5920BC0F] rounded lg:h-64 lg:w-4/12 w-full p-4 gap-3 flex flex-col">
                 <div class="flex w-full gap-1 relative">
                     <div class="relative">
                         <img src="../../assets/images/homeimages/propfp.svg" alt="">
