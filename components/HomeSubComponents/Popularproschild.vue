@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-1 w-full flex flex-col p-3 items-start border rounded-md">
+    <div class="lg:flex-1 lg:w-full flex flex-col p-3 items-start border rounded-md">
         <div class="flex w-full">
             <div class="">
                 <img src="../../assets/images/homeimages/propfp.svg" alt="">

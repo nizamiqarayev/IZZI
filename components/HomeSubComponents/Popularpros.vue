@@ -1,5 +1,5 @@
 <template>
-    <section class="font-quicksand mt-24 mx-auto max-w-[65rem] mb-24">
+    <section class="font-quicksand mt-16 mx-auto w-11/12 lg:w-full lg:max-w-[65rem]">
         <div class="flex justify-between items-center w-full">
             <h3 class="text-3xl font-bold">Popular Pros</h3>
             <nuxt-link to="pros"
@@ -13,8 +13,8 @@
 
             </nuxt-link>
         </div>
-        <div class="w-full justify-center mt-9 flex items-center gap-4">
-            <Popularproschild v-for="tasker in taskers" :key="tasker.id" :tasker="tasker" />
+        <div class="overflow-auto w-full lg:justify-center flex mt-9 lg:items-center gap-4">
+            <Popularproschild class="w-10/12 shrink-0" v-for="tasker in taskers" :key="tasker.id" :tasker="tasker" />
         </div>
     </section>
 </template>
