@@ -5,7 +5,7 @@
             <div class="h-32">
                 <p class="mt-4 text-xl font-bold text-[#222222]">{{ data.title }}</p>
                 <p
-                    class="mt-3 text-[#222222] text-bold text h-full overflow-y-ellipsis overflow-x-hidden text-ellipsis ">
+                    class="mt-3 text-[#222222] text-bold  line-clamp-5 ">
                     {{ data.description }}</p>
 
             </div>
@@ -15,7 +15,7 @@
                     <p>{{ data.author.first_name }} {{ data.author.last_name }}</p>
                 </div>
                 <div>
-                    <p>{{getMonth()}}</p>
+                    <p>{{ getMonth() }}</p>
                 </div>
             </div>
         </div>
@@ -37,10 +37,10 @@ export default {
     },
     methods: {
         getMonth() {
-          
+
 
             let month
-            
+
             switch (this.date.getMonth()) {
                 case (0):
                     month = "JAN";
@@ -86,7 +86,7 @@ export default {
         getDay() {
             var month = this.date.getDate();
             return month < 10 ? '0' + month : '' + month;
-            
+
         },
 
     },

@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="w-full">
-            <p class="w-full h-20 overflow-y-ellipsis overflow-x-hidden text-ellipsis">{{data.description}}</p>
+            <p class="w-full line-clamp-4">{{data.description}}</p>
         </div>
 
 
