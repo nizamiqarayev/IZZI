@@ -148,7 +148,7 @@
                         </div>
                     </div>
                 </div>
-                <div v-show="filteredOrders.length==0">
+                <div v-show="filteredOrders.length==0&&orders.length==0">
                     <div v-for="item in 5" :key="item" class="shadow rounded-md p-4 m-4 w-full mx-auto">
                         <div class="animate-pulse flex space-x-4">
                             <div class="rounded-full bg-slate-200 h-10 w-10"></div>
@@ -165,6 +165,11 @@
                         </div>
                     </div>
                 </div>
+                 <div class="w-full flex flex-col justify-center items-center"
+                        v-if="filteredOrders.length == 0">
+                        <img src="../../assets/images/Job hiring 1.svg" alt="">
+                        <p>There is no  order for this selection :(</p>
+                    </div>
 
             </div>
         </main>
