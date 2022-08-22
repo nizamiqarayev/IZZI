@@ -1,5 +1,5 @@
 <template>
-  <div class="mr-4 w-full font-quicksand ">
+  <div class="w-full font-quicksand ">
     <div class="flex flex-col items-start justify-start border rounded-md py-8 px-5 ">
       <div class="flex items-center justify-center mb-5">
         <img class="w-10 h-10 rounded-full" :src="order.subService.coverPhoto" alt="">

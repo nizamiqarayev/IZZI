@@ -1,9 +1,9 @@
 <template>
-  <div v-if="orderslength>0" class="flex  items-start mt-20 justify-center h-fit ">
-    <div class="flex flex-col items-start justify-center">
-      <h2 class="font-bold text-3xl ml-5 mb-6 text-[#222222]">Orders</h2>
-      <div class="flex items-center ">
-        <div class="relative left-2.5 z-10 py-3 bg-white" @click="sliderleft()">
+  <div  class="flex max-w-[65rem] mx-auto font-quicksand justify-center lg:justify-start items-start mt-16 h-fit ">
+    <div class="flex w-11/12 lg:w-full flex-col items-start justify-center">
+      <h2 class="font-bold w-full text-3xl mb-6 text-[#222222]">Orders</h2>
+      <div v-show="orderslength>0" class="lg:flex hidden justify-center w-full items-center ">
+        <div class="relative left-1 z-10 py-3 bg-white" @click="sliderleft()">
           <svg class="hover:fill-[#5920BC]" width="20" height="20" viewBox="0 0 20 20" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path opacity="0.25"
@@ -14,13 +14,14 @@
           </svg>
         </div>
 
+        <div v-if="orderslength">
+          <slick class="max-w-[65rem] flex flex-row justify-center items-center" ref="slick" :options="slickOptions">
+          <SliderItemVue class="" v-for="order in this.ordersdata.orders" :key="order.id" :order="order" />
+  
+          </slick>
+        </div>
 
-        <slick class="max-w-[65rem]  flex flex-row justify-center items-center" ref="slick" :options="slickOptions">
-        <SliderItemVue  v-for="order in this.ordersdata.orders" :key="order.id" :order="order" />
-
-        </slick>
-
-        <div class="relative right-[1.625rem] z-10 py-3 bg-white" @click="sliderright()">
+        <div class="relative right-1 z-10 py-3 bg-white" @click="sliderright()">
           <svg width="20" height="20" viewBox="0 0 20 20" class="hover:fill-[#5920BC]" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path
@@ -30,6 +31,12 @@
               stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
+      </div>
+      <div v-show="orderslength==0" class="w-full">
+        <p class="text-center animate-bounce text-xl">There are currently no orders placed yet...</p>
+      </div>
+      <div v-show="orderslength>0" class="lg:hidden flex flex-col items-center w-full gap-3 h-80 overflow-auto overflow-x-hidden">
+        <SliderItemVue class="" v-for="order in this.ordersdata.orders" :key="order.id" :order="order" />
       </div>
 
 
@@ -89,6 +96,9 @@ export default {
     this.ordersdata=tempdata.data
   
     this.orderslength=this.ordersdata.orders.length
+    if(this.orderslength<3&&this.orderslength!=0){
+      this.slickOptions.slidesToShow=1
+    }
   }
 }
 </script>
