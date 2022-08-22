@@ -25,8 +25,9 @@ export default {
         }
     },
     async created() {
-        const tempblog = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/blogs/`)
+        const tempblog = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/comments/`)
         this.comments = tempblog.data
+        console.log("comments");
         console.log(this.comments);
     }
 }
