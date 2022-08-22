@@ -1,5 +1,5 @@
     <template>
-    <main class="flex items-center w-full justify-center pb-10  bg-[#5920BC] bg-opacity-5 font-quicksand">
+    <main class="flex items-center w-full justify-center lg:pb-10  bg-[#5920BC] bg-opacity-5 font-quicksand">
         <div
             class="relative flex flex-col  lg:flex-row px-[5%] max-w-full lg:mt-10 lg:max-w-[90%] lg:w-[80%] bg-white lg:p-6 ">
             <div
@@ -223,8 +223,8 @@
                     </div>
 
                 </div>
-                <div class="w-full mt-10">
-                    <h3>Choose a Pro</h3>
+                <div class="w-full mt-10 pb-10">
+                    <h3 class="mb-4">Choose a Pro</h3>
                     <div
                         class="flex lg:w-auto overflow-x-scroll lg:overflow-auto lg:grid lg:grid-cols-2 gap-x-5 gap-y-4  ">
                         <div class="flex flex-col shrink-0 w-80  p-3 lg:w-auto  items-start justify-center border border-[#C7C9CB1F] rounded-md shadow-inner"
@@ -259,6 +259,9 @@
                     :totalAmount="updaterselectedtaskerdata[4]" :serviceChoicesOptionValue="optionsdata"
                     :location="startlocation" :startDate="date" :starttime="starttime" :subService="this.params.id"
                     :detail="detail" />
+                <Bookingtaskers class="flex lg:hidden" v-if="proselected" :selected="updaterselectedtaskerdata[0]"
+                    :taskerdata="updaterselectedtaskerdata[1]" :hoursofwork="updaterselectedtaskerdata[2]"
+                    :pricetype="updaterselectedtaskerdata[3]" :workPrice="updaterselectedtaskerdata[4]" />
 
             </div>
             <div v-if="needsSignIn == true">
@@ -413,7 +416,7 @@ export default {
     },
     methods: {
         dataSetterForSelected(selected, taskerdata, hoursOfWork, pricetype, workprice) {
-            // window.scrollTo(0,0)
+            window.scrollTo(0,0)
             this.proselected = false
             console.log('====================================');
             console.log(this.optionsdata);

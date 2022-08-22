@@ -1,66 +1,64 @@
 <template>
     <div class="w-screen max-w-full lg:border-l lg:px-7   lg:pr-8">
-        <div class="flex w-full gap-0 justify-between lg:gap-20 pb-7 border-b ">
-            <div class="flex flex-col gap-y-6">
-                <div class="flex justify-between">
-                    <div class="flex">
-                        <div>
-                            <svg width="16" height="21" viewBox="0 0 16 21" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M3 0H13C14.6569 0 16 1.34315 16 3V19C16 19.8134 15.0806 20.2865 14.4188 19.8137L8 15.228L1.58124 19.8137C0.950887 20.264 0.0869751 19.8563 0.00612714 19.1138L0 19V3C0 1.34315 1.34315 0 3 0ZM13.1166 2.00673L13 2H3C2.44772 2 2 2.44772 2 3V17.057L7.41876 13.1863C7.73169 12.9627 8.14132 12.9404 8.47359 13.1192L8.58124 13.1863L14 17.057V3C14 2.48716 13.614 2.06449 13.1166 2.00673Z"
-                                    fill="#5920BC" />
-                            </svg>
+        <div class="flex justify-start w-full">
+            <div class="flex w-full">
 
-                        </div>
-                        <div class="space-y-3">
-                            <p class="" v-for="(choice, index) in serviceChoices" :key="choice.id + 2500">{{ choice.title }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-6">
-                    <div class="flex items-center  gap-x-4">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M0.881735 9.85497C1.31689 12.0629 2.67214 13.9293 4.27595 15.4274C5.8763 16.9223 7.67363 18.0028 8.89211 18.6416C9.59264 19.009 10.4074 19.009 11.1079 18.6416C12.3264 18.0028 14.1237 16.9223 15.7241 15.4274C17.3279 13.9293 18.6831 12.0629 19.1183 9.85498C19.4903 7.96728 19.0938 5.69338 17.6879 3.90027C16.2997 2.1298 13.8642 0.75 10 0.75C6.1358 0.75 3.70031 2.1298 2.31213 3.90027C0.906188 5.69338 0.509686 7.96728 0.881735 9.85497Z"
-                                stroke="#5920BC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path
-                                d="M7.41659 8.33333C7.41659 9.76007 8.57318 10.9167 9.99992 10.9167C11.4267 10.9167 12.5833 9.76007 12.5833 8.33333C12.5833 6.9066 11.4267 5.75 9.99992 5.75C8.57318 5.75 7.41659 6.9066 7.41659 8.33333Z"
-                                stroke="#5920BC" stroke-width="1.5" />
+                <div class="flex-1 space-y-4 border-b pb-6">
+                    <div class="flex gap-4">
+                        <svg width="16" height="21" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M3 0H13C14.6569 0 16 1.34315 16 3V19C16 19.8134 15.0806 20.2865 14.4188 19.8137L8 15.228L1.58124 19.8137C0.950887 20.264 0.0869751 19.8563 0.00612714 19.1138L0 19V3C0 1.34315 1.34315 0 3 0ZM13.1166 2.00673L13 2H3C2.44772 2 2 2.44772 2 3V17.057L7.41876 13.1863C7.73169 12.9627 8.14132 12.9404 8.47359 13.1192L8.58124 13.1863L14 17.057V3C14 2.48716 13.614 2.06449 13.1166 2.00673Z"
+                                fill="#5920BC" />
                         </svg>
-                        <p>Start Adress</p>
-                    </div>
-                    <div class="flex items-center gap-x-4">
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="11" cy="11" r="10" stroke="#5920BC" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M11 5V11L15 13" stroke="#5920BC" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                        <p>Task start date and Time</p>
-                    </div>
-                </div>
-            </div>
+                        <div class="w-full space-y-6">
+                            <div v-for="(choice, choiceindex) in serviceChoices" :key="choice.id"
+                                class="flex flex-1 flex-col gap-y-3 lg:flex-row lg:justify-between">
+                                <div class="flex gap-1">
+                                    <p class="text-black text-opacity-50">{{ choice.title }}</p>
+                                </div>
+                                <div class="flex" v-if="choice.type == 'checkbox'">
+                                    <div class="flex" v-for="(item, index) in dataforvalue[choiceindex]" :key="item">
+                                        <p>{{ item }}</p>
+                                        <p v-if="index < dataforvalue[choiceindex].length - 1">,</p>
+                                    </div>
+                                </div>
+                                <div v-if="choice.type == 'radio'">
 
-            <div class=" w-[40%] pb-7">
-                <div class="">
-                    <div class="flex flex-col gap-3" v-for="(choicevalue, index) in dataforvalue"
-                        :key="choicevalue.id_3000">
-                        <div class="flex flex-col gap-y-3" v-if="isArr[index] == false">
-                            <p v-for="(value, titleindex) in choicevalue" :key="titleindex + 3500">{{ value[0] }}</p>
+                                    <div v-if="choice.type == 'radio'">
+
+                                        <div>
+                                            <p v-for="title in dataforvalue[choiceindex]" :key="title.id">{{ title }}
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex flex-col gap-y-3" v-if="isArr[index] == true">
-                            <p v-for="(value, index) in choicevalue" :key="index + 4000"><span
-                                    v-for="(title, titleindex) in value" :key="titleindex + 4500">{{ title }} </span></p>
+
+                    </div>
+                    <div class="flex flex-row w-full gap-4">
+                        <img class="h-5 w-5" src="../../assets/images/bookingimages/Location.svg" alt="">
+
+                        <div class="flex flex-col w-full gap-y-3 lg:flex-row lg:justify-between">
+                            <div class="flex gap-1">
+                                <p class="text-black text-opacity-50">Start address</p>
+                            </div>
+                            <p class="w-1/2 lg:text-right">{{ location }}</p>
                         </div>
                     </div>
-                </div>
-                <div class="mt-6 mb-6 break-all">
-                    <p class="">{{ location }}</p>
-                </div>
-                <div>
-                    <p>{{ startDate.getDate() }}/{{ startDate.getUTCMonth() }}/{{ startDate.getFullYear() }}
-                        {{ starttime.getHours() }}:{{ starttime.getUTCMinutes() }}</p>
+                    <div class="flex flex-row w-full gap-4 items-start">
+                        <img class="h-5 w-5" src="../../assets/images/bookingimages/clock.svg" alt="">
+                        <div class="flex flex-col gap-y-3 w-full lg:flex-row lg:justify-between">
+                            <div class="flex gap-1 items-center">
+                                <p class="text-black text-opacity-50">Task start date and Time</p>
+                            </div>
+                            <p>{{ startDate.getDate() }}/{{ startDate.getUTCMonth() }}/{{ startDate.getFullYear() }}
+                                {{ starttime.getHours() }}:{{ starttime.getUTCMinutes() }}</p>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
@@ -69,7 +67,7 @@
             <p>Task detail</p>
             <div>{{ detail }}</div>
         </div>
-        <div class="flex items-center w-full justify-between">
+        <div class="flex items-center w-full justify-between pb-16">
             <div class="py-4 px-6 border rounded-md hover:cursor-pointer" @click="$emit('return')">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -199,10 +197,12 @@ export default {
 
             }
 
-            temparr.push(tempdataforvalue)
+            this.dataforvalue.push(tempdataforvalue)
 
         }
-        this.dataforvalue.push(temparr)
+        console.log("dataforvalue");
+        console.log(this.dataforvalue);
+
 
     },
 
