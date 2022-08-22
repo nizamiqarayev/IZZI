@@ -1,6 +1,6 @@
 <template>
     <section class="w-full font-quicksand bg-[#5920BC] bg-opacity-5 flex gap-10">
-        <main class="w-[65rem] mt-[32px] mb-20 rounded bg-white p-4 gap-3 flex lg:flex-row flex-col mx-auto">
+        <main class="w-10/12 mt-[32px] mb-20 rounded bg-white p-4 gap-3 flex lg:flex-row flex-col mx-auto">
             <section class="flex flex-col p-4 lg:w-8/12 w-full gap-6 ">
                 <div>
                     <p class="text-xl">{{ subService.title }}</p>
@@ -88,12 +88,13 @@
                 <div class="w-full">
                     <p>{{ tasker.bio }}</p>
                 </div>
-                <div class="flex">
-                    <p class="text-[#5920BC]">view profile</p>
+                <div class="flex justify-between">
+                    <p class="text-[#5920BC] cursor-pointer">view profile</p>
+                    <p class="">Total: {{order.totalAmount}}$</p>
                 </div>
                 <div class="w-full">
-                    <div class="border-[1px] rounded py-2">
-                        <p class="text-center">{{ status(order.status) }}</p>
+                    <div :class="statuscolor(order.status)" class="border-[1px] rounded py-2">
+                        <p class="text-center text-white">{{ status(order.status) }}</p>
                     </div>
                 </div>
             </div>
@@ -150,6 +151,23 @@ export default {
             }
             else if (data == 'new') {
                 return "New"
+            }
+        },
+        statuscolor(data){
+            if (data == 'accepted') {
+                return 'bg-[#3B82F6]'
+            }
+            else if (data == 'closed') {
+                return 'bg-[#EF4444]'
+            }
+            else if (data == 'completed') {
+                return 'bg-[#93C5FD]'
+            }
+            else if (data == 'inProgress') {
+                return 'bg-[#C38932]'
+            }
+            else if (data == 'new') {
+                return "bg-[#9333EA]"
             }
         },
     }
