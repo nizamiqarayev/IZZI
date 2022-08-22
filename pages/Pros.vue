@@ -104,7 +104,7 @@
                             <div class="flex gap-1 relative">
                                 <div class="relative">
                                     <img v-if="tasker.user.profilePhoto" :src="tasker.user.profilePhoto" class="h-14 w-14 rounded-full object-top object-cover" alt="">
-                                    <img v-if="!tasker.user.profilePhoto" src="../assets/images/homeimages/propfp.svg" alt="">
+                                    <img v-if="!tasker.user.profilePhoto" class="h-14 w-14" src="../assets/images/homeimages/propfp.svg" alt="">
                                     <img v-if="tasker.supervisor" class="absolute bottom-0 right-0"
                                         src="../assets/images/headerpfp/Group 26285.svg" alt="">
 

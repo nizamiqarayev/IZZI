@@ -11,8 +11,8 @@
             </div>
             <div class="flex items-center justify-between mt-4">
                 <div class="flex gap-4 items-center justify-between">
-                    <img v-if="data.author.profilePhoto" :src="data.author.profilePhoto" class="h-14 w-14 rounded-full object-top object-cover" alt="">
-                    <img v-if="!data.author.profilePhoto" src="../../assets/images/homeimages/propfp.svg" alt="">
+                    <img v-if="data.author.profilePhoto" :src="data.author.profilePhoto" class="h-8 w-8 rounded-full object-top object-cover" alt="">
+                    <img v-if="!data.author.profilePhoto" class="h-8 w-8" src="../../assets/images/homeimages/propfp.svg" alt="">
                     <p>{{ data.author.first_name }} {{ data.author.last_name }}</p>
                 </div>
                 <div>

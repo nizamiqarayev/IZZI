@@ -69,7 +69,7 @@
                     <div class="relative">
                         <img v-if="tasker_user.profilePhoto" :src="tasker_user.profilePhoto"
                             class="h-14 w-14 rounded-full object-top object-cover" alt="">
-                        <img v-if="!tasker_user.profilePhoto" src="../../assets/images/homeimages/propfp.svg" alt="">
+                        <img v-if="!tasker_user.profilePhoto" class="h-14 w-14" src="../../assets/images/homeimages/propfp.svg" alt="">
                     </div>
                     <div class="flex">
                         <div class="flex flex-col justify-center items-start">

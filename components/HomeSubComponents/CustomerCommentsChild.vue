@@ -3,7 +3,7 @@
         <div class="flex w-full">
             <div class="">
                 <img v-if="data.author.profilePhoto" :src="data.author.profilePhoto" class="h-14 w-14 rounded-full object-top object-cover" alt="">
-                    <img v-if="!data.author.profilePhoto" src="../../assets/images/homeimages/propfp.svg" alt="">
+                    <img v-if="!data.author.profilePhoto" class="h-8 w-8" src="../../assets/images/homeimages/propfp.svg" alt="">
             </div>
             <div class="w-full pb-2 px-2">
                 <div class="flex w-full justify-between">

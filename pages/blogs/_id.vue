@@ -9,7 +9,10 @@
                     <p class="font-bold text-2xl">{{ subblogs.title }} </p>
                     <div class="flex flex-1 items-center w-3/5 text-sm justify-between mt-4">
                         <div class="flex items-center gap-4 justify-between">
-                            <img :src="subblogs.author.profilePhoto" class="h-6 w-6" alt="">
+                            <img v-if="subblogs.author.profilePhoto" :src="subblogs.author.profilePhoto"
+                                class="h-8 w-8 rounded-full object-top object-cover" alt="">
+                            <img v-if="!subblogs.author.profilePhoto" class="h-8 w-8"
+                                src="../../assets/images/homeimages/propfp.svg" alt="">
                             <p>{{ subblogs.author.first_name }} {{ subblogs.author.last_name }}</p>
                         </div>
                         <div>
@@ -22,10 +25,11 @@
                     <p>{{ subblogs.subBlogs[0].text }}</p>
                 </div>
                 <div class="flex w-full justify-around lg:justify-start lg:w-3/12 lg:flex-col gap-8">
-                    <div class="shadow-md w-full" v-for="(blog, index) in blogs.data" :key="blog.id" v-if="index < 3 && blog.id != params.id">
-                        <div >
+                    <div class="shadow-md w-full" v-for="(blog, index) in blogs.data" :key="blog.id"
+                        v-if="index < 3 && blog.id != params.id">
+                        <div>
                             <nuxt-link :to="`${blog.id}`">
-                                <img class="object-cover" :src="blog.coverPhoto" alt="">
+                                <img class="object-cover h-56 " :src="blog.coverPhoto" alt="">
                                 <div class="p-3">
                                     <p class="mt-4 text-base font-bold text-[#222222]">{{ blog.title }}
                                     </p>
@@ -33,7 +37,10 @@
                                         {{ blog.description }}</p>
                                     <div class="flex flex-1 items-center text-xs justify-between mt-4">
                                         <div class="flex items-center gap-4 justify-between">
-                                            <img src="../../assets/images/homeimages/propfp.svg" class="h-6 w-6" alt="">
+                                            <img v-if="blog.author.profilePhoto" :src="blog.author.profilePhoto"
+                                                class="h-8 w-8 rounded-full object-top object-cover" alt="">
+                                            <img v-if="!blog.author.profilePhoto" class="h-8 w-8"
+                                                src="../../assets/images/homeimages/propfp.svg" alt="">
                                             <p>{{ blog.author.first_name }} {{ blog.author.last_name }}</p>
                                         </div>
                                         <div>
@@ -66,7 +73,7 @@ export default {
     async asyncData({ params }) {
         let { data } = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/blogs/${params.id}/`)
         let blogs = await axios.get(`https://izzi-api-rest.herokuapp.com/api/v1/blogs/`)
-        return { subblogs: data , blogs:blogs}
+        return { subblogs: data, blogs: blogs }
     },
 
 
