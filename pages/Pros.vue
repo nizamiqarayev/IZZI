@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-main font-quicksand bg-no-repeat bg-left-top lg:bg-contain w-full">
+    <section class="bg-main font-averta bg-no-repeat bg-left-top lg:bg-contain w-full">
         <main class="w-10/12 mx-auto py-44 lg:py-40">
             <p class="text-[30px] font-bold ">All Pros</p>
             <div class="w-full pt-16">

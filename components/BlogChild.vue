@@ -1,5 +1,5 @@
 <template>
-    <section class="w-full bg-main font-quicksand bg-no-repeat bg-contain bg-left-top">
+    <section class="w-full bg-main font-averta bg-no-repeat bg-contain bg-left-top">
         
     </section>
 </template>

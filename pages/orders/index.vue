@@ -1,5 +1,5 @@
 <template>
-    <section class="w-full font-quicksand  bg-main bg-no-repeat flex gap-10">
+    <section class="w-full font-averta  bg-main bg-no-repeat flex gap-10">
         <main class="lg:w-9/12 w-11/12 mx-auto mt-[24px] mb-10  text-sm flex flex-col lg:flex-row gap-3">
             <div
                 class=" lg:w-3/12 w-full flex-1 flex flex-col h-[330px] p-6 bg-white border-[1px] rounded-md transition-all transform border-[#C7C9CB1F]">

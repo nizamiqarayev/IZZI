@@ -1,5 +1,5 @@
 <template>
-    <main class="font-quicksand w-full relative   ">
+    <main class="font-averta w-full relative   ">
         <div
             class="flex justify-start items-center w-full bg-[url('assets/images/serviceimages/headbg.png')] bg-no-repeat bg-bottom bg-cover">
             <h1 class="lg:ml-36 ml-4 font-bold my-[4.5rem] text-3xl text-[#222222]">Find your best</h1>

@@ -1,5 +1,5 @@
 <template>
-    <section class="w-full font-quicksand bg-[#5920BC] bg-opacity-5 flex gap-10">
+    <section class="w-full font-averta bg-[#5920BC] bg-opacity-5 flex gap-10">
         <main class="w-10/12 mt-[32px] mb-20 rounded bg-white p-4 gap-3 flex lg:flex-row flex-col mx-auto">
             <section class="flex flex-col p-4 lg:w-8/12 w-full gap-6 ">
                 <div>

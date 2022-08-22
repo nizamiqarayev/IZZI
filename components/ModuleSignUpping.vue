@@ -1,8 +1,8 @@
 <template>
-    <div class="bg-signInAndUpBg bg-top bg-no-repeat lg:bg-contain flex justify-center items-center relative font-quicksand">
+    <div class="bg-signInAndUpBg bg-top bg-no-repeat lg:bg-contain flex justify-center items-center relative font-averta">
         <main class="rounded-[5px] min-h-[100vh] w-full mt-[36px] mb-[20vh] relative flex items-center justify-center">
             <div class="rounded-md lg:w-4/12 w-9/12 mx-auto px-8 text-sm lg:text-base py-6 border-[1px] border-[#E4E4E4] bg-white">
-                <h2 class="whitespace-nowrap mb-7 font-quicksand font-bold text-[1.875rem] text-[#5920BC]">Sign Up</h2>
+                <h2 class="whitespace-nowrap mb-7 font-averta font-bold text-[1.875rem] text-[#5920BC]">Sign Up</h2>
                 <form action="">
                     <div class="flex flex-col w-full mt-2 lg:mt-4">
                         <label for="F_name">First Name</label>

@@ -1,5 +1,5 @@
 <template>
-    <section class="w-full bg-main font-quicksand bg-no-repeat bg-contain bg-left-top">
+    <section class="w-full bg-main font-averta bg-no-repeat bg-contain bg-left-top">
         <div class="max-w-[65rem] mx-auto ">
             <div class="w-full py-20">
                 <p class="font-bold text-3xl mb-8">All Blogs</p>

@@ -1,5 +1,5 @@
 <template>
-  <main class="shadow-inner flex items-center justify-center min-h-screen w-full bg-slate-50 font-quicksand">
+  <main class="shadow-inner flex items-center justify-center min-h-screen w-full bg-slate-50 font-averta">
     <div class="flex lg:flex-row flex-col  items-start justify-center gap-4 w-full lg:w-5/6">
       <div class="bg-white w-full lg:w-4/12 shadow-md">
         <div @click="showaccount=!showaccount" class="lg:hidden flex gap-4 justify-between items-center">

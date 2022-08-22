@@ -16,7 +16,9 @@ module.exports = {
       },
       fontFamily: {
         quicksand:'Quicksand',
-        password:'Password Dots',
+        password: 'Password Dots',
+        averta: "'Averta', sans-serif",
+
       }
     },
   },

@@ -1,7 +1,7 @@
 <template>
     <main class="rounded-[5px] bg-signInAndUpBg w-full lg:bg-contain bg-no-repeat flex items-center justify-center">
-        <div class="font-quicksand w-10/12 lg:w-fit text-sm lg:text-base mx-auto mt-36 mb-48 p-8 h-fit bg-white border border-solid border-[#E4E4E4]">
-            <h2 class="mr-80 whitespace-nowrap mb-7 font-quicksand font-bold text-2xl lg:text-4xl text-[#5920BC]">Sign In
+        <div class="font-averta w-10/12 lg:w-fit text-sm lg:text-base mx-auto mt-36 mb-48 p-8 h-fit bg-white border border-solid border-[#E4E4E4]">
+            <h2 class="mr-80 whitespace-nowrap mb-7 font-averta font-bold text-2xl lg:text-4xl text-[#5920BC]">Sign In
             </h2>
             <label for="loginEmail" class="">Email address</label>
             <input id="loginEmail" type="email" placeholder="elonmusk@gmail.com"
