@@ -10,7 +10,7 @@
 
             </div>
             <div class="flex items-center justify-between mt-4">
-                <div class="flex items-center justify-between">
+                <div class="flex gap-4 items-center justify-between">
                     <img src="../../assets/images/homeimages/propfp.svg" class="h-6 w-6" alt="">
                     <p>{{ data.author.first_name }} {{ data.author.last_name }}</p>
                 </div>
