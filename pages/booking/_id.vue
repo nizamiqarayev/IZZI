@@ -19,12 +19,12 @@
                     <div class="flex flex-wrap gap-y-4 gap-x-4 lg:gap-x-2 lg:w-full lg:items-center lg:mt-4">
                         <div v-for="(option, index) in choices.options" :key="index + 300"
                             class="w-[45%] min-w-fit lg:w-auto ">
-                            <input v-model="optionsdata[choiceindex].value"
+                            <input @change="correctdata[choiceindex] = true" v-model="optionsdata[choiceindex].value"
                                 @click="chosentaskersdatafilter(index, choiceindex, filterables[choiceindex])"
                                 class="hidden" :type="choices.type" :key="index + 2000" :id="option.id"
                                 :name="choices.title" :value="option">
 
-                            <label
+                            <label :class="correctdata[choiceindex] == false ? 'border-red-500' : 'border-[#5920BC]'"
                                 class="flex items-center min-w-full flex-1 text-sm lg:justify-center   lg:text-base px-7  mr-4 lg:px-6 py-3 border border-[#5920BC] whitespace-nowrap rounded-md"
                                 :for="option.id">
                                 <div v-if="choices.type == 'radio'">
@@ -32,19 +32,19 @@
                                         height="20" viewBox="0 0 20 20" fill="none" xmlns="http:www.w3.org/2000/svg">
                                         <path
                                             d="M0.75 10C0.75 12.0416 0.860374 13.6311 1.13659 14.8739C1.41091 16.1083 1.83874 16.9543 2.44221 17.5578C3.04567 18.1613 3.89172 18.5891 5.12607 18.8634C6.36893 19.1396 7.95837 19.25 10 19.25C12.0416 19.25 13.6311 19.1396 14.8739 18.8634C16.1083 18.5891 16.9543 18.1613 17.5578 17.5578C18.1613 16.9543 18.5891 16.1083 18.8634 14.8739C19.1396 13.6311 19.25 12.0416 19.25 10C19.25 7.95837 19.1396 6.36893 18.8634 5.12607C18.5891 3.89173 18.1613 3.04567 17.5578 2.44221C16.9543 1.83874 16.1083 1.41091 14.8739 1.13659C13.6311 0.860374 12.0416 0.75 10 0.75C7.95837 0.75 6.36893 0.860374 5.12607 1.13659C3.89172 1.41091 3.04567 1.83874 2.44221 2.44221C1.83874 3.04567 1.41091 3.89173 1.13659 5.12607C0.860374 6.36893 0.75 7.95837 0.75 10Z"
-                                            stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
+                                            :stroke="correctdata[choiceindex] == false ? '#ff0000' : '#5920BC'"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
 
                                     <svg v-show="optionsdata[choiceindex].value.title == option.title" width="20"
                                         height="20" viewBox="0 0 20 20" fill="none" xmlns="http:www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                             d="M14.0404 8.20711C14.4309 7.81658 14.4309 7.18342 14.0404 6.79289C13.6498 6.40237 13.0167 6.40237 12.6261 6.79289L9.16659 10.2525L7.79036 8.87623C7.39983 8.4857 6.76667 8.4857 6.37615 8.87623C5.98562 9.26675 5.98562 9.89992 6.37615 10.2904L8.45948 12.3738C8.50829 12.4226 8.5609 12.4653 8.61635 12.5019C9.0045 12.7582 9.53198 12.7155 9.87369 12.3738L14.0404 8.20711Z"
-                                            fill="#5920BC" />
+                                            :fill="correctdata[choiceindex]==false ? '#ff0000': '#5920BC'" />
                                         <path
                                             d="M0.75 10C0.75 12.0416 0.860374 13.6311 1.13659 14.8739C1.41091 16.1083 1.83874 16.9543 2.44221 17.5578C3.04567 18.1613 3.89172 18.5891 5.12607 18.8634C6.36893 19.1396 7.95837 19.25 10 19.25C12.0416 19.25 13.6311 19.1396 14.8739 18.8634C16.1083 18.5891 16.9543 18.1613 17.5578 17.5578C18.1613 16.9543 18.5891 16.1083 18.8634 14.8739C19.1396 13.6311 19.25 12.0416 19.25 10C19.25 7.95837 19.1396 6.36893 18.8634 5.12607C18.5891 3.89173 18.1613 3.04567 17.5578 2.44221C16.9543 1.83874 16.1083 1.41091 14.8739 1.13659C13.6311 0.860374 12.0416 0.75 10 0.75C7.95837 0.75 6.36893 0.860374 5.12607 1.13659C3.89172 1.41091 3.04567 1.83874 2.44221 2.44221C1.83874 3.04567 1.41091 3.89173 1.13659 5.12607C0.860374 6.36893 0.75 7.95837 0.75 10Z"
-                                            stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
+                                            :stroke="correctdata[choiceindex] == false ? '#ff0000' : '#5920BC'"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
 
                                 </div>
@@ -53,7 +53,7 @@
                                         viewBox="0 0 20 20" fill="none" xmlns="http:www.w3.org/2000/svg">
                                         <path
                                             d="M0.75 10C0.75 12.0416 0.860374 13.6311 1.13659 14.8739C1.41091 16.1083 1.83874 16.9543 2.44221 17.5578C3.04567 18.1613 3.89172 18.5891 5.12607 18.8634C6.36893 19.1396 7.95837 19.25 10 19.25C12.0416 19.25 13.6311 19.1396 14.8739 18.8634C16.1083 18.5891 16.9543 18.1613 17.5578 17.5578C18.1613 16.9543 18.5891 16.1083 18.8634 14.8739C19.1396 13.6311 19.25 12.0416 19.25 10C19.25 7.95837 19.1396 6.36893 18.8634 5.12607C18.5891 3.89173 18.1613 3.04567 17.5578 2.44221C16.9543 1.83874 16.1083 1.41091 14.8739 1.13659C13.6311 0.860374 12.0416 0.75 10 0.75C7.95837 0.75 6.36893 0.860374 5.12607 1.13659C3.89172 1.41091 3.04567 1.83874 2.44221 2.44221C1.83874 3.04567 1.41091 3.89173 1.13659 5.12607C0.860374 6.36893 0.75 7.95837 0.75 10Z"
-                                            stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
+                                            :stroke="correctdata[choiceindex]==false ? '#ff0000': '#5920BC'" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                     </svg>
 
@@ -61,10 +61,10 @@
                                         viewBox="0 0 20 20" fill="none" xmlns="http:www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                             d="M14.0404 8.20711C14.4309 7.81658 14.4309 7.18342 14.0404 6.79289C13.6498 6.40237 13.0167 6.40237 12.6261 6.79289L9.16659 10.2525L7.79036 8.87623C7.39983 8.4857 6.76667 8.4857 6.37615 8.87623C5.98562 9.26675 5.98562 9.89992 6.37615 10.2904L8.45948 12.3738C8.50829 12.4226 8.5609 12.4653 8.61635 12.5019C9.0045 12.7582 9.53198 12.7155 9.87369 12.3738L14.0404 8.20711Z"
-                                            fill="#5920BC" />
+                                            :fill="correctdata[choiceindex]==false ? '#ff0000': '#5920BC'" />
                                         <path
                                             d="M0.75 10C0.75 12.0416 0.860374 13.6311 1.13659 14.8739C1.41091 16.1083 1.83874 16.9543 2.44221 17.5578C3.04567 18.1613 3.89172 18.5891 5.12607 18.8634C6.36893 19.1396 7.95837 19.25 10 19.25C12.0416 19.25 13.6311 19.1396 14.8739 18.8634C16.1083 18.5891 16.9543 18.1613 17.5578 17.5578C18.1613 16.9543 18.5891 16.1083 18.8634 14.8739C19.1396 13.6311 19.25 12.0416 19.25 10C19.25 7.95837 19.1396 6.36893 18.8634 5.12607C18.5891 3.89173 18.1613 3.04567 17.5578 2.44221C16.9543 1.83874 16.1083 1.41091 14.8739 1.13659C13.6311 0.860374 12.0416 0.75 10 0.75C7.95837 0.75 6.36893 0.860374 5.12607 1.13659C3.89172 1.41091 3.04567 1.83874 2.44221 2.44221C1.83874 3.04567 1.41091 3.89173 1.13659 5.12607C0.860374 6.36893 0.75 7.95837 0.75 10Z"
-                                            stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
+                                            :stroke="correctdata[choiceindex]==false ? '#ff0000': '#5920BC'" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                     </svg>
 
@@ -77,6 +77,8 @@
 
 
                     </div>
+                    <p class="text-red-500" v-show="correctdata[choiceindex] == false">*Please select one of these options</p>
+
                 </div>
                 <div class="mt-10 mb-2 w-full space-y-3">
                     <div class="flex justify-between ">
@@ -110,7 +112,7 @@
                                 stroke="#5920BC" stroke-width="1.5" />
                         </svg>
                     </div>
-
+                    <p  class="text-red-500" v-show="eligibleLocation == false">Please Add the task location</p>
 
                 </div>
                 <div class="flex w-full">
@@ -124,7 +126,7 @@
                                             :value="inputValue" v-on="inputEvents" />
                                     </template>
                                 </vc-date-picker>
-                                <p v-show="dateErrormsg != ''">{{ dateErrormsg }}</p>
+                                <p  class="text-red-500" v-show="eligibleDate == false">{{ dateErrormsg }}</p>
                             </div>
                         </div>
 
@@ -159,6 +161,7 @@
                     <textarea v-model="detail" placeholder="Leave your message for PRO"
                         class=" mt-2 pt-6 pl-6 border border-[#C7C9CB] w-full focus:outline-none h-24">
                         </textarea>
+                    <p  class="text-red-500" v-show="eligibleDetails == false">Please add more information about your order</p>
                 </div>
                 <div class="w-full flex items-center justify-start mt-4">
                     <div class=" flex items-center px-12 py-3 bg-[#F9F9F9] rounded-lg">
@@ -177,7 +180,7 @@
                     </div>
 
                 </div>
-                <div class="w-full mt-10" v-if="proselected == false">
+                <div class="w-full mt-10">
                     <h3>Choose a Pro</h3>
                     <div
                         class="flex lg:w-auto overflow-x-scroll lg:overflow-auto lg:grid lg:grid-cols-2 gap-x-5 gap-y-4  ">
@@ -250,6 +253,7 @@ export default {
             summary: false,
             needsSignIn: false,
             proselected: false,
+            mobile: false,
 
 
             date: new Date(),
@@ -288,6 +292,15 @@ export default {
 
             selectedtaskerdata: [],
 
+
+            correctdata: [],
+            eligibleLocation: true,
+            eligibleDate: true,
+            eligibleData: true,
+            eligibleDetails: true,
+
+
+
         }
     },
     watch: {
@@ -297,6 +310,7 @@ export default {
             this.dateErrormsg = ""
             if (newDate.getDate() - oldDate.getDate() < 1) {
                 this.dateErrormsg = "Date should be at least 1 day ahead"
+                this.eligibleDate = false
             }
             this.starttime.setDate(newDate.getDate())
             this.endtime.setDate(newDate.getDate())
@@ -363,24 +377,30 @@ export default {
             let optionsfullselected = true
             for (let optionsloop = 0; optionsloop < this.optionsdata.length; optionsloop++) {
                 if (this.optionsdata[optionsloop].value.length == 0) {
-                    alert("Please select one of the choice in Choice:" + optionsloop)
+                    this.correctdata.splice(optionsloop, 1, false)
                     optionsfullselected = false
                 }
 
             }
             if (this.startlocation == "") {
-                alert("Please add a location")
+                this.eligibleLocation = false,
+                    optionsfullselected = false
 
             }
             if (this.detail == "") {
-                alert("Please add aditional information")
+                this.eligibleDetails = false
+                optionsfullselected = false
 
             }
             if (this.$store.state.auth.loggedIn == false) {
                 alert("You must be signed in")
                 this.$router.push("/signin")
             }
-            if (taskerdata != null && this.startlocation.length != 0 && this.detail.length != 0 && this.$store.state.auth.loggedIn && optionsfullselected) {
+            if (this.eligibleDate == false) {
+                optionsfullselected = false
+            }
+            console.log(optionsfullselected);
+            if (taskerdata != null && this.$store.state.auth.loggedIn && optionsfullselected) {
                 this.selectedtaskerdata[0] = selected
                 this.selectedtaskerdata[1] = taskerdata
                 this.selectedtaskerdata[2] = hoursOfWork
@@ -442,7 +462,7 @@ export default {
 
 
                 console.log(this.filterables);
-                 setTimeout(() => {
+                setTimeout(() => {
                     let temparr = []
                     let tempprices = []
 
@@ -616,7 +636,8 @@ export default {
         }
     },
     async mounted() {
-
+        console.log(window.innerWidth);
+        this.mobile = (window.innerWidth < 1024) ? true : false
 
         this.date.setDate(this.date.getDate() + 1)
         this.starttime.setDate(this.date.getDate())
@@ -625,13 +646,14 @@ export default {
         this.endtime.setDate(this.date.getDate())
         this.endtime.setHours(this.starttime.getHours() + 1)
         this.hoursOfWork = 1
-       await this.getservices(),
+        await this.getservices(),
             this.servicesdata = this.servicesdata.data
         console.log('====================================');
         console.log(this.servicesdata);
         console.log('====================================');
         for (let index = 0; index < this.servicesdata.serviceChoices.length; index++) {
             let tempobj
+            this.correctdata.push(true)
             if (this.servicesdata.serviceChoices[index].type == "checkbox")
                 tempobj = {
                     id: index,
@@ -652,6 +674,7 @@ export default {
             this.dataForIconSwitch.push(temparrforicon)
             this.optionsdata.push(tempobj)
         }
+        console.log(this.correctdata);
 
         for (let i = 0; i < this.optionsdata.length; i++) {
             for (let y = 0; y < this.servicesdata.serviceChoices[i].options.length; y++) {
