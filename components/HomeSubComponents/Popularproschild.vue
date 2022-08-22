@@ -2,7 +2,8 @@
     <div class="lg:flex-1 lg:w-full flex flex-col p-3 items-start border rounded-md">
         <div class="flex w-full">
             <div class="">
-                <img src="../../assets/images/homeimages/propfp.svg" alt="">
+                <img v-if="tasker.user.profilePhoto" :src="tasker.user.profilePhoto" class="h-14 w-14 rounded-full object-top object-cover" alt="">
+                    <img v-if="!tasker.user.profilePhoto" src="../../assets/images/homeimages/propfp.svg" alt="">
             </div>
             <div class="w-full pl-2">
                 <div class="flex w-full justify-between">

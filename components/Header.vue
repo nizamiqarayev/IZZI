@@ -26,7 +26,9 @@
             <div v-if="this.$auth.$state.loggedIn" class="hidden lg:block">
                 <nuxt-link to="/Account">
                     <div class="flex items-center gap-3">
-                        <img src="../assets/images/headerpfp/Oval.svg" alt="">
+                        <img v-if="$auth.state.user.profilePhoto" :src="$auth.state.user.profilePhoto"
+                            class="h-14 w-14 rounded-full object-top object-cover" alt="">
+                        <img v-if="!$auth.state.user.profilePhoto" src="../assets/images/homeimages/propfp.svg" alt="">
                         <p
                             class="flex items-center hover:text-[#5920BC] h-8 px-3  rounded-md border border-transparent hover:border-gray-200 hover:shadow-inner ">
                             {{ this.$auth.$state.user.first_name }} {{ this.$auth.$state.user.last_name }}</p>
@@ -63,7 +65,10 @@
                     class="w-full px-14 py-5 flex flex-col gap-7 border-b-2 border-b-[#e3dfdf]">
                     <div class="flex w-full gap-3 items-center ">
                         <div>
-                            <img src="../assets/images/headerpfp/Oval.svg" alt="">
+                            <img v-if="$auth.state.user.profilePhoto" :src="$auth.state.user.profilePhoto"
+                                class="h-14 w-14 rounded-full object-top object-cover" alt="">
+                            <img v-if="!$auth.state.user.profilePhoto" src="../assets/images/homeimages/propfp.svg"
+                                alt="">
                         </div>
                         <div>
                             <p class="font-bold">{{ this.$auth.$state.user.first_name }} {{

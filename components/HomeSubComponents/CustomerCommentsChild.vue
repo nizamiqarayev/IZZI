@@ -1,8 +1,9 @@
 <template>
-    <div class="flex-1 max-w-md flex flex-col gap-y-6 p-6 bg-[#C7C9CB1F] bg-opacity-[12%] items-start border rounded-md">
+    <div class="flex-1 max-w-md flex flex-col gap-y-6 p-6 bg-[#F9F8FF] items-start border rounded-md">
         <div class="flex w-full">
             <div class="">
-                <img src="../../assets/images/homeimages/propfp.svg" alt="">
+                <img v-if="data.author.profilePhoto" :src="data.author.profilePhoto" class="h-14 w-14 rounded-full object-top object-cover" alt="">
+                    <img v-if="!data.author.profilePhoto" src="../../assets/images/homeimages/propfp.svg" alt="">
             </div>
             <div class="w-full pb-2 px-2">
                 <div class="flex w-full justify-between">
