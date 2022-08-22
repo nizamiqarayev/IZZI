@@ -11,11 +11,12 @@
                 </svg>
             </nuxt-link>
         </div>
-        <div class="flex lg:justify-center w-full lg:w-full gap-4 overflow-auto lg:overflow-hidden mt-5">
+        <div class="grid grid-cols-2  lg:flex items-center justify-center w-full lg:w-full gap-4 mt-5">
             <div v-for="(service, index) in data" :key="service.id"
-                class="flex flex-col items-center justify-center border w-full max-h-28 max-w-[9.375rem]  py-5 px-10 rounded-md shadow-md">
+                class="flex flex-col items-center justify-center border w-full max-h-28 lg:max-w-[9.375rem]  py-5 px-10 rounded-md shadow-md">
                 <nuxt-link :to="`/services/${service.id}`">
-                    <div v-if="index<8"><img :src="service.icon" class="object-scale-down h-14 w-14" alt="">
+                    <div v-if="index < 8">
+                        <img :src="service.icon" class="object-contain object-center h-14 w-14" alt="">
                         <h4 class="mt-3 font-bold whitespace-nowrap">{{ service.title }}</h4>
                     </div>
                 </nuxt-link>

@@ -1,6 +1,6 @@
 <template>
     <section class="w-full font-quicksand bg-[#5920BC] bg-opacity-5 flex gap-10">
-        <main class="w-[65rem] mt-[32px] mb-20 rounded bg-white p-4 gap-3 flex lg:flex-row flex-col mx-auto">
+        <main class="w-10/12 mt-[32px] mb-20 rounded bg-white p-4 gap-3 flex lg:flex-row flex-col mx-auto">
             <section class="flex flex-col p-4 lg:w-8/12 w-full gap-6 ">
                 <div>
                     <p class="text-xl">{{ subService.title }}</p>
@@ -9,7 +9,9 @@
                 <div class="flex flex-col gap-4">
                     <div class="flex gap-3 flex-col">
                         <div class="flex">
-                            <div class=""><img class="h-5 w-5" src="../../assets/images/Path.svg" alt=""></div>
+                            <div class="relative">
+                                <img class=" relative top-1 h-5 w-5" src="../../assets/images/Path.svg" alt="">
+                            </div>
                             <div class="flex-1">
                                 <div v-for="(option, index) in serviceChoices" :key="option.id"
                                     class="flex flex-1 justify-between">
@@ -57,7 +59,7 @@
                             <p class="">There is no photos to show...</p>
                         </div> -->
                         <div v-if="order.photos == 0">
-                            <img :src="subService.coverPhoto" alt="">
+                            <img class="w-24 h-24 lg:h-40 lg:w-40" :src="subService.coverPhoto" alt="">
                         </div>
                     </div>
                 </div>
@@ -65,7 +67,9 @@
             <div class="border-[1px] border-[#5920BC0F] rounded lg:h-64 lg:w-4/12 w-full p-4 gap-3 flex flex-col">
                 <div class="flex w-full gap-1 relative">
                     <div class="relative">
-                        <img src="../../assets/images/homeimages/propfp.svg" alt="">
+                        <img v-if="tasker_user.profilePhoto" :src="tasker_user.profilePhoto"
+                            class="h-14 w-14 rounded-full object-top object-cover" alt="">
+                        <img v-if="!tasker_user.profilePhoto" class="h-14 w-14" src="../../assets/images/homeimages/propfp.svg" alt="">
                     </div>
                     <div class="flex">
                         <div class="flex flex-col justify-center items-start">
@@ -73,8 +77,8 @@
                                 <p class="font-bold">{{ tasker_user.first_name }} {{ tasker_user.last_name }}</p>
                             </div>
                             <div class="flex gap-2 w-full self-end">
-                                <div class="flex gap-[2px]">
-                                    <img class="h-4 w-4" v-for="item in tasker.rating" :key="item"
+                                <div v-if="tasker.rating" class="flex gap-[2px]">
+                                    <img class="h-4 w-4" v-for="item in Number(Math.round(tasker.rating))" :key="item"
                                         src="../../assets/images/headerpfp/Vector.svg" alt="">
                                 </div>
                                 <p class="text-[#FFC107] text-xs">{{ tasker.rating }}</p>
@@ -86,12 +90,13 @@
                 <div class="w-full">
                     <p>{{ tasker.bio }}</p>
                 </div>
-                <div class="flex">
-                    <p class="text-[#5920BC]">view profile</p>
+                <div class="flex justify-between">
+                    <p class="text-[#5920BC] cursor-pointer">view profile</p>
+                    <p class="">Total: {{ order.totalAmount }}$</p>
                 </div>
                 <div class="w-full">
-                    <div class="border-[1px] rounded py-2">
-                        <p class="text-center">{{ status(order.status) }}</p>
+                    <div :class="statuscolor(order.status)" class="border-[1px] rounded py-2">
+                        <p class="text-center text-white">{{ status(order.status) }}</p>
                     </div>
                 </div>
             </div>
@@ -129,6 +134,9 @@ export default {
         this.serviceChoices = this.serviceChoices.serviceChoices
 
     },
+    mounted() {
+        window.scrollTo(0, 0)
+    },
     methods: {
         message(data) {
             console.log(data);
@@ -148,6 +156,23 @@ export default {
             }
             else if (data == 'new') {
                 return "New"
+            }
+        },
+        statuscolor(data) {
+            if (data == 'accepted') {
+                return 'bg-[#3B82F6]'
+            }
+            else if (data == 'closed') {
+                return 'bg-[#EF4444]'
+            }
+            else if (data == 'completed') {
+                return 'bg-[#93C5FD]'
+            }
+            else if (data == 'inProgress') {
+                return 'bg-[#C38932]'
+            }
+            else if (data == 'new') {
+                return "bg-[#9333EA]"
             }
         },
     }

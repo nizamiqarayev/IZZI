@@ -11,7 +11,7 @@
       <div class="flex gap-[60px]">
         <div>
           <p class="text-[#222222] font-bold">Start Date</p>
-          <p>{{ getDay() }}.{{ getMonth() }}.{{ date.getFullYear() }}</p>
+          <p>{{ date.getDay()}}.{{ date.getMonth()+1 }}.{{ date.getFullYear() }}</p>
         </div>
         <div>
           <p class="text-[#222222] font-bold">Order Price</p>
@@ -19,10 +19,12 @@
         </div>
 
       </div>
-      <div class="flex justify-center items-center shrink gap-3 mt-8">
-        <button class="py-3 px-9 whitespace-nowrap rounded  bg-[#3C81F6] font-bold text-white">Price is pending</button>
-        <button class="flex items-center justify-center px-4 py-3 border rounded text-[#222222] gap-2"><img
-            src="../../assets/images/sliderimg/Show.svg" alt=""> bax</button>
+      <div class="flex justify-center w-full items-center shrink gap-3 mt-8">
+        <button :class="statuscolor(order.status)" class="py-3 px-9 whitespace-nowrap rounded w-8/12  font-bold text-white">{{status(order.status)}}</button>
+        <nuxt-link class="w-4/12" :to="`/orders/${order.id}`">
+          <button class="flex items-center justify-center px-4 py-3 w-full  border rounded text-[#222222] gap-2 cursor-pointer"><img
+              src="../../assets/images/sliderimg/Show.svg" alt="">Details</button>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -59,6 +61,42 @@ export default {
   
 
   },
+  methods:{
+    status(data) {
+            if (data == 'accepted') {
+                return 'Accepted'
+            }
+            else if (data == 'closed') {
+                return 'Cancelled'
+            }
+            else if (data == 'completed') {
+                return 'Completed'
+            }
+            else if (data == 'inProgress') {
+                return 'In progress'
+            }
+            else if (data == 'new') {
+                return "New"
+            }
+        },
+        statuscolor(data) {
+            if (data == 'accepted') {
+                return 'bg-[#3B82F6]'
+            }
+            else if (data == 'closed') {
+                return 'bg-[#EF4444]'
+            }
+            else if (data == 'completed') {
+                return 'bg-[#93C5FD]'
+            }
+            else if (data == 'inProgress') {
+                return 'bg-[#C38932]'
+            }
+            else if (data == 'new') {
+                return "bg-[#9333EA]"
+            }
+        },
+  }
 }
 </script>
 
