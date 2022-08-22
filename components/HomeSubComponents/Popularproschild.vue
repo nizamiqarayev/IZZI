@@ -41,7 +41,7 @@
                 {{ subServiceunique(skill, index) }}
             </div>
         </div>
-        <button class="w-full py-4 mt-9 border text-[#5929BC]">Book Now</button>
+        <button class="w-full py-4 mt-9 border text-[#5929BC] hover:text-white transition-all duration-200 hover:bg-[#5929BC]">Book Now</button>
     </div>
 </template>
 

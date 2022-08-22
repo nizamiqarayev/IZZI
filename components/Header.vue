@@ -20,7 +20,10 @@
                         <p class="hover:text-[#5920BC] hover:cursor-pointer whitespace-nowrap">Services</p>
                     </nuxt-link>
 
-                    <p class="hover:text-[#5920BC] hover:cursor-pointer whitespace-nowrap">Help</p>
+                    <nuxt-link to="/blogs">
+                        <p class="hover:text-[#5920BC] hover:cursor-pointer whitespace-nowrap">Blogs</p>
+                    </nuxt-link>
+
                 </nav>
             </div>
             <div v-if="this.$auth.$state.loggedIn" class="hidden lg:block">
@@ -28,7 +31,8 @@
                     <div class="flex items-center gap-3">
                         <img v-if="$auth.state.user.profilePhoto" :src="$auth.state.user.profilePhoto"
                             class="h-14 w-14 rounded-full object-top object-cover" alt="">
-                        <img v-if="!$auth.state.user.profilePhoto" class="h-14 w-14" src="../assets/images/homeimages/propfp.svg" alt="">
+                        <img v-if="!$auth.state.user.profilePhoto" class="h-14 w-14"
+                            src="../assets/images/homeimages/propfp.svg" alt="">
                         <p
                             class="flex items-center hover:text-[#5920BC] h-8 px-3  rounded-md border border-transparent hover:border-gray-200 hover:shadow-inner ">
                             {{ this.$auth.$state.user.first_name }} {{ this.$auth.$state.user.last_name }}</p>
