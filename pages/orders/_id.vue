@@ -67,7 +67,9 @@
             <div class="border-[1px] border-[#5920BC0F] rounded lg:h-64 lg:w-4/12 w-full p-4 gap-3 flex flex-col">
                 <div class="flex w-full gap-1 relative">
                     <div class="relative">
-                        <img src="../../assets/images/homeimages/propfp.svg" alt="">
+                        <img v-if="tasker_user.profilePhoto" :src="tasker_user.profilePhoto"
+                            class="h-14 w-14 rounded-full object-top object-cover" alt="">
+                        <img v-if="!tasker_user.profilePhoto" src="../../assets/images/homeimages/propfp.svg" alt="">
                     </div>
                     <div class="flex">
                         <div class="flex flex-col justify-center items-start">
@@ -90,7 +92,7 @@
                 </div>
                 <div class="flex justify-between">
                     <p class="text-[#5920BC] cursor-pointer">view profile</p>
-                    <p class="">Total: {{order.totalAmount}}$</p>
+                    <p class="">Total: {{ order.totalAmount }}$</p>
                 </div>
                 <div class="w-full">
                     <div :class="statuscolor(order.status)" class="border-[1px] rounded py-2">
@@ -132,6 +134,9 @@ export default {
         this.serviceChoices = this.serviceChoices.serviceChoices
 
     },
+    mounted() {
+        window.scrollTo(0, 0)
+    },
     methods: {
         message(data) {
             console.log(data);
@@ -153,7 +158,7 @@ export default {
                 return "New"
             }
         },
-        statuscolor(data){
+        statuscolor(data) {
             if (data == 'accepted') {
                 return 'bg-[#3B82F6]'
             }
