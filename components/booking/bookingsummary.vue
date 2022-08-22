@@ -1,5 +1,5 @@
 <template>
-    <div class="w-screen max-w-full lg:border-l lg:px-7   lg:pr-8">
+    <div class="w-full max-w-full lg:border-l lg:px-7   lg:pr-8">
         <div class="flex justify-start w-full">
             <div class="flex w-full">
 
@@ -14,7 +14,7 @@
                             <div v-for="(choice, choiceindex) in serviceChoices" :key="choice.id"
                                 class="flex flex-1 flex-col gap-y-3 lg:flex-row lg:justify-between">
                                 <div class="flex gap-1">
-                                    <p class="text-black text-opacity-50">{{ choice.title }}</p>
+                                    <p class="text-black text-opacity-50 whitespace-nowrap">{{ choice.title }}</p>
                                 </div>
                                 <div class="flex" v-if="choice.type == 'checkbox'">
                                     <div class="flex" v-for="(item, index) in dataforvalue[choiceindex]" :key="item">
@@ -42,16 +42,16 @@
                         <img class="h-5 w-5" src="../../assets/images/bookingimages/Location.svg" alt="">
 
                         <div class="flex flex-col w-full gap-y-3 lg:flex-row lg:justify-between">
-                            <div class="flex gap-1">
+                            <div class="flex gap-1 whitespace-nowrap">
                                 <p class="text-black text-opacity-50">Start address</p>
                             </div>
-                            <p class="w-1/2 lg:text-right">{{ location }}</p>
+                            <p class="w-full lg:text-right">{{ location }}</p>
                         </div>
                     </div>
                     <div class="flex flex-row w-full gap-4 items-start">
                         <img class="h-5 w-5" src="../../assets/images/bookingimages/clock.svg" alt="">
                         <div class="flex flex-col gap-y-3 w-full lg:flex-row lg:justify-between">
-                            <div class="flex gap-1 items-center">
+                            <div class="flex gap-1 items-center whitespace-nowrap">
                                 <p class="text-black text-opacity-50">Task start date and Time</p>
                             </div>
                             <p>{{ startDate.getDate() }}/{{ startDate.getUTCMonth() }}/{{ startDate.getFullYear() }}

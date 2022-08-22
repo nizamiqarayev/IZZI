@@ -3,7 +3,7 @@
         <div
             class="relative flex flex-col  lg:flex-row px-[5%] max-w-full lg:mt-10 lg:max-w-[90%] lg:w-[80%] bg-white lg:p-6 ">
             <div
-                class="lg:sticky top-20 border-b  lg:border-b-0 w-full mb-4 h-fit lg:mb-0 lg:w-[20rem] lg:max-w-[25rem] lg:pl-6">
+                class="lg:sticky top-20 border-b  lg:border-b-0 w-full mb-4 h-fit lg:mb-0 lg:w-full lg:max-w-[25%] lg:pl-6">
                 <h2 class="font-bold text-center lg:text-left text-2xl text-[#222222]">{{ services.title }} </h2>
                 <p class="mt-3 text-[#999999] text-sm mb-4">{{ services.description }}</p>
                 <Bookingtaskers class="hidden lg:flex" v-if="proselected" :selected="updaterselectedtaskerdata[0]"
@@ -15,7 +15,7 @@
                     <p>Summary</p>
                 </button>
             </div>
-            <div v-if="summary == false" class="lg:pl-6 w-full lg:max-w-[45rem] lg:border-l">
+            <div v-if="summary == false" class="lg:pl-6 w-full lg:max-w-[73%] lg:border-l">
                 <div class="mb-8" v-for="(choices, choiceindex) in services.serviceChoices" :key="choiceindex + 1000">
                     <h3 class="text-base">{{ choices.title }}</h3>
                     <div class="flex flex-wrap gap-y-4 gap-x-4 lg:gap-x-2 lg:w-full lg:items-center lg:mt-4">
@@ -27,7 +27,7 @@
                                 :name="choices.title" :value="option">
 
                             <label
-                                :class="[(correctdata[choiceindex] == false ? 'border-red-500' : 'border-[#5920BC]'), optionsdata[choiceindex].value.title == option.title ? 'border-opacity-100' : 'border-opacity-40']"
+                                :class="[(correctdata[choiceindex] == false ? 'border-red-500' : 'border-[#5920BC]'), (optionsdata[choiceindex].value.title == option.title ? 'border-opacity-100' : 'border-opacity-40'), (dataForIconSwitch[choiceindex][index] == true ? 'border-opacity-100' : 'border-opacity-40')]"
                                 class="hover:cursor-pointer flex items-center min-w-full flex-1 text-sm lg:justify-center   lg:text-base px-7  mr-4 lg:px-6 py-3 border border-[#5920BC]  whitespace-nowrap rounded-md"
                                 :for="option.id">
                                 <div v-if="choices.type == 'radio'">
@@ -54,7 +54,7 @@
 
                                 </div>
                                 <div v-if="choices.type == 'checkbox'">
-                                    <svg :class="optionsdata[choiceindex].value.title == option.title ? 'opacity-100' : 'opacity-40'"
+                                    <svg :class="dataForIconSwitch[choiceindex][index] == false ? 'opacity-40' : ''"
                                         v-show="dataForIconSwitch[choiceindex][index] == false" width="20" height="20"
                                         viewBox="0 0 20 20" fill="none" xmlns="http:www.w3.org/2000/svg">
                                         <path
@@ -63,7 +63,7 @@
                                             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
 
-                                    <svg :class="optionsdata[choiceindex].value.title == option.title ? 'opacity-100' : 'opacity-40'"
+                                    <svg :class="dataForIconSwitch[choiceindex][index] == true ? 'opacity-100' : ''"
                                         v-show="dataForIconSwitch[choiceindex][index] == true" width="20" height="20"
                                         viewBox="0 0 20 20" fill="none" xmlns="http:www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -232,7 +232,7 @@
                             <Bookingtaskers :selected="false" :taskerdata="tasker" :hoursofwork="hoursOfWork"
                                 :pricetype="chosenTaskersPriceType[index]" :workPrice="chosenTaskersPrices[index]" />
                             <button
-                                class=" w-full hover:transition-all py-4  border rounded-md border-[#5920BC] #979797 flex items-center self-center justify-center hover:bg-[#5920BC] hover:text-white"
+                                class=" w-[90%] hover:transition-all py-4  border rounded-md border-[#5920BC] #979797 flex items-center self-center justify-center hover:bg-[#5920BC] hover:text-white"
                                 @click="dataSetterForSelected(true, tasker, hoursOfWork, chosenTaskersPriceType[index], chosenTaskersPrices[index])">
                                 <p>Select</p>
                             </button>
@@ -249,7 +249,7 @@
                     <p>Summary</p>
                 </button>
             </div>
-            <div v-if="summary == true" class="lg:pl-6 w-full lg:max-w-[45rem] ">
+            <div v-if="summary == true" class="lg:pl-6 w-full lg:max-w-[73%] ">
                 <Bookingsummary @return="function () {
                     summary = !summary
                     selectedtaskerdata = []
@@ -416,7 +416,7 @@ export default {
     },
     methods: {
         dataSetterForSelected(selected, taskerdata, hoursOfWork, pricetype, workprice) {
-            window.scrollTo(0,0)
+            window.scrollTo(0, 0)
             this.proselected = false
             console.log('====================================');
             console.log(this.optionsdata);
