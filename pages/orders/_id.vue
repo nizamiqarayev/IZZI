@@ -9,7 +9,9 @@
                 <div class="flex flex-col gap-4">
                     <div class="flex gap-3 flex-col">
                         <div class="flex">
-                            <div class=""><img class="h-5 w-5" src="../../assets/images/Path.svg" alt=""></div>
+                            <div class="relative">
+                                <img class=" relative top-1 h-5 w-5" src="../../assets/images/Path.svg" alt="">
+                            </div>
                             <div class="flex-1">
                                 <div v-for="(option, index) in serviceChoices" :key="option.id"
                                     class="flex flex-1 justify-between">
@@ -57,7 +59,7 @@
                             <p class="">There is no photos to show...</p>
                         </div> -->
                         <div v-if="order.photos == 0">
-                            <img :src="subService.coverPhoto" alt="">
+                            <img class="w-24 h-24 lg:h-40 lg:w-40" :src="subService.coverPhoto" alt="">
                         </div>
                     </div>
                 </div>
@@ -73,8 +75,8 @@
                                 <p class="font-bold">{{ tasker_user.first_name }} {{ tasker_user.last_name }}</p>
                             </div>
                             <div class="flex gap-2 w-full self-end">
-                                <div class="flex gap-[2px]">
-                                    <img class="h-4 w-4" v-for="item in tasker.rating" :key="item"
+                                <div v-if="tasker.rating" class="flex gap-[2px]">
+                                    <img class="h-4 w-4" v-for="item in Number(Math.round(tasker.rating))" :key="item"
                                         src="../../assets/images/headerpfp/Vector.svg" alt="">
                                 </div>
                                 <p class="text-[#FFC107] text-xs">{{ tasker.rating }}</p>
