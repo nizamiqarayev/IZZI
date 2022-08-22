@@ -1,5 +1,5 @@
 <template>
-    <section class="font-quicksand max-w-[65rem] mx-auto mt-24 mb-24">
+    <section class="font-quicksand lg:max-w-[65rem] w-11/12 mx-auto mt-16">
         <div class="flex justify-between items-center ">
             <h3 class="text-3xl font-bold">Blogs</h3>
             <nuxt-link to="blogs"
@@ -14,10 +14,10 @@
             </nuxt-link>
         </div>
 
-        <div class="w-full justify-center mt-9 flex items-start gap-4">
+        <div class="lg:w-full overflow-auto lg:justify-center mt-9 flex items-start gap-4">
             <div v-for="(blog, index) in blogs" :key="blog.id">
                 <nuxt-link :to="`/blogs/${blog.id}`">
-                    <BlogsChild v-if="index < 3" :data="blog" />
+                    <BlogsChild class="w-96 lg:w-full" v-if="index < 3" :data="blog" />
                 </nuxt-link>
             </div>
 
