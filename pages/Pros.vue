@@ -100,7 +100,7 @@
                     </div>
                     <div v-if="filteredEntries.length != 0" class="w-full lg:w-9/12 grid lg:grid-cols-2 gap-6 lg:gap-3">
                         <div v-for="tasker in filteredEntries" :key="tasker.id"
-                            class="border-[1px] shadow-lg border-slate-400 rounded p-3 flex flex-col">
+                            class="border-[1px]  border-[#C7C9CB66] rounded p-3 flex flex-col">
                             <div class="flex gap-1 relative">
                                 <div class="relative">
                                     <img src="../assets/images/homeimages/propfp.svg" alt="">
@@ -146,7 +146,7 @@
                                     {{ subServiceunique(skill, index) }}
                                 </div>
                             </div>
-                            <div class="mt-4 mb-2 py-4 px-12 text-center border-[1px] border-[#5920BC40]">
+                            <div class="mt-4 cursor-pointer mb-2 py-4 px-12 text-center border-[1px] border-[#5920BC40]">
                                 <p class="text-[#5920BC]">Book Now</p>
                             </div>
                         </div>
