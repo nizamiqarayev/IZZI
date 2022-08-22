@@ -3,7 +3,7 @@
         <div class="bg-[#5920BC] w-full h-60 flex items-center justify-center">
             <h1 class="text-[2.5rem] font-bold text-center text-white">Every job has own master!</h1>
         </div>
-        <div class="absolute border w-2/5 h-14 rounded-full shadow-lg bg-white top-[13.3125rem]  ">
+        <div class="relative border w-4/5 lg:w-2/5 h-14 rounded-full shadow-lg bg-white -top-7">
             <input class="w-full h-full rounded-full focus:outline-none pl-14 pr-40 bg-white" />
             <svg class="bottom-5 left-4 absolute" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -15,7 +15,7 @@
             </svg>
             <!-- <div class="w-11/12 absolute flex bottom-1 items-center  justify-around">
         </div> -->
-            <button class="absolute top-1.5 text-white right-[1rem] px-8 py-2 rounded-full bg-[#5920BC]">Search</button>
+            <button class="absolute text-white right-1 lg:right-2 top-1 px-8 py-2 rounded-full bg-[#5920BC]">Search</button>
         </div>
 
     </div>
