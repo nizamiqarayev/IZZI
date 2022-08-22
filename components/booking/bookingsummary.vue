@@ -1,20 +1,34 @@
 <template>
-    <div class="w-screen max-w-full lg:w-auto lg:max-w-3xl px-[5%]   lg:pr-8">
-        <div class="flex gap-0 justify-between lg:gap-20 pb-7 border-b ">
-            <div class="flex flex-col gap-y-6">
-                <div class="flex justify-between">
-                    <div class="flex gap-x-4">
-                        <div>
-                            <svg width="16" height="21" viewBox="0 0 16 21" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M3 0H13C14.6569 0 16 1.34315 16 3V19C16 19.8134 15.0806 20.2865 14.4188 19.8137L8 15.228L1.58124 19.8137C0.950887 20.264 0.0869751 19.8563 0.00612714 19.1138L0 19V3C0 1.34315 1.34315 0 3 0ZM13.1166 2.00673L13 2H3C2.44772 2 2 2.44772 2 3V17.057L7.41876 13.1863C7.73169 12.9627 8.14132 12.9404 8.47359 13.1192L8.58124 13.1863L14 17.057V3C14 2.48716 13.614 2.06449 13.1166 2.00673Z"
-                                    fill="#5920BC" />
-                            </svg>
+    <div class="w-screen max-w-full lg:border-l lg:px-7   lg:pr-8">
+        <div class="flex w-full gap-2 justify-between lg:gap-20 pb-7 border-b ">
+            <div class="flex flex-col gap-y-6 w-full">
+                <div class="flex">
+                    <div>
+                        <svg width="16" height="21" viewBox="0 0 16 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M3 0H13C14.6569 0 16 1.34315 16 3V19C16 19.8134 15.0806 20.2865 14.4188 19.8137L8 15.228L1.58124 19.8137C0.950887 20.264 0.0869751 19.8563 0.00612714 19.1138L0 19V3C0 1.34315 1.34315 0 3 0ZM13.1166 2.00673L13 2H3C2.44772 2 2 2.44772 2 3V17.057L7.41876 13.1863C7.73169 12.9627 8.14132 12.9404 8.47359 13.1192L8.58124 13.1863L14 17.057V3C14 2.48716 13.614 2.06449 13.1166 2.00673Z"
+                                fill="#5920BC" />
+                        </svg>
 
-                        </div>
-                        <div class="space-y-3">
-                            <p v-for="(choice, index) in serviceChoices" :key="choice.id+2500">{{ choice.title }}</p>
+                    </div>
+                    <div class="w-full">
+                        <div class="flex justify-between" v-for="(choice, index) in serviceChoices"
+                            :key="choice.id + 2500">
+                            <p class="whitespace-nowrap h-fit">{{ choice.title }}</p>
+                            <div class="flex flex-col gap-y-3" v-if="isArr[index] == false">
+                                <p>{{
+                                        dataforvalue[0][index]
+                                }}
+                                </p>
+                            </div>
+                            <div class="flex flex-col gap-y-3" v-if="isArr[index] == true">
+                                {{ index }}
+                                {{ dataforvalue[index] }}
+                                <p v-for="(value, index) in dataforvalue[index]" :key="index + 4000"><span
+                                        v-for="(title, titleindex) in value" :key="titleindex + 4500">{{ title
+                                        }}</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -42,15 +56,16 @@
                 </div>
             </div>
 
-            <div class=" w-[40%] pb-7">
+            <!-- <div class=" w-[40%] pb-7">
                 <div class="">
-                    <div class="flex flex-col gap-3" v-for="(choicevalue, index) in dataforvalue" :key="choicevalue.id_3000">
+                    <div class="flex flex-col gap-3" v-for="(choicevalue, index) in dataforvalue"
+                        :key="choicevalue.id_3000">
                         <div class="flex flex-col gap-y-3" v-if="isArr[index] == false">
-                            <p v-for="(value, titleindex) in choicevalue" :key="titleindex+3500">{{ value[0] }}</p>
+                            <p v-for="(value, titleindex) in choicevalue" :key="titleindex + 3500">{{ value[0] }}</p>
                         </div>
                         <div class="flex flex-col gap-y-3" v-if="isArr[index] == true">
-                            <p v-for="(value, index) in choicevalue" :key="index+4000"><span
-                                    v-for="(title, titleindex) in value" :key="titleindex+4500">{{ title }}</span></p>
+                            <p v-for="(value, index) in choicevalue" :key="index + 4000"><span
+                                    v-for="(title, titleindex) in value" :key="titleindex + 4500">{{ title }}</span></p>
                         </div>
                     </div>
                 </div>
@@ -61,10 +76,10 @@
                     <p>{{ startDate.getDate() }}/{{ startDate.getMonth() }}/{{ startDate.getFullYear() }}
                         {{ starttime.getHours() }}:{{ starttime.getMinutes() }}</p>
                 </div>
-            </div>
+            </div> -->
 
         </div>
-        <div class="my-[7%]">
+        <div class="my-4 lg:my-4">
             <p>Task detail</p>
             <div>{{ detail }}</div>
         </div>
@@ -79,7 +94,8 @@
                         fill="#5920BC" />
                 </svg>
             </div>
-            <div class="py-4 px-[5%] rounded-md bg-[#5920BC] flex items-center hover:cursor-pointer" @click="submitorder()">
+            <div class="py-4 px-[5%] rounded-md bg-[#5920BC] flex items-center hover:cursor-pointer"
+                @click="submitorder()">
                 <p class="text-white mr-2">Complete Task </p>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -154,9 +170,10 @@ export default {
         }
     },
     mounted() {
-       
+        console.log(this.dataforvalue);
+
         const newdate = this.startDate
-      
+
         this.dataforsubmit.customer = this.$store.state.auth.user.id
 
         this.dataforsubmit.subService = this.subService
