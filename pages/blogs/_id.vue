@@ -1,8 +1,8 @@
 <template>
-    <section class="w-full bg-main font-quicksand bg-no-repeat bg-contain bg-left-top">
-        <main class="max-w-[65rem] mx-auto py-16 mb-32 flex flex-col gap-8">
+    <section class="w-full bg-main font-quicksand bg-no-repeat lg:bg-contain bg-left-top">
+        <main class="max-w-[65rem] mx-auto py-16 mb-16 flex flex-col gap-8">
             <div class="flex-1 w-full">
-                <img class="w-full" :src="subblogs.coverPhoto" alt="">
+                <img class="w-full h-60 lg:h-auto object-cover" :src="subblogs.coverPhoto" alt="">
             </div>
             <div class="flex lg:flex-row p-6 flex-col gap-8">
                 <div class="lg:w-9/12 w-full space-y-6">
@@ -10,7 +10,7 @@
                     <div class="flex flex-1 items-center w-3/5 text-sm justify-between mt-4">
                         <div class="flex items-center gap-4 justify-between">
                             <img v-if="subblogs.author.profilePhoto" :src="subblogs.author.profilePhoto"
-                                class="h-8 w-8 rounded-full object-top object-cover" alt="">
+                                class="h-8 w-8 rounded-full shrink-0 object-cover object-top" alt="">
                             <img v-if="!subblogs.author.profilePhoto" class="h-8 w-8"
                                 src="../../assets/images/homeimages/propfp.svg" alt="">
                             <p>{{ subblogs.author.first_name }} {{ subblogs.author.last_name }}</p>
@@ -24,19 +24,19 @@
                     </div>
                     <p>{{ subblogs.subBlogs[0].text }}</p>
                 </div>
-                <div class="flex w-full justify-around lg:justify-start lg:w-3/12 lg:flex-col gap-8">
+                <div class="flex w-full justify-around lg:justify-start lg:w-3/12 flex-col gap-8">
                     <div class="shadow-md w-full" v-for="(blog, index) in blogs.data" :key="blog.id"
                         v-if="index < 3 && blog.id != params.id">
                         <div>
                             <nuxt-link :to="`${blog.id}`">
                                 <img class="object-cover h-56 " :src="blog.coverPhoto" alt="">
                                 <div class="p-3">
-                                    <p class="mt-4 text-base font-bold text-[#222222]">{{ blog.title }}
+                                    <p class="mt-1 text-base font-bold text-[#222222]">{{ blog.title }}
                                     </p>
-                                    <p class="mt-3 text-[#222222] h-16 truncate whitespace-normal text-xs text-bold">
+                                    <p class="mt-2 text-[#222222] h-16 truncate whitespace-normal text-xs text-bold">
                                         {{ blog.description }}</p>
                                     <div class="flex flex-1 items-center text-xs justify-between mt-4">
-                                        <div class="flex items-center gap-4 justify-between">
+                                        <div class="flex items-center gap-1 lg:gap-4 justify-between">
                                             <img v-if="blog.author.profilePhoto" :src="blog.author.profilePhoto"
                                                 class="h-8 w-8 rounded-full object-top object-cover" alt="">
                                             <img v-if="!blog.author.profilePhoto" class="h-8 w-8"
