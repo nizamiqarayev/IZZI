@@ -48,10 +48,10 @@
                                         src="../assets/images/Vector 59.svg" alt="">
                                 </div>
                                 <div class="hidden lg:flex gap-2 items-center">
-                                    <p class="text-[#6F6F6F] font-bold">Services</p>
+                                    <p class="text-[#6F6F6F] text-lg font-bold">Services</p>
                                 </div>
                                 <div :class="showservice ? 'h-full overflow-auto' : 'h-0 overflow-hidden'"
-                                    class="transform transition-all duration-500">
+                                    class="space-y-2 transform transition-all duration-500">
                                     <div v-for="(service, index) in services.data" :key="service.id"
                                         v-on:click="IDselector_service(index)"
                                         class="flex gap-2">
@@ -74,10 +74,10 @@
                                     <p class="text-[#6F6F6F] font-bold">By City</p>
                                 </div>
                                 <div class="gap-2 hidden lg:flex items-center">
-                                    <p class="text-[#6F6F6F] font-bold">By City</p>
+                                    <p class="text-[#6F6F6F] text-lg font-bold">By City</p>
                                 </div>
                                 <div :class="showcity ? 'h-full overflow-auto' : 'h-0 overflow-hidden'"
-                                    class="transform transition-all duration-500">
+                                    class="space-y-2 transform transition-all duration-500">
                                     <div v-for="(city, index) in cities.data" :key="city.id"
                                         v-on:click="IDselector_city(index)"
                                         class="flex justify-end lg:justify-start gap-2">
@@ -100,10 +100,11 @@
                     </div>
                     <div v-if="filteredEntries.length != 0" class="w-full lg:w-9/12 grid lg:grid-cols-2 gap-6 lg:gap-3">
                         <div v-for="tasker in filteredEntries" :key="tasker.id"
-                            class="border-[1px]  border-[#C7C9CB66] rounded p-3 flex flex-col">
+                            class="border-[1px]  border-[#C7C9CB66] rounded h-fit p-3 flex flex-col">
                             <div class="flex gap-1 relative">
                                 <div class="relative">
-                                    <img src="../assets/images/homeimages/propfp.svg" alt="">
+                                    <img v-if="tasker.user.profilePhoto" :src="tasker.user.profilePhoto" class="h-14 w-14 rounded-full object-top object-cover" alt="">
+                                    <img v-if="!tasker.user.profilePhoto" src="../assets/images/homeimages/propfp.svg" alt="">
                                     <img v-if="tasker.supervisor" class="absolute bottom-0 right-0"
                                         src="../assets/images/headerpfp/Group 26285.svg" alt="">
 
@@ -128,8 +129,8 @@
                                 <img v-if="tasker.topTasker" class="absolute top-0 right-0"
                                     src="../assets/images/headerpfp/Group 26286.svg" alt="">
                             </div>
-                            <div class="py-1">
-                                <p class="text-sm text-[#999999]">{{ tasker.bio }}</p>
+                            <div class="py-4 h-16">
+                                <p class="text-sm line-clamp-2 text-[#999999]">{{ tasker.bio }}</p>
                             </div>
                             <div class="text-[#5920BC] flex py-2 items-center gap-2 w-full justify-center">
                                 <hr class="w-1/4 border-[#5920BC]">
