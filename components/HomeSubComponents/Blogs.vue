@@ -3,10 +3,10 @@
         <div class="flex justify-between items-center ">
             <h3 class="text-2xl lg:text-3xl font-bold">Blogs</h3>
             <nuxt-link to="blogs"
-                class="flex items-center gap-2 justify-center border rounded-full border-[#5920BC] py-2 px-4 lg:py-3 lg:px-6">
-                <p class="text-[#5920BC]"> Discover All Blogs</p>
+                class="flex items-center gap-2 group justify-center border rounded-full hover:bg-[#5920BC] transition-all border-[#5920BC] py-2 px-4 lg:py-3 lg:px-6">
+                <p class="text-[#5920BC] group-hover:text-white"> Discover All Blogs</p>
                 <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 1L17 6M17 6H1M17 6L12 11" stroke="#5920BC" stroke-width="1.5" stroke-linecap="round"
+                    <path d="M12 1L17 6M17 6H1M17 6L12 11" stroke="#5920BC" class="group-hover:stroke-white" stroke-width="1.5" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </svg>
 
@@ -17,7 +17,7 @@
         <div class="lg:w-full overflow-auto lg:justify-center mt-9 flex items-start gap-4">
             <div v-for="(blog, index) in blogs" :key="blog.id">
                 <nuxt-link :to="`/blogs/${blog.id}`">
-                    <BlogsChild class="w-96 lg:w-full" v-if="index < 3" :data="blog" />
+                    <BlogsChild class="w-80 lg:w-full" v-if="index < 3" :data="blog" />
                 </nuxt-link>
             </div>
 
