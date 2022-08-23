@@ -31,7 +31,7 @@
 
         </div>
 
-        <div class="flex gap-y-2 w-full gap-x-5">
+        <div class="flex gap-y-2 w-full gap-x-2">
             {{ reset_array() }}
             <div v-for="(skill, index) in tasker.skills" :key="skill.id"
                 v-show="subService_unique.includes(skill.subService.title) == false"
