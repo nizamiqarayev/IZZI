@@ -13,7 +13,7 @@
           </svg>
         </div>
 
-        <div v-if="orderslength">
+        <div v-if="orderslength" class="w-full">
           <slick class="max-w-[65rem] flex flex-row justify-center items-center" ref="slick" :options="slickOptions">
             <SliderItemVue class="" v-for="order in this.ordersdata.orders" :key="order.id" :order="order" />
 
