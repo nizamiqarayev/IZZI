@@ -1,11 +1,10 @@
 <template>
-    <section class="font-quicksand mt-24 mb-24 lg:max-w-[65rem]  mx-auto">
+    <section class="font-quicksand mt-24 mb-24 w-11/12 lg:max-w-[65rem]  mx-auto">
         <div class="flex justify-between items-center w-full">
             <h3 class="text-2xl lg:text-3xl font-bold">What our customers say</h3>
         </div>
-        <div class="overflow-auto lg:justify-center mt-9 grid grid-cols-3 items-center gap-4">
+        <div class="overflow-auto lg:justify-center mt-9 lg:grid flex flex-col lg:grid-cols-3 items-center gap-4">
            
-
             <div class="w-10/12 lg:w-auto shrink-0" v-for="(comment, index) in comments" :key="comment.id">
                 <CustomerCommentsChild class="shrink-0" v-if="index < 3" :data="comment" />
             </div>
