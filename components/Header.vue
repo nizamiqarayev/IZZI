@@ -181,11 +181,6 @@ export default {
             return this.signedIn
         },
         loggedIn(){
-            if(this.$auth.$state.loggedIn==false){
-            this.$cookies.removeAll()
-            localStorage.clear()
-            return this.$auth.$state.loggedIn
-            }
             return this.$auth.$state.loggedIn
         }
     },
