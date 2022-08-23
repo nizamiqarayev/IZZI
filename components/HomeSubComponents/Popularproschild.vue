@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="w-full mt-2 mb-4 ">
-            <p class="w-full">{{ tasker.bio }}
+            <p class="w-full line-clamp-3">{{ tasker.bio }}
             </p>
         </div>
         <div class="w-7/12 mb-4  self-center flex items-center justify-center gap-4">

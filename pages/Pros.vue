@@ -93,9 +93,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-full lg:w-9/12  flex flex-col justify-center items-center"
+                    <div class="w-full lg:w-9/12  flex flex-col items-center"
                         v-if="filteredEntries.length == 0">
-                        <img src="../assets/images/Job hiring 1.svg" alt="">
+                        <img class="w-9/12" src="../assets/images/Job hiring 1.svg" alt="">
                         <p>There is no aviable pro for this service :(</p>
                     </div>
                     <div v-if="filteredEntries.length != 0" class="w-full lg:w-9/12 grid lg:grid-cols-2 gap-6 lg:gap-3">
@@ -147,8 +147,8 @@
                                     {{ subServiceunique(skill, index) }}
                                 </div>
                             </div>
-                            <div class="mt-4 cursor-pointer mb-2 py-4 px-12 text-center border-[1px] border-[#5920BC40]">
-                                <p class="text-[#5920BC]">Book Now</p>
+                            <div class="mt-4 cursor-pointer mb-2 py-4 px-12 text-center border-[1px] group hover:bg-[#5920BC] transition-all duration-200 border-[#5920BC40]">
+                                <p class="text-[#5920BC] group-hover:text-white">Book Now</p>
                             </div>
                         </div>
                     </div>
