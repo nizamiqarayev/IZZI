@@ -211,8 +211,9 @@
                     <p class="text-red-500" v-show="eligibleDetails == false">Please add more information about your
                         order</p>
                 </div>
-                <div class="w-full flex items-center justify-start mt-4">
-                    <div class=" flex items-center px-12 py-3 bg-[#F9F9F9] rounded-lg">
+                <div class="w-full flex items-center justify-start mt-4 ">
+                    <label for="fileupload"
+                        class="flex items-center px-12 py-3 bg-[#F9F9F9] rounded-lg hover:cursor-pointer">
                         <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http:www.w3.org/2000/svg">
                             <path d="M16.0059 13.9976L12.0059 9.99756L8.00586 13.9976" stroke="#222222"
                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -224,8 +225,9 @@
                             <path d="M16.0059 13.9976L12.0059 9.99756L8.00586 13.9976" stroke="#222222"
                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <p class="ml-3 hover:cursor-pointer">Upload Attachment</p>
-                    </div>
+                        <p>UploadImage</p>
+                    </label>
+                    <input class="hidden" id="fileupload" ref="fileInput" type="file" multiple @input="pickFile">
 
                 </div>
                 <div class="w-full mt-10 pb-10">
@@ -264,7 +266,7 @@
                     }" :tasker="selectedtaskerdata[1]" :serviceChoices="servicesdata.serviceChoices"
                         :totalAmount="updaterselectedtaskerdata[4]" :serviceChoicesOptionValue="optionsdata"
                         :location="startlocation" :startDate="date" :starttime="starttime" :subService="this.params.id"
-                        :detail="detail" />
+                        :detail="detail" :images="images" />
                     <Bookingtaskers class="flex lg:hidden" v-if="proselected" :selected="updaterselectedtaskerdata[0]"
                         :taskerdata="updaterselectedtaskerdata[1]" :hoursofwork="updaterselectedtaskerdata[2]"
                         :pricetype="updaterselectedtaskerdata[3]" :workPrice="updaterselectedtaskerdata[4]" />
@@ -353,13 +355,16 @@ export default {
             eligibleData: true,
             eligibleDetails: true,
 
-
-
+            images: [],
+            tempimg: '',
         }
     },
     watch: {
 
-
+        images(newImages) {
+            console.log("images");
+            console.log(newImages);
+        },
         date(newDate, oldDate) {
             this.dateErrormsg = ""
             if (newDate.getDate() - oldDate.getDate() < 1) {
@@ -371,9 +376,6 @@ export default {
 
         },
         starttime(newHour, oldHour) {
-
-
-
         },
         endtime(newTime, oldTime) {
             if (newTime.getHours() <= this.starttime.getHours()) {
@@ -423,6 +425,19 @@ export default {
 
     },
     methods: {
+        pickFile() {
+            let input = this.$refs.fileInput
+            let file = input.files
+            for (let index = 0; index < file.length; index++) {
+                const reader = new FileReader();
+
+                reader.readAsDataURL(file[index])
+                reader.onload = e => {
+                    this.images.push(e.target.result);
+
+                };
+            }
+        },
         dataSetterForSelected(selected, taskerdata, hoursOfWork, pricetype, workprice) {
             window.scrollTo(0, 0)
             this.proselected = false

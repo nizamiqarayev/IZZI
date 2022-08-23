@@ -67,6 +67,9 @@
             <p>Task detail</p>
             <div>{{ detail }}</div>
         </div>
+        <div class="flex flex-1 mb-4 gap-4 overflow-x-auto">
+            <img class="h-24 w-24" v-for="image in images" :src="image" :key="image"/>
+        </div>
         <div class="flex items-center w-full justify-between pb-16">
             <div class="py-4 px-6 border rounded-md hover:cursor-pointer" @click="$emit('return')">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -110,6 +113,7 @@ export default {
         totalAmount: Number,
         subService: String,
         tasker: Object,
+        images:Array,
     },
     data() {
         return {
