@@ -71,7 +71,7 @@
                         <div>
                             <img v-if="$auth.state.user.profilePhoto" :src="$auth.state.user.profilePhoto"
                                 class="h-14 w-14 rounded-full object-top object-cover" alt="">
-                            <img v-if="!$auth.state.user.profilePhoto" src="../assets/images/homeimages/propfp.svg"
+                            <img class="h-14 w-14 rounded-full" v-if="!$auth.state.user.profilePhoto" src="../assets/images/homeimages/propfp.svg"
                                 alt="">
                         </div>
                         <div>
