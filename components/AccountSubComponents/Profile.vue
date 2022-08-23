@@ -97,10 +97,9 @@ export default {
     },
     methods: {
         logout() {
+            this.$cookies.removeAll()
             localStorage.clear()
-            this.$cookie.get('localhost');
             this.$auth.$state.loggedIn = false
-            this.$auth.$state.user ={}
             this.$router.push('/signin')
         },
         updateUser(){

@@ -8,11 +8,11 @@
                 </nuxt-link>
 
                 <nav class="hidden lg:flex lg:items-center lg:gap-8 lg:text-sm">
-                    <nuxt-link v-if="this.$auth.$state.loggedIn" class="lg:hidden"
-                        :to="this.$auth.$state.loggedIn == true ? '/orders' : '/signin'">
+                    <nuxt-link v-if="loggedIn" class="lg:hidden"
+                        :to="loggedIn == true ? '/orders' : '/signin'">
                         <p class="hover:text-[#5920BC] hover:cursor-pointer whitespace-nowrap">Profile</p>
                     </nuxt-link>
-                    <nuxt-link :to="this.$auth.$state.loggedIn == true ? '/orders' : '/signin'">
+                    <nuxt-link :to="loggedIn == true ? '/orders' : '/signin'">
                         <p class="hover:text-[#5920BC] hover: hover:cursor-pointer whitespace-nowrap">My Orders</p>
                     </nuxt-link>
 
@@ -26,7 +26,7 @@
 
                 </nav>
             </div>
-            <div v-if="this.$auth.$state.loggedIn" class="hidden lg:block">
+            <div v-if="loggedIn" class="hidden lg:block">
                 <nuxt-link to="/Account">
                     <div class="flex items-center gap-3">
                         <img v-if="$auth.state.user.profilePhoto" :src="$auth.state.user.profilePhoto"
@@ -46,7 +46,7 @@
                     </path>
                 </svg>
             </div>
-            <div v-if="this.$auth.$state.loggedIn == false" class="hidden lg:flex lg:items-center">
+            <div v-if="loggedIn == false" class="hidden lg:flex lg:items-center">
                 <nuxt-link to="/signin" class="mr-8 text-[#5920BC] hover:text-[#220c48]">Sign In</nuxt-link>
                 <nuxt-link to="/signup"
                     class="bg-[#5920BC] hover:bg-[#220c48] flex gap-4 px-6 py-3 rounded-[3px] text-white">
@@ -65,7 +65,7 @@
             </div>
             <div :class="menuButton ? 'w-full opacity-100' : 'w-0 opacity-0'"
                 class="fixed lg:hidden h-screen overflow-hidden top-20 transform transition-all duration-500 ease-out right-0 bg-white">
-                <div v-if="this.$auth.$state.loggedIn"
+                <div v-if="loggedIn"
                     class="w-full px-14 py-5 flex flex-col gap-7 border-b-2 border-b-[#e3dfdf]">
                     <div class="flex w-full gap-3 items-center ">
                         <div>
@@ -92,7 +92,7 @@
 
                     </div>
                 </div>
-                <div v-if="this.$auth.$state.loggedIn == false"
+                <div v-if="loggedIn == false"
                     class="w-full px-14 py-5 flex flex-col gap-7 border-b-2 border-b-[#e3dfdf]">
 
                     <div class="flex flex-col gap-3">
@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <div class="w-full px-14 flex flex-col py-5 gap-3">
-                    <nuxt-link :to="this.$auth.$state.loggedIn == true ? '/orders' : '/signin'">
+                    <nuxt-link :to="loggedIn == true ? '/orders' : '/signin'">
                         <p @click="menuButtonclicker"
                             class="hover:text-[#5920BC] hover: hover:cursor-pointer whitespace-nowrap">My Orders</p>
                     </nuxt-link>
@@ -134,6 +134,7 @@ export default {
         return {
             signedIn: this.$store.state.auth.loggedIn,
             menuButton: false,
+            aloggedIn:this.$auth.$state.loggedIn
         }
     },
     methods: {
@@ -178,6 +179,14 @@ export default {
             }
             //    asda
             return this.signedIn
+        },
+        loggedIn(){
+            if(this.$auth.$state.loggedIn==false){
+            this.$cookies.removeAll()
+            localStorage.clear()
+            return this.$auth.$state.loggedIn
+            }
+            return this.$auth.$state.loggedIn
         }
     },
     mounted() {
