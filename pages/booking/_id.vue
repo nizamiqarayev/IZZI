@@ -711,7 +711,7 @@ export default {
 
         this.date.setDate(this.date.getDate() + 1)
         this.starttime.setDate(this.date.getDate())
-        this.endtime = new Date(this.starttime.getDate())
+        this.endtime.setDate(this.starttime.getDate())
         this.endtime.setHours(this.starttime.getHours() + 1)
         this.endtime.setMinutes(this.starttime.getMinutes())
         console.log("endhour");
@@ -719,9 +719,7 @@ export default {
         this.hoursOfWork = 1
         await this.getservices(),
             this.servicesdata = this.servicesdata.data
-        console.log('====================================');
-        console.log(this.servicesdata);
-        console.log('====================================');
+        
         for (let index = 0; index < this.servicesdata.serviceChoices.length; index++) {
             let tempobj
             this.correctdata.push(true)
