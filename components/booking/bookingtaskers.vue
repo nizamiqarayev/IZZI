@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="my-4 w-auto break-normal h-auto">
-            <p class="">{{ taskerdata.bio }}</p>
+            <p class="line-clamp-3">{{ taskerdata.bio }}</p>
         </div>
         <div class="max-w-full py-4 flex justify-between items-center">
             <nuxt-link to="#" class="whitespace-nowrap text-[#5920BC]">view profile</nuxt-link>
