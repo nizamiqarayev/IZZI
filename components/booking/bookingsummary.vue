@@ -68,7 +68,7 @@
             <div>{{ detail }}</div>
         </div>
         <div class="flex flex-1 mb-4 gap-4 overflow-x-auto">
-            <img class="h-24 w-24" v-for="image in images" :src="image" :key="image"/>
+            <img class="h-24 w-24 hover:cursor-pointer" v-for="image in images" :src="image" :key="image"/>
         </div>
         <div class="flex items-center w-full justify-between pb-16">
             <div class="py-4 px-6 border rounded-md hover:cursor-pointer" @click="$emit('return')">

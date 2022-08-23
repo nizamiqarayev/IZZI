@@ -129,13 +129,13 @@
 
                 </div>
                 <div class="flex w-full">
-                    <div class="w-full mt-10 relative flex flex-wrap lg:flex-nowrap gap-x-4 gap-y-3 justify-start">
-                        <div class="w-full lg:w-fit flex flex-col justify-center items-start">
+                    <div class="w-full mt-10 relative flex flex-wrap lg:flex-nowrap gap-x-4 gap-y-3 items-start justify-start">
+                        <div class="w-full lg:w-[25%] flex flex-col justify-center items-start">
                             <h3 class="mb-2" @click="calendarshow = !calendarshow">Task start date</h3>
                             <div class="relative w-3/4">
-                                <vc-date-picker v-model="date" :value="startdatecomputed" mode="date">
+                                <vc-date-picker class="relative" v-model="date" :value="startdatecomputed" mode="date">
                                     <template v-slot="{ inputValue, inputEvents }">
-                                        <svg class="absolute bottom-3 left-3 " width="20" height="20"
+                                        <svg class="absolute top-[0.0625rem] left-3 " width="20" height="20"
                                             viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M5 12.3076L7.5 12.3076" stroke="#5920BC" stroke-width="1.5"
                                                 stroke-linecap="round" stroke-linejoin="round" />
@@ -150,13 +150,13 @@
                                             :value="inputValue" v-on="inputEvents" />
                                     </template>
                                 </vc-date-picker>
-                                <p class="text-red-500" v-show="eligibleDate == false">{{ dateErrormsg }}</p>
+                                <p class="text-red-500 w-full" v-show="eligibleDate == false">{{ dateErrormsg }}</p>
                             </div>
                         </div>
 
                         <div class="flex relative flex-col items-start justify-center">
                             <h3 class="mb-2">Start Time</h3>
-                            <vc-date-picker v-model="starttime" mode="time" is24hr>
+                            <vc-date-picker class="relative" v-model="starttime" mode="time" is24hr>
                                 <template v-slot="{ inputValue, inputEvents }">
                                     <svg class="absolute bottom-[0.5625rem] left-4" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -179,7 +179,7 @@
                         <div class="flex relative flex-col items-start justify-center">
                             <h3 class="mb-2">End Time</h3>
 
-                            <vc-date-picker v-model="endtime" mode="time" is24hr>
+                            <vc-date-picker class="relative" v-model="endtime" mode="time" is24hr>
                                 <template v-slot="{ inputValue, inputEvents }">
 
                                     <svg class="absolute bottom-[0.5625rem] left-4" width="24" height="24"

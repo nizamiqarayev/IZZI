@@ -1,6 +1,11 @@
 <template>
     <div class=" flex flex-col justify-between" :class="selected ? 'max-w-[80%]' : 'w-full h-full'">
-        <div class="flex items-center"><img class="h-14 w-14" src="../../assets/images/headerpfp/Oval.svg" alt="">
+        <div class="flex items-center">
+            <div>
+                <img v-if="taskerdata.user.profilePhoto" :src="taskerdata.user.profilePhoto" class="h-14 w-14 rounded-full object-top object-cover" alt="">
+                    <img v-if="!taskerdata.user.profilePhoto" class="h-14 w-14 rounded-full shrink-0 " src="../../assets/images/homeimages/propfp.svg" alt="">
+            
+            </div>
             <div class="ml-3">
                 <h3>{{ taskerdata.user.first_name }} {{ taskerdata.user.last_name }}</h3>
                 <div class="flex items-center gap-2">
