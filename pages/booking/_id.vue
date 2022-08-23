@@ -225,7 +225,7 @@
                             <path d="M16.0059 13.9976L12.0059 9.99756L8.00586 13.9976" stroke="#222222"
                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <p>Upload Image</p>
+                        <p class="ml-2">Upload Image</p>
                     </label>
                     <input class="hidden" id="fileupload" ref="fileInput" type="file" multiple @input="pickFile">
 
