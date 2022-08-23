@@ -11,7 +11,7 @@
                 </svg>
             </nuxt-link>
         </div>
-        <div class="grid grid-cols-2  lg:flex items-center justify-center w-full lg:w-full gap-4 mt-5">
+        <div class="grid grid-cols-2 lg:flex-wrap lg:flex items-center justify-center w-full lg:w-full gap-4 mt-5">
             <div v-for="(service, index) in data" :key="service.id"
                 class="flex flex-col items-center justify-center border w-full max-h-28 lg:max-w-[9.375rem]  py-5 px-10 rounded-md shadow-md">
                 <nuxt-link :to="`/services/${service.id}`">
