@@ -23,7 +23,7 @@
                     <img src="../../assets/images/accounticons/edit.svg" alt="">
                     <p class="cursor-pointer">Edit profile</p>
                 </div>
-                <div v-if="editprofile" @click="updateUser"
+                <div v-if="editprofile" @click="editprofile=!editprofile"
                     class="flex items-center gap-2 text-[#EF4444]">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -88,9 +88,9 @@ export default {
             first_name: "",
             last_name: "",
             email: "",
-            first_name1: "",
-            last_name1: "",
-            email1: "",
+            first_name1: this.$auth.$state.user.first_name,
+            last_name1: this.$auth.$state.user.last_name,
+            email1: this.$auth.$state.user.email,
             editprofile: false,
             onlineStatus: true,
         }
