@@ -13,13 +13,13 @@
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-4 items-center justify-center w-full lg:w-full gap-4 mt-5">
             <div v-for="(service, index) in data" :key="service.id"
-                class="flex flex-col items-center justify-center border w-full max-h-28   py-5 px-10 rounded-md shadow-md">
-                <nuxt-link :to="`/services/${service.id}`">
+                class="">
+                <nuxt-link tag="div" class=" cursor-pointer group flex flex-col items-center justify-center border w-full max-h-28   py-5 px-10 rounded-md shadow-md" :to="`/services/${service.id}`">
                     <div v-if="index < 8">
                         <div class="flex justify-center items-center">
-                            <img :src="service.icon" class="object-contain object-center h-14 w-14" alt="">
+                            <img :src="service.icon" class="object-contain object-center h-14 w-14 transform transition-all " alt="">
                         </div>
-                        <h4 class="mt-3 font-bold whitespace-nowrap">{{ service.title }}</h4>
+                        <h4 class="mt-3 text-center group-hover:text-xl transform transition-all font-bold whitespace-nowrap">{{ service.title }}</h4>
                     </div>
                 </nuxt-link>
             </div>
