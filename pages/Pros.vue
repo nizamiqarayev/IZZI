@@ -98,7 +98,7 @@
                         <img class="w-9/12" src="../assets/images/Job hiring 1.svg" alt="">
                         <p>There is no aviable pro for this service :(</p>
                     </div>
-                    <div v-if="filteredEntries.length != 0" class="w-full lg:w-9/12 grid lg:grid-cols-2 gap-6 lg:gap-3">
+                    <div v-if="filteredEntries.length != 0" class="w-full lg:w-9/12 grid h-fit lg:grid-cols-2 gap-6 lg:gap-3">
                         <div v-for="tasker in filteredEntries" :key="tasker.id"
                             class="border-[1px]  border-[#C7C9CB66] rounded h-fit p-3 flex flex-col">
                             <div class="flex gap-1 relative">

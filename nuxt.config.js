@@ -1,6 +1,6 @@
 export default {
   target: 'static',
-  ssr: false,
+  ssr: true,
   generate: {
     fallback: true
   },
@@ -30,6 +30,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    {src:'@/plugins/vue-simple-password-meter.js', ssr: false},
     { src: '@/plugins/v-calendar.js', ssr: false }
   ],
 

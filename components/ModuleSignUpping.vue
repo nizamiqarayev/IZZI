@@ -72,11 +72,7 @@
 </template>
 
 <script>
-import passwordMeter from "vue-simple-password-meter";
-
 export default {
-    components: { passwordMeter },
-
     name: 'ModuleSignupping',
     data() {
         return {
