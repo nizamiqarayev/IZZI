@@ -46,6 +46,7 @@ export default {
             const config = {
             headers: { Authorization: `${this.$auth.$state.accesslocal}` }
         }
+        try {
             this.$axios.patch(`https://izzi-api-rest.herokuapp.com/api/v1/auth/changePassword/${this.$auth.$state.user.id}/`,
             {
                 old_password:this.old_password,
@@ -54,6 +55,10 @@ export default {
 
             },config
             )
+        } catch (e) {
+            console.log(e);
+        }
+            
         }
     }
 

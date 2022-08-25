@@ -182,6 +182,9 @@ export default {
         },
         loggedIn(){
             return this.$auth.$state.loggedIn
+        },
+        test(){
+           return this.$auth.$state.user.first_name
         }
     },
     mounted() {

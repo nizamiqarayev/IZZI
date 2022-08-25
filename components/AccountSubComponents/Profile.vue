@@ -23,8 +23,7 @@
                     <img src="../../assets/images/accounticons/edit.svg" alt="">
                     <p class="cursor-pointer">Edit profile</p>
                 </div>
-                <div v-if="editprofile" @click="editprofile=!editprofile"
-                    class="flex items-center gap-2 text-[#EF4444]">
+                <div v-if="editprofile" @click="updateUser" class="flex items-center gap-2 text-[#EF4444]">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M12.5649 5.4178C12.6974 5.28534 12.8546 5.18027 13.0277 5.10858C13.2007 5.0369 13.3862 5 13.5735 5C13.7609 5 13.9464 5.0369 14.1194 5.10858C14.2925 5.18027 14.4497 5.28534 14.5822 5.4178C14.7147 5.55026 14.8197 5.70751 14.8914 5.88057C14.9631 6.05364 15 6.23913 15 6.42645C15 6.61377 14.9631 6.79926 14.8914 6.97233C14.8197 7.14539 14.7147 7.30265 14.5822 7.4351L7.7738 14.2435L5 15L5.75649 12.2262L12.5649 5.4178Z"
@@ -45,9 +44,9 @@
                 <div class="flex items-center gap-4">
                     <img class="h-14 w-14" src="../../assets/images/headerpfp/Oval.svg" alt="">
                     <div>
-                        <h3 class="font-bold text-xl">{{ first_name }}
-                            {{ last_name }}</h3>
-                        <p class="text-sm">{{ email }}</p>
+                        <h3 class="font-bold text-xl">{{ this.$auth.$state.user.first_name }}
+                            {{ this.$auth.$state.user.last_name }}</h3>
+                        <p class="text-sm">{{ this.$auth.$state.user.email}}</p>
                     </div>
                 </div>
                 <div class="space-y-4">
@@ -59,23 +58,23 @@
         <div v-if="editprofile" class="w-full">
             <div class="w-full">
                 <div class="flex w-full items-center justify-between border-b mt-4 pb-4">
-                        <label class="whitespace-nowrap">First Name:</label>
-                        <input v-model="first_name1"
-                            class="  border-[#C7C9CB] w-2/5 border-[1px] focus:border-purple-500 focus:outline-none py-2 rounded-lg px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
-                            type="text">
-                    </div>
-                    <div class="flex w-full items-center justify-between border-b mt-4 pb-4">
-                        <label class="whitespace-nowrap">Last Name:</label>
-                        <input v-model="last_name1"
-                            class="  border-[#C7C9CB] w-2/5 border-[1px] focus:border-purple-500 focus:outline-none py-2 rounded-lg px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
-                            type="text">
-                    </div>
-                    <div class="flex w-full items-center justify-between border-b mt-4 pb-4">
-                        <label class="whitespace-nowrap">E-mail:</label>
-                        <input v-model="email1"
-                            class="  border-[#C7C9CB] w-2/5 border-[1px] focus:border-purple-500 focus:outline-none py-2 rounded-lg px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
-                            type="text">
-                    </div>
+                    <label class="whitespace-nowrap">First Name:</label>
+                    <input v-model="first_name1"
+                        class="  border-[#C7C9CB] w-2/5 border-[1px] focus:border-purple-500 focus:outline-none py-2 rounded-lg px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
+                        type="text">
+                </div>
+                <div class="flex w-full items-center justify-between border-b mt-4 pb-4">
+                    <label class="whitespace-nowrap">Last Name:</label>
+                    <input v-model="last_name1"
+                        class="  border-[#C7C9CB] w-2/5 border-[1px] focus:border-purple-500 focus:outline-none py-2 rounded-lg px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
+                        type="text">
+                </div>
+                <div class="flex w-full items-center justify-between border-b mt-4 pb-4">
+                    <label class="whitespace-nowrap">E-mail:</label>
+                    <input v-model="email1"
+                        class="  border-[#C7C9CB] w-2/5 border-[1px] focus:border-purple-500 focus:outline-none py-2 rounded-lg px-6 placeholder:font-password placeholder:text-xs placeholder:text-[#C4C4C4]"
+                        type="text">
+                </div>
             </div>
         </div>
     </section>
@@ -96,28 +95,33 @@ export default {
         }
     },
     methods: {
-        logout() {
+        async logout() {
             this.$cookies.removeAll()
             localStorage.clear()
-            this.$auth.$state.loggedIn = false
+            await this.$auth.logout()
             this.$router.push('/signin')
         },
-        updateUser(){
-            let user={
-                first_name:this.first_name1,
-                last_name:this.last_name1,
-                email:this.email1,
-                profilePhoto:null
+        async updateUser() {
+            let user = {
+                first_name: this.first_name1,
+                last_name: this.last_name1,
+                email: this.email1,
+                profilePhoto: null
             }
             console.log(user);
             const config = {
-            headers: { Authorization: `${this.$auth.$state.accesslocal}` }
-        }
-            let success=this.$axios.put(`https://izzi-api-rest.herokuapp.com/api/v1/auth/updateUser/${this.$auth.$state.user.id}/`,
-            user,config
-            )
-            console.log(success);
-            this.logout()
+                headers: { Authorization: `${this.$auth.$state.accesslocal}` }
+            }
+            try {
+                let success = await this.$axios.put(`https://izzi-api-rest.herokuapp.com/api/v1/auth/updateUser/${this.$auth.$state.user.id}/`,
+                    user, config
+                )
+                this.$auth.setUser(user)
+                console.log(success);
+            } catch (e) {
+                console.log(e);
+            }
+            this.$router.push('/')
         }
     },
     created() {
