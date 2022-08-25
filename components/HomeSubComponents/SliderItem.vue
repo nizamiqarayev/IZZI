@@ -20,10 +20,10 @@
 
       </div>
       <div class="flex justify-center w-full items-center shrink gap-3 mt-8">
-        <button :class="statuscolor(order.status)" class="py-3 px-9 whitespace-nowrap rounded w-8/12  font-bold text-white">{{status(order.status)}}</button>
-        <nuxt-link class="w-4/12" :to="`/orders/${order.id}`">
-          <button class="flex items-center justify-center px-4 py-3 w-full  border rounded text-[#222222] gap-2 cursor-pointer"><img
-              src="../../assets/images/sliderimg/Show.svg" alt="">Details</button>
+        <button :class="statuscolor(order.status)" class="py-3 px-9 whitespace-nowrap rounded w-7/12  font-bold text-white">{{status(order.status)}}</button>
+        <nuxt-link tag="div" class="px-4 w-full cursor-pointer border rounded text-[#222222]" :to="`/orders/${order.id}`">
+          <button class="flex items-center h-12 overflow-hidden justify-center group gap-2 "><img class="group-hover:w-8 w-5 transform transition-all"
+              src="../../assets/images/sliderimg/Show.svg" alt=""><p class="text-sm  group-hover:text-lg transform transition-all">Details</p></button>
         </nuxt-link>
       </div>
     </div>

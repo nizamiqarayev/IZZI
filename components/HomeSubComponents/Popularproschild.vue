@@ -1,5 +1,5 @@
 <template>
-    <div class="lg:flex-1 lg:w-full flex flex-col p-3 items-start border rounded-md">
+    <div class="lg:flex-1 lg:w-60 flex flex-col p-3 items-start border rounded-md">
         <div class="flex w-full">
             <div class="">
                 <img v-if="tasker.user.profilePhoto" :src="tasker.user.profilePhoto" class="h-14 w-14 rounded-full object-top object-cover" alt="">
@@ -31,13 +31,13 @@
 
         </div>
 
-        <div class="flex gap-y-2 w-full gap-x-2">
+        <div class="flex gap-y-2 overflow-auto w-full gap-x-2">
             {{ reset_array() }}
             <div v-for="(skill, index) in tasker.skills" :key="skill.id"
                 v-show="subService_unique.includes(skill.subService.title) == false"
-                class="bg-[#5920BC0D] w-full flex justify-around py-2 px-2 border-[1px] border-[#5920BC] rounded">
-                <p class="text-sm">{{ skill.subService.title }}</p>
-                <p class="text-sm">{{ skill.price }} ₼</p>
+                class="bg-[#5920BC0D] w-full flex gap-2 justify-around py-2 px-2 border-[1px] border-[#5920BC] rounded">
+                <p class="text-xs whitespace-nowrap">{{ skill.subService.title }}</p>
+                <p class="text-xs whitespace-nowrap">{{ skill.price }} ₼</p>
                 {{ subServiceunique(skill, index) }}
             </div>
         </div>
