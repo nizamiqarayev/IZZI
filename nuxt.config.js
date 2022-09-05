@@ -1,9 +1,11 @@
 export default {
-  target: 'static',
   ssr: true,
   generate: {
     fallback: true
   },
+  // server: {
+  //   host:'0.0.0.0',
+  // },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -11,7 +13,7 @@ export default {
     htmlAttrs: {
       lang: 'en'
     },
-    script: [{src: 'https://kit.fontawesome.com/5221f8b839.js', async: true, crossorigin: 'anonymous'},],
+    script: [{ src: 'https://kit.fontawesome.com/5221f8b839.js', async: true, crossorigin: 'anonymous' },],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -30,7 +32,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    {src:'@/plugins/vue-simple-password-meter.js', ssr: false},
+    { src: '@/plugins/vue2-google-maps.js', ssr: false },
+    { src: '@/plugins/vue-simple-password-meter.js', ssr: false },
     { src: '@/plugins/v-calendar.js', ssr: false }
   ],
 
@@ -54,13 +57,14 @@ export default {
     'cookie-universal-nuxt',
     ['cookie-universal-nuxt', { alias: 'cookiz' }],
 
+
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: 'https://izzi-api-rest.herokuapp.com/api/v1/',
-    
+
   },
   // proxy: {
   //   '/api/': {
@@ -70,7 +74,7 @@ export default {
 
   // },
   auth: {
-    
+
 
     strategies: {
       local: {
@@ -110,7 +114,8 @@ export default {
         tailwindcss: {},
         autoprefixer: {},
       },
-    }
+    },
+    vendor: ["vue2-google-maps"],
   },
 }
 
